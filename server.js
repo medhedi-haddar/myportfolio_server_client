@@ -9,7 +9,7 @@ const path = require('path');
 const app = express();
 const PORT = process.env.PORT || 8080;
 
-const routes = require('./api');
+const routes = require('./routes/api');
 
 const MONGODB_URL = "mongodb+srv://haddarmedelhedi:Therebel89@cluster0.sm41i.mongodb.net/my_portfolio_DB?retryWrites=true&w=majority";
 // const MONGODB_URL =  ""
@@ -26,9 +26,9 @@ mongoose.connection.on('connected', ()=>{
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
 
-// if(process.env.NODE_ENV === 'production'){
+if(process.env.NODE_ENV === 'production'){
     app.use(express.static('client/build'));
-// }
+}
 
 // app.use(cors());
 // HTTP request logger

@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const AboutMe = require('./models/aboutMe');
+const AboutMe = require('../models/aboutMe');
 
 
 router.get ('/about_me' , (req, res) => {
