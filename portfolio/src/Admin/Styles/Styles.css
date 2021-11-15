@@ -1,0 +1,104 @@
+
+:root {
+    --blue-dark: #131a22;
+    --blue: #222f3e;
+    --indigo: #341f97;
+    --purple: #5f27cd;
+    --pink: #ff6b6b;
+    --red: #ee5253;
+    --orange: #ff9f43;
+    --yellow: #feca57;
+    --green: #1dd1a1;
+    --teal: #20c9a6;
+    --cyan: #48dbfb;
+    --white: #fff;
+    --gray: #8395a7;
+    --gray-dark: #5a5c69;
+    --primary: #4e73df;
+    --secondary: #858796;
+    --success: #1cc88a;
+    --info: #54a0ff;
+    --warning: #f6c23e;
+    --danger: #ee5253;
+    --light: #f8f9fc;
+    --dark: #c8d6e5;
+  }
+
+ul > li {
+    padding : 0;
+}
+a {
+    align-items: center;
+    background: transparent;
+    text-decoration: none;
+    white-space: nowrap;
+    cursor: pointer;
+}
+.body{
+    display : flex;
+}
+.content{
+    width: calc(100vw - 14rem);
+}
+.sideNav{
+    width : 14rem;
+    background: var(--blue);
+    height :100vh;
+    margin : 0 !important;
+    color : white ;
+    list-style: none;
+    padding-left: 0; 
+    overflow-y: auto;
+}
+
+.HomeLink > a{
+    align-items: center;
+    background: transparent;
+    color: white !important;
+    display: flex;
+    flex: 1 1;
+    font-size: 1.5rem;
+    padding: 0.6rem 1rem;
+    text-decoration: none;
+    white-space: nowrap;
+    border-bottom: 1px solid var(--blue-dark);
+    margin-bottom: 30px;}
+.sideNavItem{
+   display : flex;
+   justify-content: space-between;
+   align-items: center;
+   margin-bottom: 1px;
+}
+.sideNavItem > a{
+    display: flex;
+    align-items: center;
+    color: var(--gray);
+    white-space: nowrap;
+    padding: .8rem 1rem;
+    width: 100%;
+    margin : 5px 10px;
+    justify-content: space-between;
+}
+.sideNavItem > a:hover,
+.active > a{
+    background: var(--white);
+    color: var(--blue);
+    border-radius: 7px;
+
+    box-shadow: 0px 0px 9px 1px rgb(0 0 0 / 30%);
+    -webkit-box-shadow: 0px 0px 9px 1px rgb(0 0 0 / 30%);
+    -moz-box-shadow: 0px 0px 9px 1px rgba(0,0,0,0.3);
+}
+.contentBody{
+    padding: 15px;
+}
+form{
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+}
+.component_title{
+    border-bottom: 1px solid #dee2e6;
+    padding-bottom: 15px;
+    margin-bottom : 35px;
+}
