@@ -1,4 +1,4 @@
-require('dotenv').config();
+// require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const morgan = require('morgan');
@@ -11,9 +11,10 @@ const PORT = process.env.PORT || 8080;
 
 const routes = require('./api');
 
-const MONGODB_URL = `"mongodb+srv://${process.env.SERVER_DB_USER}:${process.env.SERVER_DB_PASSWORD}@cluster0.sm41i.mongodb.net/${process.env.SERVER_DB_NAME}?retryWrites=true&w=majority"`;
+const MONGODB_URL = "mongodb+srv://haddarmedelhedi:Therebel89@cluster0.sm41i.mongodb.net/my_portfolio_DB?retryWrites=true&w=majority";
+// const MONGODB_URL =  ""
 
-mongoose.connect(process.env.MONGODB_URI ||MONGODB_URL, {
+mongoose.connect(process.env.MONGODB_URI || MONGODB_URL, {
     useNewUrlParser : true,
     useUnifiedTopology :true
 });
@@ -25,9 +26,9 @@ mongoose.connection.on('connected', ()=>{
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
 
-if(process.env.NODE_ENV === 'production'){
-    app.use(express.static('portfolio/build'));
-}
+// if(process.env.NODE_ENV === 'production'){
+    app.use(express.static('client/build'));
+// }
 
 // app.use(cors());
 // HTTP request logger
