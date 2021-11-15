@@ -25,7 +25,7 @@ class App extends Component {
           <Route path="/admin/messages"   history={history} element={<Admin requestedComponent="messages"/>}/> 
           
         </Routes>
-        <Link to={'/admin'}>admin</Link>
+        <Link to={'/admin'}>go to admin</Link>
         <h1>client</h1>
       {/* </Router> */}
       </>
