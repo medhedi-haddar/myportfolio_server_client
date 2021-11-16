@@ -3,6 +3,7 @@ const router = express.Router();
 const AboutMe = require('../models/aboutMe');
 
 
+
 router.get ('/about_me' , (req, res) => {
     
     AboutMe.find({})
@@ -34,6 +35,7 @@ router.post ('/update_about_me' , (req, res) => {
    res.json({success : "sent successsfuly" })
     
 });
+
 
 
 module.exports = router;
