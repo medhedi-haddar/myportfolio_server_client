@@ -23,7 +23,10 @@
     --light: #f8f9fc;
     --dark: #c8d6e5;
   }
-
+.navbar{
+    position : sticky;
+    top : 0;
+}
 ul > li {
     padding : 0;
 }
@@ -34,11 +37,18 @@ a {
     white-space: nowrap;
     cursor: pointer;
 }
+a.button{
+    color : gray;
+}
+a.button:hover{
+    color : rgb(255, 255, 255);
+}
 .body{
     display : flex;
 }
 .content{
     width: calc(100vw - 14rem);
+    margin-left: auto;
 }
 .sideNav{
     width : 14rem;
@@ -49,6 +59,7 @@ a {
     list-style: none;
     padding-left: 0; 
     overflow-y: auto;
+    position: fixed !important;
 }
 
 .HomeLink > a{
@@ -101,4 +112,8 @@ form{
     border-bottom: 1px solid #dee2e6;
     padding-bottom: 15px;
     margin-bottom : 35px;
+}
+.last_update{
+    color: var(--secondary);
+    float: right;
 }

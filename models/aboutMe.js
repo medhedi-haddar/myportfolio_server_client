@@ -7,13 +7,17 @@ const aboutMeSchema = new Schema({
     lastName: String,
     firstName: String,
     description: String,
-    cv_url: String,
+    
     update_date : {
         type : String,
         default : Date.now()
     },
-    photo_url : String
+    git_link : String,
+    cv_url: String,
+    profileImage : String
 });
+
+
 // Model
 const AboutMe = mongoose.model('about_me', aboutMeSchema);
 

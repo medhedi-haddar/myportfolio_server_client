@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Routes,Switch, Route, Link} from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route} from "react-router-dom";
 import Admin from './Admin/Admin';
-import AboutMe from './Admin/Components/AboutMe/AboutMe';
 import './App.css';
 import {createBrowserHistory} from "history";
+import HomePage from './Client/Components/HomePage';
+
+
 
 class App extends Component {
 
@@ -12,9 +14,9 @@ class App extends Component {
     const history = createBrowserHistory();
     return (
       <>
-      {/* <Router> */}
+      <Router>
         <Routes>
-        {/* <Route path="/" element={<Admin/>}/>  */}
+          <Route path="/" element={<HomePage/>}/> 
           <Route path="/admin" element={<Admin/>}/> 
           {/* <Route path="/login" element={<Login/>}/>  */}
           <Route path="/admin/about_me"   history={history} element={<Admin requestedComponent="about_me"/>}/> 
@@ -23,11 +25,9 @@ class App extends Component {
           <Route path="/admin/projects"   history={history} element={<Admin requestedComponent="projects"/>}/> 
           <Route path="/admin/gallery"   history={history} element={<Admin requestedComponent="gallery"/>}/> 
           <Route path="/admin/messages"   history={history} element={<Admin requestedComponent="messages"/>}/> 
-          
         </Routes>
-        <Link to={'/admin'}>go to admin</Link>
-        <h1>client</h1>
-      {/* </Router> */}
+       
+      </Router>
       </>
     )
   }
