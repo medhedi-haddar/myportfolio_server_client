@@ -1,25 +1,26 @@
 const mongoose = require('mongoose');
-
-// Schema
 const Schema = mongoose.Schema;
 
 const aboutMeSchema = new Schema({
     lastName: String,
     firstName: String,
     description: String,
-    
+    git_link : String,
     update_date : {
         type : String,
         default : Date.now()
     },
-    git_link : String,
-    cv_url: String,
-    profileImage : String
+    cv: {   
+            type: mongoose.Schema.Types.ObjectId, 
+            ref: 'media' 
+        },
+    profileImage : {   
+            type: mongoose.Schema.Types.ObjectId, 
+            ref: 'media' 
+        }
 });
-
 
 // Model
 const AboutMe = mongoose.model('about_me', aboutMeSchema);
-
 
 module.exports = AboutMe;

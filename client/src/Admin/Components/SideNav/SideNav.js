@@ -16,7 +16,7 @@ const SideNav = ({active_link}) => {
             <li className={`sideNavItem ${active_link === 'skills' ? 'active' : ''}`}>
                 <Link to={'/admin/skills'} > <span>Skills</span><MdBubbleChart/></Link>     
             </li> 
-            <li className={`sideNavItem ${active_link === 'projects' ? 'active' : ''}`}>
+            <li className={`sideNavItem ${["add_project", "projects", "up_project"].indexOf(active_link) >= 0 ? 'active' : ''}`}>
                 <Link to={'/admin/projects'} > <span>Projects</span><MdDeveloperMode/></Link>     
             </li> 
             <li className={`sideNavItem ${active_link === 'gallery' ? 'active' : ''}`}>

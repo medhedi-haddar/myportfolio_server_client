@@ -49,6 +49,8 @@ a.button:hover{
 .content{
     width: calc(100vw - 14rem);
     margin-left: auto;
+    min-height: 100vh;
+    padding-bottom: 70px;
 }
 .sideNav{
     width : 14rem;
@@ -104,9 +106,9 @@ a.button:hover{
     padding: 15px;
 }
 form{
-    width: 70%;
-    margin-left: auto;
-    margin-right: auto;
+    /* width: 70%;
+    margin-left: auto; */
+    /* margin-right: auto; */
 }
 .component_title{
     border-bottom: 1px solid #dee2e6;
@@ -116,4 +118,86 @@ form{
 .last_update{
     color: var(--secondary);
     float: right;
+}
+.editorClassName{
+    border: 1px solid var(--dark);
+    padding: 0 18px;
+}
+.skill-card{
+    background: white;
+    border: 1px solid #dee2e6;
+    border-radius: 5px;
+}
+.skills-content{
+    position: relative;
+    padding: 10px;
+    margin-top: 10px;
+    background: #f8f9fa;
+    min-height: 50px;
+}
+/* .skills-content::after{
+    content: '...';
+    position: absolute;
+    text-align: center;
+    bottom: -5px;
+    font-size: 50px;
+    width: 100%;
+    color: #d4d6d7;
+ 
+} */
+.order{
+    font-size: 46px;
+    font-weight: bold;
+    color: #c8d6e4;
+    position: absolute;
+    top: -3px;
+    left: 8px;
+    font-family: sans-serif;
+}
+.skill-title{
+    font-size:25px;
+}
+.skill{
+    background: var(--dark);
+    height: 5px;
+    position: relative;
+}
+.skill-value{
+    position: absolute;
+    font-size: 11px;
+    right: 0;
+    top: -20px;
+
+}
+.skill-bar{
+    width: 30%;
+    height: 5px;
+    position: relative;
+}
+.skill-bloc{
+    width: calc(100% - 85px);
+    margin-left: 35px;
+}
+.skill-bloc-visual{
+    width: calc(100% - 35px);
+    margin-left: 35px;
+}
+.bloc {
+    border: 1px solid #dee2e6;
+    border-radius: 10px;
+}
+.bloc-title{
+    border-bottom: 1px solid #dee2e6;
+    padding: 15px 20px;
+    margin-bottom: 15px;
+}
+
+.alert{
+    position: absolute;
+    right: 15px;
+    top: 70px;
+    z-index: 1000;
+    width: 500px;
+    box-shadow: 0 0 15px rgba(100, 100, 100, 0.3);
+    margin-left: auto;
 }
