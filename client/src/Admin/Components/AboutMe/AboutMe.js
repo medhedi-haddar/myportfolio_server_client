@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { Button, Container, Row, Col } from 'react-bootstrap'
 import { MdOutlineEditNote } from "react-icons/md";
-import {getAboutMe} from '../apis/Api';
+import {getAboutMe} from '../../../apis/Api';
 import { DiGithubBadge } from "react-icons/di";
 import UpdateAboutMe from './UpdateAboutMe';
 import AddAboutMe from './AddAboutMe';
@@ -55,10 +55,12 @@ const AboutMe = () => {
                     {Object.keys(data).length <= 0 && 
                         <AddAboutMe fetchAboutMeData={fetchAboutMeData}/>
                     }{Object.keys(data).length > 0 &&
-                        <>
-                            <div className="component_title d-flex justify-content-between">
-                            <h2>About Me</h2>             
-                            <Button variant="light" onClick={handlecontent}><MdOutlineEditNote/></Button>
+                        <div className="contentBody"> 
+                            <div className="component_title">
+                                <Container className="d-flex justify-content-between"> 
+                                    <h2>About Me</h2>             
+                                    <Button variant="success" onClick={handlecontent}><MdOutlineEditNote/></Button>
+                                </Container>
                             </div>
                             <div>
                                 <Container>
@@ -76,7 +78,7 @@ const AboutMe = () => {
                                     </Row>
                                 </Container> 
                             </div>
-                        </>
+                        </div>
                     }
                 </>
             }

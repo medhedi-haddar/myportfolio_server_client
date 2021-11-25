@@ -12,7 +12,9 @@ import Projects from './Components/Projects/Projects';
 import AddProject from './Components/Projects/AddProject';
 import UpdateProject from './Components/Projects/UpdateProject';
 // import Gallery from './Components/Gallery/Gallery';
-// import Messages from './Components/Messages/Messages';
+import Experience from './Components/Experience/Experience';
+import AddExperience from './Components/Experience/AddExperience';
+import UpdateExperience from './Components/Experience/UpdateExperience';
 import useProject from './Components/Hooks/useProject'
 
 const Admin = ({requestedComponent})=>{
@@ -23,9 +25,7 @@ const Admin = ({requestedComponent})=>{
     const {project,isLoading} = useProject(params.id);
 
     if(params.id && requestedComponent === 'up_project'){
-       console.log(project)
         projectData = project;
-       
     }
    
     function renderSwitch(requestedComponent) {
@@ -47,11 +47,17 @@ const Admin = ({requestedComponent})=>{
                  return <AddProject />
             break;
             case 'up_project':
-                 return Object.keys(projectData).length > 0? <UpdateProject  params={params} project={project}/>:""
+                 return Object.keys(projectData).length > 0 ? <UpdateProject  params={params} project={project}/> : ""
             break;
-            // case 'messages':
-            //      return <Messages />
-            // break;
+            case 'experience':
+                 return <Experience />
+            break;
+            case 'add_experience':
+                 return <AddExperience />
+            break;
+            case 'up_experience':
+                 return <UpdateExperience />
+            break;
 
             default:
             break;
@@ -64,11 +70,11 @@ const Admin = ({requestedComponent})=>{
                 <SideNav active_link={requestedComponent}/>
                 <div className="d-flex flex-column content"> 
                     <NavTop/>
-                    <div className="contentBody">
+                    {/* <div className="contentBody"> */}
                         <div className="component"> 
                         {renderSwitch(requestedComponent)}
                         </div>
-                    </div>
+                    {/* </div> */}
                     
                 </div>
             </div>

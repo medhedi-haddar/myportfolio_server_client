@@ -6,6 +6,7 @@ import { EditorState, convertToRaw, ContentState,convertFromHTML } from 'draft-j
 import { Editor } from 'react-draft-wysiwyg';
 import draftToHtml from 'draftjs-to-html';
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
+import { FiSave } from "react-icons/fi";
 
 
 const AddProject = () => {
@@ -26,7 +27,6 @@ const AddProject = () => {
           ...data,
           [e.target.name]: e.target.value
         });
-        console.log(data);
       } 
 
     const handleFileChange = (e) => {
@@ -68,7 +68,8 @@ const AddProject = () => {
             formData,
             {
             contentType: 'multipart/form-data'
-        }).then(()=> {
+        }).then((data) => {
+            console.log(data)
             navigate('/admin/projects');
             console.log("data has send to the server");
         })
@@ -78,14 +79,12 @@ const AddProject = () => {
     }
 
     return (
-        <div>
-            
-            <Form onSubmit={handleSubmit}> 
-                <div className="component_title d-flex justify-content-between align-items-center">
-                    <h2>Add Project</h2>
-                    <Button variant="primary" type="submit">Save</Button>
+        <Form  onSubmit={handleSubmit}> 
+            <div className="contentBody"> 
+                <div className="component_title">
+                    <Container> <h2>Add Project</h2> </Container>
                 </div>
-            {alert}
+                {alert}
             <Container> 
                 <Row>       
                     <Col lg={7} md={12} sm={12} className="mb-4">
@@ -138,9 +137,14 @@ const AddProject = () => {
                     </Col>
                 </Row>
             </Container>
-            </Form> 
-
-        </div>
+            </div>
+            <div className="sticky-footer bg-light  ">
+                <Container className="d-flex justify-content-end">
+                    <Button className="d-flex align-items-center" variant="primary" type="submit" >Save<FiSave className="ms-3"/></Button>
+                </Container>
+            </div>
+        </Form> 
+       
     )
 }
 

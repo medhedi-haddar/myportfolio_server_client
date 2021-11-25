@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { useState,useEffect} from 'react';
-import {getProjects} from '../apis/Api'
+import {getProjects} from '../../../apis/Api'
 
 const useProjects = () => {
 
@@ -16,7 +16,7 @@ const useProjects = () => {
             const alldata = [];
             data.forEach((project)=>{
                 let projectItemData = {
-                    id : project._id,
+                    _id : project._id,
                     title : project.title,
                     description : project.description,
                     weblink : project.weblink,
@@ -39,7 +39,8 @@ const useProjects = () => {
     return {
         projects,
         isError,
-        isLoading
+        isLoading,
+        fetchProjects
         
     }
 }

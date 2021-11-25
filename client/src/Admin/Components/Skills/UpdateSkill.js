@@ -8,6 +8,7 @@ import draftToHtml from 'draftjs-to-html';
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 import { DragDropContext, Droppable,Draggable } from 'react-beautiful-dnd';
 import { MdOutlineArrowBackIosNew } from "react-icons/md";
+import { FiSave } from "react-icons/fi";
 
 const UpdateSkill = ({toggleUpdate, skillData, fetchSkill}) => {
 
@@ -111,12 +112,14 @@ const UpdateSkill = ({toggleUpdate, skillData, fetchSkill}) => {
         });
     }
 
-    return (
-        <div>
-            <Form onSubmit={handleSubmit}> 
-                <div className="component_title d-flex justify-content-between align-items-center">
-                    <h2><Button variant="light" className="me-2" onClick={toggleUpdate}><MdOutlineArrowBackIosNew/></Button>Update Skill</h2>
-                    <Button variant="primary" type="submit">Save</Button>
+    return ( 
+        <Form onSubmit={handleSubmit}> 
+            <div className="contentBody"> 
+                <div className="component_title ">
+                    <Container className="d-flex justify-content-start align-items-center">
+
+                        <h2 className="d-flex align-items-center"><Button variant="light" className="me-2" onClick={toggleUpdate}><MdOutlineArrowBackIosNew/></Button>Update Skill</h2>
+                    </Container>
                 </div>
                 {alert}
                 <Container className="">
@@ -149,7 +152,7 @@ const UpdateSkill = ({toggleUpdate, skillData, fetchSkill}) => {
                         <div className="bloc"> 
                             <h4 className="bloc-title">Skills Items</h4>
                             <div className="p-3">
-                                 
+                                    
                                     <div className="d-flex"> 
                                         <div className="me-2" >
                                             <Form.Label>Name</Form.Label>
@@ -168,7 +171,7 @@ const UpdateSkill = ({toggleUpdate, skillData, fetchSkill}) => {
                                             <Button variant="outline-success" onClick={addSkill} style={{lineHeight : "26px"}}>+</Button>
                                         </div>
                                     </div>
-                               
+                                
                             </div>
                             <div className="p-3 pt-0">
                                 <DragDropContext onDragEnd={onDragEnd} >
@@ -205,8 +208,13 @@ const UpdateSkill = ({toggleUpdate, skillData, fetchSkill}) => {
                     </Col>
                     </Row>
                 </Container> 
-            </Form> 
-        </div>
+             </div>
+             <div className="sticky-footer bg-light  ">
+                <Container className="d-flex justify-content-end">
+                    <Button className="d-flex align-items-center" variant="primary" type="submit" >Save<FiSave className="ms-3"/></Button>
+                </Container>
+            </div>
+        </Form>  
     )
 }
 

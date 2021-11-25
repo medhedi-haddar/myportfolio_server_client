@@ -1,10 +1,9 @@
 import React from 'react';
-import { MdOutlineContactPage, MdOutlinePhotoLibrary, MdDeveloperMode,MdBubbleChart,MdOutlineMessage } from "react-icons/md";
+import { MdOutlineContactPage, MdOutlinePhotoLibrary, MdDeveloperMode,MdBubbleChart,MdOutlineMessage, MdEngineering } from "react-icons/md";
 import { Link } from 'react-router-dom';
 
 
 const SideNav = ({active_link}) => {
-    console.log( );
     return (
         <ul className="sideNav">
             <li className="HomeLink">
@@ -18,6 +17,9 @@ const SideNav = ({active_link}) => {
             </li> 
             <li className={`sideNavItem ${["add_project", "projects", "up_project"].indexOf(active_link) >= 0 ? 'active' : ''}`}>
                 <Link to={'/admin/projects'} > <span>Projects</span><MdDeveloperMode/></Link>     
+            </li> 
+            <li className={`sideNavItem ${["experience", "add_experience", "up_experience"].indexOf(active_link) >= 0 ? "active" : ""}`}>
+                <Link to={'/admin/experience'} > <span>Experience </span><MdEngineering/></Link>     
             </li> 
             <li className={`sideNavItem ${active_link === 'gallery' ? 'active' : ''}`}>
                 <Link to={'/admin/gallery'} > <span>Gallery Photo</span><MdOutlinePhotoLibrary/></Link>     

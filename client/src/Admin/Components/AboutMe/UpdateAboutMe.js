@@ -60,6 +60,7 @@ const UpdateAboutMe = ({aboutMeData, handlecontent, fetchAboutMeData}) => {
         formData.append('description' , data.description.value);
         formData.append('profileImage' , data.profileImage);
         formData.append('cv' , data.cv);
+
         axios.post(
             '/api/update_about_me',
             formData,
@@ -77,10 +78,13 @@ const UpdateAboutMe = ({aboutMeData, handlecontent, fetchAboutMeData}) => {
         });
     }
     return (
-        <div>
+        <div className="contentBody"> 
             
             <div className="component_title">
-                <h2><Button variant="light" className="me-2" onClick={handlecontent}><MdOutlineArrowBackIosNew/></Button>Update About Me</h2>
+                <Container >
+
+                <h2 className="d-flex align-items-center"><Button variant="light" className="me-2" onClick={handlecontent}><MdOutlineArrowBackIosNew/></Button>Update About Me</h2>
+                </Container>
             </div>
             <Container>
                 <Row>

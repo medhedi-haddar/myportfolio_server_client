@@ -1,0 +1,281 @@
+
+
+.front-body{
+    position:relative;
+    width: 100%;
+}
+.button-sanduich{
+    background: transparent !important;
+    border : none !important;
+    color : black;
+}
+.button-sanduich:hover{
+    background-color : #ffffff36 !important;
+}
+.button-sanduich:focus,
+.button-sanduich:visited
+{
+    color: black;
+    background-color: none !important;
+    border : none !important;
+    box-shadow: none !important;
+}
+.wolf-navbar{
+    position: absolute;
+    top: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 15px;
+}
+.wolf-navbar-brand{
+    font-size: 13px !important;
+}
+.wolf-navbar-brand > img{
+    display: none
+}
+.wolf-navbar-brand > img{
+    width: 50px;
+} 
+.wolf-navbar-menu-div{
+    position: absolute;
+    top: 0;
+    left: -212px;
+    height: 100vh;
+    background: rgb(206, 206, 206);
+    transition: left .5s ease-in-out; 
+}
+.wolf-navbar-menu-div.active{
+    left: 0px;
+    transition: left .5s ease-in-out; 
+}
+.sanduich-menu-button{
+    display: block;
+    flex-direction: row;
+}
+.wolf-navbar-menu{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    list-style: none;
+    margin-bottom: 0 !important;
+    padding-left: 0 !important;
+}
+.wolf-navbar-item{
+    padding: 0 0 !important;
+    text-align: center;
+} 
+.wolf-navbar-item:first-child{
+    position:relative;
+    padding: 15px 35px;
+    text-align: center;
+    display: block !important;
+    margin-bottom : 10px;
+    z-index :1;
+}
+.wolf-navbar-item:first-child::before{
+    content: "";
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background: #bfbfbf;
+    right: auto;
+    border-radius: 0 0 100% 100%;
+    left: 0;
+    align-self: center;
+    z-index: -1;
+}
+.wolf-navbar-item > a {
+    position:relative;
+    text-decoration: none;
+    text-transform: none;
+    color: black;
+    font-size: 1rem;
+    cursor : pointer;
+    display : block;
+    padding: 20px 35px;
+    z-index : 1;
+} 
+
+.hovered > a::before{
+    content: "";
+    background: #bfbfbf;
+    position: absolute;
+    top: 50%;
+    bottom: 50%;
+    left: 50%;
+    right: 50%;
+    z-index: -1;
+    transition: all .2s ease-in-out; 
+}
+.wolf-navbar-item > a:hover::before {
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    transition: all .2s ease-in-out; 
+} 
+.about-me{ 
+    padding: 5px;
+    padding-top : 230px;
+    height: 100vh;
+    background-repeat: no-repeat;
+    width: 100%;
+    background-size: 80%;
+    background-position-x: right;
+}
+.aboutme-content{
+
+}
+.aboutme-content > h1{
+    font-size : 1.5rem;
+}
+.aboutme-content > h3{
+    font-size : 1rem;
+    font-weight: 400;
+    margin-bottom:15px !important;
+}
+.aboutme-description > p{
+    font-size : 0.9rem;font-weight: 300;
+    text-align: justify;
+}
+@media (min-width: 375px) {
+
+    
+    .about-me{ 
+        padding: 10px;
+        padding-top: 300px !important;
+    }
+}
+/* // Small devices (landscape phones, 576px and up) */
+@media (min-width: 425px) { 
+    .about-me{ 
+        padding: 10px;
+        padding-top: 335px !important;
+    }
+ }
+ 
+/* // Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) { 
+    .wolf-navbar-item{
+        min-width: 300px;
+    } 
+    .wolf-navbar-menu-div{
+        left: -300px;
+    }
+    .wolf-navbar-brand > img{
+        display: inline-block;
+    }
+    .about-me{ 
+        padding: 50px;
+        padding-top: 115px !important;
+        height: 100vh;
+        background-repeat: no-repeat;
+        width: 100%;
+        background-size: 40%;
+        background-position-x: right;
+    }
+
+ }
+ 
+/* // Large devices (desktops, 992px and up) */
+@media (min-width: 992px){ 
+
+    .about-me{ 
+        padding: 50px;
+        height: 100vh;
+        background-repeat: no-repeat;
+        width: 100%;
+        background-size: 40%;
+        background-position-x: right;
+    }
+    .hovered > a::before{
+        border-radius : 5px;
+        background : #f3f1f1;
+    }
+    .wolf-navbar{
+        position: absolute;
+        top: 0;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        padding: 15px;
+    }
+    .wolf-navbar-menu-div{
+        position: relative;
+        background: none;
+        height: auto;
+        left:auto;
+    }
+    .wolf-navbar-brand{
+        font-size: 13px !important;
+    }
+    .wolf-navbar-brand > img{
+        display: inline-block;
+    }
+    .wolf-navbar-brand > img{
+        width: 50px;
+    } 
+    .wolf-navbar-menu{
+        display: flex;
+        justify-content: center;
+        flex-direction: row;
+        list-style: none;
+        margin-bottom: 0 !important;
+        padding-left: 0 !important;
+    }
+    .wolf-navbar-item{
+        padding: 10px 15px;
+        min-width: auto;
+    } 
+    .wolf-navbar-item > a {
+        text-decoration: none;
+        text-transform: none;
+        color: black;
+        font-size: 1rem;
+        padding: 10px 15px;
+    } 
+
+    .sanduich-menu-button{
+        display: none;
+        flex-direction: row;
+    }
+     .wolf-navbar-item:first-child{
+        padding: 15px 35px;
+        text-align: center;
+        display: none !important;
+    }
+    .about-me{ 
+        padding: 50px;
+        height: 100vh;
+        background-repeat: no-repeat;
+        width: 100%;
+        background-size: 40%;
+        background-position-x: right;
+    }
+
+    .aboutme-content{
+
+    }
+    .aboutme-content > h1{
+        font-size : 2.5rem;
+    }
+    .aboutme-content > h3{
+        font-size : 2rem;
+        font-weight: 200;
+        margin-bottom:25px !important;
+    }
+    .aboutme-description > p{
+        font-size : 1rem;font-weight: 300;
+        text-align: justify;
+    }
+    
+ }
+
+/* // Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) { 
+    .aboutme-description > p{
+        font-size : 1.2rem;font-weight: 300;
+        text-align: justify;
+    }
+ }

@@ -6,6 +6,7 @@ const Media = require('../models/media');
 const Skills = require('../models/skills');
 const Skillitem = require('../models/skillitem');
 const Project = require('../models/project');
+const Experience = require('../models/experience');
 
 var ObjectId = require('mongodb').ObjectId;
 const multer = require('multer');
@@ -22,6 +23,7 @@ router.get('/about_me' , (req, res) => {
         res.status(400).json({success: false, message:error.message});
     }); 
 });
+
 router.get('/skills' , (req, res) => {
     
     Skills.find().populate('skills')
@@ -41,6 +43,7 @@ router.get('/projects' , (req, res) => {
         res.status(400).json({success: false, message:error.message});
     }); 
 });
+
 router.get('/project/:id' , (req, res) => {
     const id =req.params.id;
     Project.findById({_id:id}).populate('cover')
@@ -50,6 +53,33 @@ router.get('/project/:id' , (req, res) => {
         res.status(400).json({success: false, message:error.message});
     }); 
 });
+
+/*----------------------------------------------------------------
+// EXPERIENCEE CRUD
+----------------------------------------------------------------*/
+router.get('/experiences',(req,res)=>{
+     
+    Experience.find()
+    .then((data)=>{
+        res.status(200).json({success: true, data});
+    }).catch((error)=>{
+        res.status(400).json({success: false, message:error.message});
+    }); 
+
+});
+
+router.post('/add_experience', async (req,res)=>{
+
+    let dataReq = req.body;
+    console.log(dataReq);
+    const newExperience = new Experience(dataReq);
+    await newExperience.save().then((data)=>{  
+        console.log(data);     
+    }).catch((error)=>{
+     console.log(error.message)
+     });
+ 
+ });
 
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
@@ -82,6 +112,7 @@ router.post('/add_project' , upload.any(), async (req, res) => {
   
     // const url = req.protocol + '://' + req.get('host');
     const dataReq = req.body;
+
     if(req.files[0]){
         let mediaReq = {
             title : dataReq.title,
@@ -94,14 +125,85 @@ router.post('/add_project' , upload.any(), async (req, res) => {
         new_media.save();
     }
 
-    try {
-        const new_project =  new Project(dataReq);
-        new_project.save();
+    const new_project =  new Project(dataReq);
+    new_project.save().then((data)=>{
         res.status(200).json({success: true, data});
-    }catch (error) {
+    }).catch((error)=>{
         res.status(400).json({success: false, message:error.message});
+    });
+    
+});
+
+router.post('/update_project', upload.any(), async (req,res)=>{
+
+    const dataReq = req.body;
+    const preventProject = await Project.findById({_id: dataReq._id}).populate('cover');
+    if(req.files[0]){
+      
+        if(preventProject.cover._id){
+            if (fs.existsSync('.'+preventProject.cover.url)){
+                fs.unlink('.'+preventProject.cover.url, (err) => {
+                    if (err) {
+                        console.error(err)  
+                    }
+                });
+            }
+        }
+        let mediaReq = {
+            _id :preventProject.cover._id,
+            title : dataReq.title,
+            description  : "project_cover",
+            url : ''
+        }
+        mediaReq.url = '/uploads/'+req.files[0].filename;
+        const new_media =  new Media(mediaReq);
+        Media.updateOne({_id : preventProject.cover._id},new_media)
+        .then((data)=>{
+            console.log(data);
+        }).catch((error)=>{
+            console.log("[ error: update file profileImage ]",error.message);
+            
+        });
     }
-})
+    
+    const new_project = new Project(dataReq);
+    Project.updateOne({_id : dataReq._id},new_project)
+    .then((data)=>{
+        res.json(data);
+        return true;
+    }).catch((error)=>{
+        console.log("[ error: update Project me ]",error.message);
+        return ({msg : '[ error-aboutme : send data to database failed ]',error: error.message});
+    });
+});
+
+router.post('/delete_project/:id',async(req,res)=>{
+    
+    const id =req.params.id;
+    const project_instance = await Project.findById({_id : id}).populate('cover');
+
+    await Project.deleteOne({_id: project_instance._id})
+    .then((data)=>{
+        Media.deleteOne({_id: project_instance.cover._id})
+        .then((data)=>{
+            if (fs.existsSync('.'+project_instance.cover.url)){
+                fs.unlink('.'+project_instance.cover.url, (err) => {
+                    if (err) {
+                        console.error(err)  
+                    }
+                });
+            }
+            res.status(200).json({success: true, message: data});
+        })
+        .catch((error)=>{
+            res.status(400).json({success: false, message: error.message});
+        });
+        res.status(200).json({success: true, message: data});
+    })
+    .catch((error)=>{
+        res.status(400).json({success: false, message: error.message});
+    }); 
+});
 
 router.post('/add_about_me' , upload.any(), async (req, res) => {
     // const url = req.protocol + '://' + req.get('host');
@@ -127,17 +229,15 @@ router.post('/add_about_me' , upload.any(), async (req, res) => {
         const new_media =  new Media(mediaReq);
         dataReq.profileImage = new_media;
         new_media.save();
-    }
+    } 
 
-    try {
-        const new_aboutme =  new AboutMe(dataReq);
-        new_aboutme.save();
+    const new_aboutme =  new AboutMe(dataReq);
+    new_aboutme.save().then((data) => {
         res.status(200).json({success: true, data});
-    }catch (error) {
+    }).catch((error)=>{
         res.status(400).json({success: false, message:error.message});
-    }
+    });
 })
-
 
 router.post('/update_about_me' ,upload.any(), async (req, res) => {
     // const url = req.protocol + '://' + req.get('host');
@@ -232,25 +332,13 @@ router.post('/update_about_me' ,upload.any(), async (req, res) => {
 
 });
 
-router.get ('/about_metest' , async (req, res) => {
-    try {
-        const data = await TestAboutMe.find().populate('cv');
-        res.status(200).json({success: true, data});
-    }catch (error) {
-        res.status(400).json({success: false, message:error.message});
-    }    
-});
-
-
 // -------------------------------------------
-
 router.post('/add_skills', async (req,res) =>{
 
     (await Skills.find()).forEach((skill) => {
         Skills.deleteOne( {_id: skill._id}).then().catch((error)=>{
             console.log(error.message)
         })
-        
     });
     (await Skillitem.find()).forEach((skill) => {
         Skillitem.deleteOne( {_id: skill._id}).then().catch((error)=>{

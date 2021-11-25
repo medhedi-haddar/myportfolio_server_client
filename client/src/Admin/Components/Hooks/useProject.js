@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { useState,useEffect} from 'react';
-import {getProject} from '../apis/Api'
+import {getProject} from '../../../apis/Api'
 
 const useProject = (id) => {
 
@@ -15,7 +15,7 @@ const useProject = (id) => {
         if(data){     
             setProject(
                 {
-                    id : data._id,
+                    _id : data._id,
                     title : data.title,
                     description : data.description,
                     weblink : data.weblink,

@@ -2,7 +2,6 @@
 import axios from 'axios';
 import moment from 'moment';
 
-
     const getAboutMe = async ()=> {
         const response  = await axios.get('/api/about_me');
         console.log(response);
@@ -22,19 +21,26 @@ import moment from 'moment';
             return data;
         }
         return null;
-    
+
     }
-    
     
     const getProjects = async () => {
         const response  = await axios.get('/api/projects');
         return response.data.data
     }
+    
     const getProject = async (id) => {
-        const response  = await axios.get('/api/project/'+id);
-        return response.data.data
+        if(id){
+            const response  = await axios.get('/api/project/'+id);
+            return response.data.data
+        }
     }
     
+    const deleteProject = async (id) =>{
+        const response  = await axios.post('/api/delete_project/'+id);
+        return response.data.data
+    }
+
     const getSkills= async () => {
         
         const response  = await axios.get('/api/skills');
@@ -56,14 +62,42 @@ import moment from 'moment';
             return data;
         }
         return null;
-       
+        
     }
 
+    const getExperiences = async ()=>{
+        const response  = await axios.get('/api/experiences');
+        // console.log( response.data.data );
+        const datares = response.data.data;
+        const result = [];
+        datares.forEach((item)=>{
+            let data = {
+                _id: item._id,
+                title : item.title,
+                entreprise : item.entreprise,
+                description : item.description,
+                beginDate : moment(Number(item.beginDate)).format('MMMM YYYY'),
+                endDate : moment(Number(item.endDate)).format('MMMM YYYY'),
+                tags : item.tags
+            }
+            result.push(data);
+        });
+        console.log(result)
+        return result;
+    }
+
+    const addExperience = async (data) =>{
+        const response  = await axios.post('/api/add_experience',data);
+        return response.data.data
+    }
 export {
     getAboutMe,
     getSkills,
     getProjects,
-    getProject
+    getProject,
+    deleteProject,
+    getExperiences,
+    addExperience
 }
 
 
