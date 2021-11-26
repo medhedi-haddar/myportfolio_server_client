@@ -31,11 +31,11 @@ const NavBarMenu = () => {
                         </div> 
                     </div>
                     <div  className="d-flex align-items-center justify-content-center
-                    col-xxl-6 col-xl-6 col-md-6 col-lg-6 col-sm-6
+                    col-xxl-6 col-xl-6 col-md-6 col-lg-7 col-sm-6
                     ">
-                        <div className={`wolf-navbar-menu-div ${menuIsActive}`}>
-                            <ul className="wolf-navbar-menu">
-                                <li className="wolf-navbar-item"><a href="#" ><img src="/brand-icon.svg" width="50px"/> My Portfolio</a></li>
+                        <div className={`wolf-navbar-menu-div ${menuIsActive}`} style={{background : 'url(/color-bg.jpg)'}}>
+                            <ul className="wolf-navbar-menu" >
+                                <li className="wolf-navbar-item"><a href="#" ><img src="/brand-icon.svg" width="50px"/> <span>My Portfolio</span></a></li>
                                 <li className="wolf-navbar-item hovered"><a href="#" >About me</a></li>
                                 <li className="wolf-navbar-item hovered"><a href="#" >Skills</a></li>
                                 <li className="wolf-navbar-item hovered"><a href="#" >Projects</a></li>

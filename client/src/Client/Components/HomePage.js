@@ -1,5 +1,5 @@
 import React,{ useEffect ,useState} from 'react'
-import { Container, Row, Col } from 'react-bootstrap'
+import { Container, Row, Col,Button } from 'react-bootstrap'
 import '../Styles/Style.css'
 import NavBarMenu from './NavBarMenu'
 import {getAboutMe} from '../../apis/Api'
@@ -21,26 +21,33 @@ const HomePage = () => {
     return (
         <div className="front-body">
             <NavBarMenu/>
-             <section className="about-me" style={{backgroundImage: `url(/uploads/f0728213-bfd4-4ca9-a5c5-c97f3b273b3a-avatar-icon-images-5.png)`}}>
-                
-                <Container>
-                    <Row>
-                        <Col md={7}>
-                        <div className="aboutme-content"> 
-                            {aboutMe && 
-                                <>
-                                <h1>{aboutMe.lastName} </h1>
-                                <h3>{aboutMe.firstName}</h3>
-                                <div className="aboutme-description" dangerouslySetInnerHTML={{ __html: aboutMe.description}}>
-                                    
+             <section className="about-me" style={{backgroundImage: `url()`}}>
+                <div className="about-me-content">
+                    <Container>
+                        {/* <Row > */}
+                            <Col md={12}>
+                                <div className="about-me-text"> 
+                                    {aboutMe && 
+                                        <>
+                                        <h1>{aboutMe.lastName} </h1>
+                                        <h3>{aboutMe.firstName}</h3>
+                                        <div className="about-me-text p-relative" >
+                                            <div className="about-me-description" dangerouslySetInnerHTML={{ __html: aboutMe.description}}/> 
+                                            <div className="about-me-buttons">
+                                                <Button variant="success">CV</Button>
+                                                <Button variant="secondary">Github</Button>
+                                            </div> 
+                                        </div> 
+                                        </>
+                                    }
                                 </div>
-                                </>
-                            }
-                        </div>
-                        </Col>
-                    </Row>
-                </Container>
-
+                            </Col>
+                        {/* </Row> */}
+                    </Container>
+                </div>
+                <div className="about-me-cover p-0">
+                    <img src="/uploads/f0728213-bfd4-4ca9-a5c5-c97f3b273b3a-avatar-icon-images-5.png"/>
+                </div>
              </section>
         </div>
     )

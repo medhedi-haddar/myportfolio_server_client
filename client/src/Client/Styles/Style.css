@@ -1,13 +1,41 @@
 
 
+
 .front-body{
     position:relative;
     width: 100%;
+    font-family: "Roboto" ,sans-serif;
+    color :#05364d !important;
+}
+h1{
+    font-size: 40px;
+    font-weight: 600;
+    line-height: 60px;
+    color :#05364d;
+}
+h2{
+    font-size: 30px;
+    font-weight: 600;
+    line-height: 30px;
+    color :#05364d;
+}
+h3{
+    font-size: 30px;
+    font-weight: 300;
+    line-height: 30px;
+    margin-bottom: 15px !important;
+    color :#05364d;
+}
+.p-relative{
+    position: relative;
+}
+.p-absolute{
+    position: absolute;
 }
 .button-sanduich{
     background: transparent !important;
     border : none !important;
-    color : black;
+    color :#05364d;
 }
 .button-sanduich:hover{
     background-color : #ffffff36 !important;
@@ -15,7 +43,7 @@
 .button-sanduich:focus,
 .button-sanduich:visited
 {
-    color: black;
+    color :#05364d;
     background-color: none !important;
     border : none !important;
     box-shadow: none !important;
@@ -27,6 +55,7 @@
     display: flex;
     justify-content: space-between;
     padding: 15px;
+    z-index:1
 }
 .wolf-navbar-brand{
     font-size: 13px !important;
@@ -44,10 +73,13 @@
     height: 100vh;
     background: rgb(206, 206, 206);
     transition: left .5s ease-in-out; 
+    background-size: cover;
 }
 .wolf-navbar-menu-div.active{
     left: 0px;
+    box-shadow: -34px 0 40px 24px #000000b5;
     transition: left .5s ease-in-out; 
+
 }
 .sanduich-menu-button{
     display: block;
@@ -60,46 +92,64 @@
     list-style: none;
     margin-bottom: 0 !important;
     padding-left: 0 !important;
+
 }
 .wolf-navbar-item{
     padding: 0 0 !important;
     text-align: center;
+    min-width: 200px;
 } 
 .wolf-navbar-item:first-child{
     position:relative;
     padding: 15px 35px;
     text-align: center;
     display: block !important;
-    margin-bottom : 10px;
+    margin-bottom : 40px;
     z-index :1;
+}
+.wolf-navbar-item:first-child > a > span{
+  display: none;
 }
 .wolf-navbar-item:first-child::before{
     content: "";
     position: absolute;
-    height: 100%;
-    width: 100%;
-    background: #bfbfbf;
+    height: 105%;
+    background: #efefef;
+    width: calc(100% - 80px);
     right: auto;
-    border-radius: 0 0 100% 100%;
-    left: 0;
+    border-radius: 0 0 120px 120px;
+    left: 40px;
     align-self: center;
     z-index: -1;
+    box-shadow: 0px 6px 0px -1px #bfbfbf;
 }
+
 .wolf-navbar-item > a {
     position:relative;
     text-decoration: none;
     text-transform: none;
-    color: black;
+    color :whitesmoke ;
     font-size: 1rem;
     cursor : pointer;
     display : block;
     padding: 20px 35px;
     z-index : 1;
+    letter-spacing: 0px;
+    transition: letter-spacing .2s ease-in-out;
+} 
+.wolf-navbar-item:first-child > a{
+    color :#05364d;
+}
+.wolf-navbar-item > a:hover {
+    color :#05364d;
+    letter-spacing: 2px;
+    transition: letter-spacing .4s ease-in-out;
 } 
 
 .hovered > a::before{
     content: "";
-    background: #bfbfbf;
+    border-top: 3px solid;
+    border-bottom: 3px solid;
     position: absolute;
     top: 50%;
     bottom: 50%;
@@ -113,29 +163,46 @@
     bottom: 0;
     left: 0;
     right: 0;
+    background : #efefef;
     transition: all .2s ease-in-out; 
 } 
+
 .about-me{ 
-    padding: 5px;
-    padding-top : 230px;
-    height: 100vh;
+    display: flex;
+    flex-direction: column-reverse;
+    /* min-height: 100vh; */
     background-repeat: no-repeat;
     width: 100%;
     background-size: 80%;
     background-position-x: right;
 }
-.aboutme-content{
+.about-me-content{
+    margin-top: -50px;
+}
+.about-me-cover{
+    margin-top: -60px;
+    position:relative;
+    display:flex;
+    flex-direction: row;
+    justify-content: end;
+    align-items: start;
+}
+.about-me-cover > img{
+    width: 80%;
+    height: initial;
+}
+.about-me-context{
 
 }
-.aboutme-content > h1{
+.about-me-context > h1{
     font-size : 1.5rem;
 }
-.aboutme-content > h3{
+.about-me-context > h3{
     font-size : 1rem;
     font-weight: 400;
     margin-bottom:15px !important;
 }
-.aboutme-description > p{
+.about-me-description > p{
     font-size : 0.9rem;font-weight: 300;
     text-align: justify;
 }
@@ -143,22 +210,32 @@
 
     
     .about-me{ 
-        padding: 10px;
-        padding-top: 300px !important;
+        /* padding: 10px;
+        padding-top: 300px !important; */
     }
 }
 /* // Small devices (landscape phones, 576px and up) */
 @media (min-width: 425px) { 
     .about-me{ 
-        padding: 10px;
-        padding-top: 335px !important;
+        /* padding: 10px;
+        padding-top: 335px !important; */
     }
  }
  
 /* // Medium devices (tablets, 768px and up) */
 @media (min-width: 768px) { 
+    .wolf-navbar-item:first-child > a > span{
+        display: initial;
+      }
     .wolf-navbar-item{
         min-width: 300px;
+    } 
+    .wolf-navbar-item > a{
+        padding: 20px 35px;
+        min-width: 120px;
+    }
+    .wolf-navbar-item > a:hover::before {
+        transition: all .2s ease-in-out; 
     } 
     .wolf-navbar-menu-div{
         left: -300px;
@@ -167,13 +244,29 @@
         display: inline-block;
     }
     .about-me{ 
-        padding: 50px;
-        padding-top: 115px !important;
-        height: 100vh;
+        flex-direction: row;
         background-repeat: no-repeat;
         width: 100%;
         background-size: 40%;
         background-position-x: right;
+    }
+    .about-me-content{
+        margin-top: 100px;
+        padding: 0 15px;
+        width: calc(100% - 300px);
+    }
+    .about-me-cover{
+        width: 300px;
+        margin-top: 0;
+        position:relative;
+        display:flex;
+        flex-direction: row;
+        justify-content: end;
+        align-items: start;
+    }
+    .about-me-cover > img{
+        width: 100%;
+        height: initial;
     }
 
  }
@@ -181,17 +274,21 @@
 /* // Large devices (desktops, 992px and up) */
 @media (min-width: 992px){ 
 
-    .about-me{ 
-        padding: 50px;
-        height: 100vh;
+    /* .about-me{ 
+        
+        min-height: 100vh;
         background-repeat: no-repeat;
         width: 100%;
         background-size: 40%;
         background-position-x: right;
-    }
+    } */
+    .wolf-navbar-item > a {
+        padding: 10px 15px;
+
+    } 
     .hovered > a::before{
         border-radius : 5px;
-        background : #f3f1f1;
+        background : transparent !important;
     }
     .wolf-navbar{
         position: absolute;
@@ -206,6 +303,8 @@
         background: none;
         height: auto;
         left:auto;
+        background : none !important;
+        box-shadow: none !important;
     }
     .wolf-navbar-brand{
         font-size: 13px !important;
@@ -231,9 +330,8 @@
     .wolf-navbar-item > a {
         text-decoration: none;
         text-transform: none;
-        color: black;
+        color :#05364d;
         font-size: 1rem;
-        padding: 10px 15px;
     } 
 
     .sanduich-menu-button{
@@ -245,27 +343,26 @@
         text-align: center;
         display: none !important;
     }
-    .about-me{ 
-        padding: 50px;
+    /* .about-me{ 
         height: 100vh;
         background-repeat: no-repeat;
         width: 100%;
         background-size: 40%;
         background-position-x: right;
-    }
+    } */
 
-    .aboutme-content{
+    .about-me-context{
 
     }
-    .aboutme-content > h1{
+    .about-me-context > h1{
         font-size : 2.5rem;
     }
-    .aboutme-content > h3{
+    .about-me-context > h3{
         font-size : 2rem;
         font-weight: 200;
         margin-bottom:25px !important;
     }
-    .aboutme-description > p{
+    .about-me-description > p{
         font-size : 1rem;font-weight: 300;
         text-align: justify;
     }
@@ -274,7 +371,7 @@
 
 /* // Extra large devices (large desktops, 1200px and up) */
 @media (min-width: 1200px) { 
-    .aboutme-description > p{
+    .about-me-description > p{
         font-size : 1.2rem;font-weight: 300;
         text-align: justify;
     }
