@@ -34,13 +34,15 @@ const NavBarMenu = () => {
                     col-xxl-6 col-xl-6 col-md-6 col-lg-7 col-sm-6
                     ">
                         <div className={`wolf-navbar-menu-div ${menuIsActive}`} style={{background : 'url(/color-bg.jpg)'}}>
-                            <ul className="wolf-navbar-menu" >
-                                <li className="wolf-navbar-item"><a href="#" ><img src="/brand-icon.svg" width="50px"/> <span>My Portfolio</span></a></li>
-                                <li className="wolf-navbar-item hovered"><a href="#" >About me</a></li>
-                                <li className="wolf-navbar-item hovered"><a href="#" >Skills</a></li>
-                                <li className="wolf-navbar-item hovered"><a href="#" >Projects</a></li>
-                                <li className="wolf-navbar-item hovered"><a href="#" >Experience</a></li>
-                            </ul>    
+                            <div className="wolf-navbar-menu-head"><a href="#" ><img src="/brand-icon.svg" width="50px"/>       <span>My Portfolio</span></a></div>
+                            <div className="wolf-navbar-menu"> 
+                                <ul className="wolf-navbar-menu-ul" > 
+                                    <li className="wolf-navbar-item hovered"><a href="#" >About me</a></li>
+                                    <li className="wolf-navbar-item hovered"><a href="#" >Skills</a></li>
+                                    <li className="wolf-navbar-item hovered"><a href="#" >Projects</a></li>
+                                    <li className="wolf-navbar-item hovered"><a href="#" >Experience</a></li>
+                                </ul>    
+                            </div>
                         </div>  
                     </div>
                     <Col>
