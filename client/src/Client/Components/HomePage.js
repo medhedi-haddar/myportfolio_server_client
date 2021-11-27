@@ -5,6 +5,8 @@ import NavBarMenu from './NavBarMenu'
 import {getAboutMe} from '../../apis/Api'
 import { FiFileText, FiGithub } from "react-icons/fi";
 import Skills from './Skills';
+import Experience from './Experience';
+import Projects from './Projects';
 
 const HomePage = () => {
 
@@ -23,7 +25,7 @@ const HomePage = () => {
     return (
         <div className="front-body">
             <NavBarMenu/>
-             <section className="about-me" style={{backgroundImage: `url()`}}>
+             <section id="Aboutme" className="about-me " style={{backgroundImage: `url()`}}>
                 <div className="about-me-content">
                     <Container>
                         {/* <Row > */}
@@ -59,6 +61,8 @@ const HomePage = () => {
                 </div>
              </section>
              <Skills/>
+             <Projects/>
+             <Experience/>
              <div className="left-design">
                  <img src="/left-bg.png"/>
              </div>

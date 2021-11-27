@@ -17,46 +17,33 @@ const Skills = () => {
     useEffect(() => {
         fetchSkills();
     },[])
-    return (
-        <div>
-             <section className="section" style={{backgroundImage: `url()`}}>
-                <div className="">
-                    <Container>
-                        <Row>
-
-                        {Object.keys(skills).length  &&
-                        <>
+    return ( 
+        <section id="Skills" className="section" style={{backgroundImage: `url()`}}> 
+            {Object.keys(skills).length  &&
+                <Container>
+                    <Row>
                         <h1 className="mb-3 text-uppercase"><span className="text-secondary"></span>{skills.title}</h1>
-                        <Col lg={6}>
-                            
-                            <div class="col-lg skills_text text-start " data-aos="fade-right">
+                        <Col lg={6}> 
+                            <div className="col-lg skills_text text-start " data-aos="fade-right">
                                 <div  dangerouslySetInnerHTML={{ __html: skills.description}}/>
-                            </div>
-
+                            </div> 
                         </Col>
-                        <Col lg={{span:5, offset : 1}}>
-                            {skills.skills.map((skill,index)=>(
-                                <>
-                                <div className="text-start mb-4 position-relative" >   
+                        <Col  className="skills"  lg={{span:5, offset : 1}}>
+                            {skills.skills.map((skill,index)=>( 
+                                <div key={`skill`+index} className="text-start mb-4 position-relative" >   
                                     <h3>{skill.name}</h3>
                                     <div className="progress">
                                         <span className="progress-value text-secondary">{skill.level}%</span>
-                                        <div className="progress-bar bg-success" role="progressbar" style={{width: `${skill.level}%`}} ariaValuenow={"80"} ariaValuemin={"0"} ariaValuemax={"100"}>
+                                        <div className="progress-bar bg-success" role="progressbar" style={{width: `${skill.level}%`}} aria-valuenow={skill.level} aria-valuemin={"0"} aria-valuemax={"100"}>
                                         </div>
                                     </div>
-                                </div>
-                                </>
+                                </div> 
                             ))}
-                        </Col>
-
-                        </>
-                        
-                    }
+                        </Col> 
                     </Row>
-                    </Container>
-                </div>
-            </section>
-        </div>
+                </Container>
+            } 
+        </section>  
     )
 }
 

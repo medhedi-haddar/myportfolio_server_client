@@ -17,16 +17,38 @@
     border-color: #2f9cf7;
     /* border: 1px solid linear-gradient(125deg, rgba(54,146,250,1) 0%, rgba(0,216,233,1) 100%) !important; */
 }
+.btn-primary:hover{
+    color: #fff;
+    background: rgb(54,146,250);
+    background: linear-gradient(125deg, rgba(54,146,250,1) 0%, rgba(54,146,250,1) 100%) !important;
+    border-color: #2f9cf7;
+}
 .btn-success{
     color: #fff;
-    background-color: #198754;
-    border-color: #198754;
+    background: rgb(25,135,84);
+    background: linear-gradient(146deg, rgba(25,135,84,1) 0%, rgba(119,255,192,1) 100%);
+    border-color: linear-gradient(146deg, rgba(25,135,84,1) 0%, rgba(119,255,192,1) 100%);
+}
+.btn-success:hover{
+    color: #fff;
+    background: rgb(35,186,116);
+    background: linear-gradient(146deg, rgba(35,186,116,1) 0%, rgba(202,223,70,1) 100%);
+    border-color: linear-gradient(146deg, rgba(25,135,84,1) 0%, rgba(119,255,192,1) 100%);
 }
 .btn-secondary{
     color: #fff;
-    background-color: #05364d;
-    border-color: #05364d;
+    background: rgb(5,54,77);
+    background: linear-gradient(128deg, rgba(5,54,77,1) 0%, rgba(40,100,129,1) 100%);
 }
+.btn-secondary:hover{
+    color: #fff;
+    background: linear-gradient(128deg, rgba(5,54,77,1) 0%, rgba(5,54,77,1) 100%);
+}
+.btn-outline-secondary:hover{
+    color: rgba(5,54,77,1) ;
+    background: #f5f5f5;
+}
+
 h1{
     font-size: 40px;
     font-weight: 600;
@@ -67,6 +89,9 @@ p{
     height: 3px !important;
     border-radius: 0 !important
   }
+  .skills{
+      padding-top: 20px;
+  }
 /* ============================================================================= */
 .p-relative{
     position: relative;
@@ -91,7 +116,7 @@ p{
     box-shadow: none !important;
 }
 .wolf-navbar{
-    position: absolute;
+    /* position: absolute; */
     top: 0;
     width: 100%;
     display: flex;
@@ -115,7 +140,7 @@ p{
     height: 100vh;
     background: rgb(206, 206, 206);
     transition: left .5s ease-in-out; 
-    background-size: cover;
+    background-size: cover !important;
 }
 .wolf-navbar-menu-div.active{
     left: 0px;
@@ -178,7 +203,7 @@ p{
     position:relative;
     text-decoration: none;
     text-transform: none;
-    color :whitesmoke ;
+    color :whitesmoke !important;
     font-size: 1rem;
     cursor : pointer;
     display : block;
@@ -188,10 +213,10 @@ p{
     transition: letter-spacing .2s ease-in-out;
 } 
 .wolf-navbar-menu-head > a{
-    color :#05364d;
+    color :#05364d !important;
 }
 .wolf-navbar-item > a:hover {
-    color :#05364d;
+    color :#05364d !important;
     letter-spacing: 2px;
     transition: letter-spacing .4s ease-in-out;
 } 
@@ -227,7 +252,7 @@ p{
     background-position-x: right;
 }
 .about-me-content{
-    margin-top: -75px;
+    margin-top: -100px;
 }
 .about-me-text{
     padding-top: 36px;
@@ -267,9 +292,31 @@ p{
     display: none;
 }
 .section{
-    padding-top : 40px;
+    padding-top : 65px;
     margin-top : 0;
 }
+
+/* scroll nav  */
+.nav {
+    transition: all 0.1s linear;
+    position: fixed;
+    z-index: 2000;
+    width: 100%;
+}
+.scrollNav {
+    transition: all 0.2s ease-in;
+    z-index: 2000;
+    background: whitesmoke;
+    width: 100%;
+}
+.styl {
+    padding-top: 80px;
+}
+.card_image{
+    cursor: pointer;
+}
+  /* ------------ */
+
 @media (min-width: 375px) {
 
 }
@@ -295,6 +342,7 @@ p{
     } 
     .wolf-navbar-menu-div{
         left: -300px;
+        background-size: cover;
     }
     .wolf-navbar-brand > img{
         display: inline-block;
@@ -312,7 +360,7 @@ p{
         width: calc(100% - 300px);
     }
     .about-me-cover{
-        width: 300px;
+        width: 375px;
         margin-top: 0;
         position:relative;
         display:flex;
@@ -328,9 +376,14 @@ p{
         padding-top : 40px;
         margin-top: 40px;
     }
+    .skills{
+        padding-top: 0px;
+    }
 
  }
  
+
+
 /* // Large devices (desktops, 992px and up) */
 @media (min-device-width: 992px) { 
 
@@ -351,7 +404,7 @@ p{
         background : transparent !important;
     }
     .wolf-navbar{
-        position: absolute;
+        /* position: absolute; */
         top: 0;
         width: 100%;
         display: flex;
@@ -365,6 +418,7 @@ p{
         left:auto;
         background : none !important;
         box-shadow: none !important;
+        background-size: cover;
     }
     .wolf-navbar-brand{
         font-size: 13px !important;
@@ -390,7 +444,7 @@ p{
     .wolf-navbar-item > a {
         text-decoration: none;
         text-transform: none;
-        color :#05364d;
+        color :#05364d !important;
         font-size: 1rem;
     } 
 
