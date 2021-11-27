@@ -37,20 +37,20 @@ const Projects = () => {
                >
                 <Modal.Header closeButton>
                     <Modal.Title>{modal.title}</Modal.Title>
-                </Modal.Header>
-                <Modal.Body>
-                    <Col>
-                        <img src={modal.cover} style={{width: '100%'}}/>
-                    </Col>
-                    <Col>
-                        <div dangerouslySetInnerHTML={{ __html: modal.description}}/>
-                    </Col>
-                   </Modal.Body>
-                <Modal.Footer>
-                    <Button variant="secondary" onClick={handleClose}>
-                    Close
-                    </Button>
-                </Modal.Footer>
+                    </Modal.Header>
+                    <Modal.Body>
+                        <Col>
+                            <img src={modal.cover} style={{width: '100%'}}/>
+                        </Col>
+                        <Col>
+                            <div className="modal-project-description" dangerouslySetInnerHTML={{ __html: modal.description}}/>
+                        </Col>
+                    </Modal.Body>
+                    <Modal.Footer>
+                        <Button variant="secondary" onClick={handleClose}>
+                        Close
+                        </Button>
+                    </Modal.Footer>
             </Modal>
 
             <Container>
@@ -61,7 +61,7 @@ const Projects = () => {
                             {}
                             <Card style={{marginBottom : "10px"}} > 
                                 <div className="card_image"> 
-                                    <Card.Img variant="top" src={project.cover} />
+                                    <Card.Img variant="top" src={project.cover} onClick={()=>{handleReadMore(index)}} />
                                 </div>
                                 <Card.Body>
                                 <Card.Title>{project.title}</Card.Title>
@@ -70,8 +70,8 @@ const Projects = () => {
                                 <Button className="m-1 d-flex align-items-center justify-content-center" target="_blank" variant="outline-secondary"
                                 onClick={()=>{handleReadMore(index)}}
                                 ><FiTablet className="me-2" size={14} />Read more</Button>
-                                <Button className="m-1 d-flex align-items-center justify-content-center" href={project.weblink} target="_blank" variant="primary"><FiExternalLink className="me-2" size={14} />Web link</Button>
-                                <Button className="m-1 d-flex align-items-center justify-content-center" href={project.gitlink} target="_blank" variant="secondary"> <FiGithub className="me-2" size={14} />Git link</Button>
+                                <Button className="m-1 d-flex align-items-center justify-content-center" target="_blank" href={project.weblink} target="_blank" variant="primary"><FiExternalLink className="me-2" size={14} />Web link</Button>
+                                <Button className="m-1 d-flex align-items-center justify-content-center" target="_blank"  href={project.gitlink} target="_blank" variant="secondary"> <FiGithub className="me-2" size={14} />Git link</Button>
                                 </div>
                                 </Card.Body>
                             </Card>
