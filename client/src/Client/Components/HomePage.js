@@ -65,7 +65,6 @@ const HomePage = () => {
              <Skills/>
              <Projects/>
              <Experience/>
-
              <Footer/>
              <div className="left-design">
                  <img src="/left-bg.png"/>

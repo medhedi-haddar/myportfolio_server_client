@@ -27,18 +27,7 @@ const App =() => {
         <Routes>
           <Route path="/" element={<HomePage/>}/> 
 
-          <Route path="admin/login"            element={<Login            history={history} />}/> 
-          {/* <Route path="/admin"                 element={<Admin            history={history} />}/> 
-          <Route path="/admin/about_me"        element={<AboutMe          history={history} />}/> 
-          <Route path="/admin/skills"          element={<Skills           history={history} />}/> 
-          <Route path="/admin/projects"        element={<Projects         history={history} />}/> 
-          <Route path="/admin/add_project"     element={<AddProject       history={history} />}/> 
-          <Route path="/admin/up_project/:id"  element={<UpdateProject    history={history} />}/>   
-          <Route path="/admin/experience"      element={<Experiences      history={history} />}/> 
-          <Route path="/admin/add_experience"  element={<AddExperience    history={history} />}/> 
-          <Route path="/admin/up_experience"   element={<UpdateExperience history={history} />}/>   */}
-
-       {/*    <Route path="admin/login"           history={history} element={<Login history={history} />}/> */}
+          <Route path="admin/login"           history={history} element={<Login />}/> 
           <Route path="/admin"                history={history} element={<Admin  requestedComponent=""  />}/> 
           <Route path="/admin/about_me"       history={history} element={<Admin  requestedComponent="about_me"/>}/> 
           <Route path="/admin/skills"         history={history} element={<Admin  requestedComponent="skills"/>}/> 

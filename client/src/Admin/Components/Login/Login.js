@@ -7,7 +7,7 @@ import { useDispatch } from 'react-redux';
 import {signin} from '../../actions/auth'
 
 
-const Login = ({history}) => {
+const Login = () => {
 
     const dispatch = useDispatch();
     const navigate  = useNavigate();
