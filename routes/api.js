@@ -7,7 +7,7 @@ const Skills = require('../models/skills');
 const Skillitem = require('../models/skillitem');
 const Project = require('../models/project');
 const Experience = require('../models/experience');
-const User = require('../models/User');
+const User = require('../models/user');
 const UserSession = require('../models/userSession');
 var jwt = require('jsonwebtoken');
 
