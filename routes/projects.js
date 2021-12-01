@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const auth = require('../middleware/auth.js')
-const { getProjects, getOneProject, addProject,updateProject, deleteProject } = require('../controllers/project.js');
+const auth = require('../middleware/auth')
+const { getProjects, getOneProject, addProject,updateProject, deleteProject } = require('../controllers/project');
 const uploadFiles = require('../middleware/uploadFiles')
 
 // GET
