@@ -24,16 +24,7 @@ const Login = () => {
     }
     const handleSubmit = async(e)=>{
         e.preventDefault();
-       
         dispatch(signin(loginData, navigate));
-
-        // const result = await login({email: loginData.email, password : loginData.password});
-        // if( result ){
-        //     dispatch({ type : 'AUTH', data: { result, token : result.token} });
-        //     navigate('/admin/about_me')
-        // }else{
-        //     console.log("error result")
-        // }
     }
 
     useEffect(() => {  
