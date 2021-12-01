@@ -1,7 +1,10 @@
 import React from 'react';
 
-const Loader = () => (
-    <div className=" loader container-fluid box d-flex justify-content-center">
+const Loader = ({title}) => (
+    <div className=" loader align-items-center box d-flex justify-content-center">
+        {title && 
+            <span className="me-4 text-secondary "> {title}</span>
+        }
         <svg
             version="1.1"
             id="Layer_1"

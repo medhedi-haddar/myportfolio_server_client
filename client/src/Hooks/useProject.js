@@ -1,6 +1,5 @@
-import axios from 'axios';
 import { useState,useEffect} from 'react';
-import {getProject} from '../../../apis/Api'
+import {getProject} from '../apis/GetApi'
 
 const useProject = (id) => {
 
@@ -13,16 +12,13 @@ const useProject = (id) => {
         setLoading(true); 
         const data = await getProject(id); 
         if(data){     
-            setProject(
-                {
-                    _id : data._id,
-                    title : data.title,
-                    description : data.description,
-                    weblink : data.weblink,
-                    gitlink : data.gitlink,
-                    cover : data.cover.url
-                }
-            );
+            setProject({ 
+                _id : data._id,
+                title : data.title,
+                description : data.description,
+                weblink : data.weblink,
+                gitlink : data.gitlink,
+                cover : data.cover.url });
         }
         else{
             setError(true); 
@@ -37,7 +33,6 @@ const useProject = (id) => {
         project,
         isError,
         isLoading
-        
     }
 }
 

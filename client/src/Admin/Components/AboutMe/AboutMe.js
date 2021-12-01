@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { Button, Container, Row, Col } from 'react-bootstrap'
 import { MdOutlineEditNote } from "react-icons/md";
-import {getAboutMe} from '../../../apis/Api';
+import {getAboutMe} from '../../../apis/PostApi';
 import { DiGithubBadge } from "react-icons/di";
 import UpdateAboutMe from './UpdateAboutMe';
 import AddAboutMe from './AddAboutMe';
@@ -57,20 +57,20 @@ const AboutMe = () => {
                     }{Object.keys(data).length > 0 &&
                         <div className="contentBody"> 
                             <div className="component_title">
-                                <Container className="d-flex justify-content-between"> 
+                                <Container fluid className="d-flex justify-content-between"> 
                                     <h2>About Me</h2>             
-                                    <Button variant="success" onClick={handlecontent}><MdOutlineEditNote/></Button>
+                                    <Button variant="secondary" onClick={handlecontent}><MdOutlineEditNote/></Button>
                                 </Container>
                             </div>
                             <div>
-                                <Container>
+                                <Container fluid>
                                     <Row>
                                         <Col>
                                             <h3>{data.lastName} {data.firstName}</h3>
                                             <p><small className="text-secondary">Last Update: {data.updateDate}</small></p>
-                                            <div className="post__description" dangerouslySetInnerHTML={{ __html: data.description}}/>
-                                            <Button href={data.cv} variant="success"  className="me-3">Download CV</Button>
-                                            <Button variant="outline-secondary"><a href={`${data.git_link}`} className="button" target="_blank"><DiGithubBadge/> Github</a></Button>
+                                            <div className="h6" className="post__description" dangerouslySetInnerHTML={{ __html: data.description}}/>
+                                            <Button href={data.cv} variant="secondary"  className="me-3">Download CV</Button>
+                                            <Button variant="outline-primary"><a href={`${data.git_link}`} className="button" target="_blank"><DiGithubBadge/> Github</a></Button>
                                         </Col>
                                         <Col md={4} className="text-end">
                                             <img src={`${data.profileImage}`} style={{ width: '100%'}}/>

@@ -1,10 +1,10 @@
 import React from 'react'
 
-const Test = ({skills}) => {
+const SkillsItems = ({skills}) => {
     return (
         <div>
             {skills.map((skill_item,index)=>(
-                    <div className="text-start mb-4 p-2 position-relative d-flex justify-content-between skill-card">  
+                    <div key={'skill_item_'+index} className="text-start mb-4 p-2 position-relative d-flex justify-content-between skill-card">  
                     <span className="order">{skill_item.order}</span>
                     <div className="skill-bloc-visual">
                         <span className="skill-title">{skill_item.name}</span>
@@ -20,4 +20,4 @@ const Test = ({skills}) => {
     )
 }
 
-export default Test
+export default SkillsItems

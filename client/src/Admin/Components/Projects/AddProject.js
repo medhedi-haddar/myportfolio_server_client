@@ -7,11 +7,13 @@ import { Editor } from 'react-draft-wysiwyg';
 import draftToHtml from 'draftjs-to-html';
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 import { FiSave } from "react-icons/fi";
-
+import { addProject} from '../../actions/projects'
+import { useDispatch } from 'react-redux'
 
 const AddProject = () => {
     
     const navigate  = useNavigate();
+    const dispatch = useDispatch();
     const [alert,setAlert] = useState('');
     const [data, setData] = useState({
         title : '',
@@ -63,19 +65,12 @@ const AddProject = () => {
         formData.append('gitlink' , data.gitlink);
         formData.append('cover' , data.cover);
 
-        axios.post(
-            '/api/add_project',
-            formData,
-            {
-            contentType: 'multipart/form-data'
-        }).then((data) => {
-            console.log(data)
-            navigate('/admin/projects');
-            console.log("data has send to the server");
-        })
-        .catch((error)=>{
-            console.log( "data not sent ", error);
-        });
+        const config =  { 
+            header: {
+                "Content-Type": "multipart/form-data"
+                }
+            }
+        dispatch(addProject(formData,config,navigate));
     }
 
     return (

@@ -7,6 +7,9 @@ const Skills = require('../models/skills');
 const Skillitem = require('../models/skillitem');
 const Project = require('../models/project');
 const Experience = require('../models/experience');
+const User = require('../models/User');
+const UserSession = require('../models/userSession');
+var jwt = require('jsonwebtoken');
 
 var ObjectId = require('mongodb').ObjectId;
 const multer = require('multer');
@@ -78,8 +81,35 @@ router.post('/add_experience', async (req,res)=>{
     }).catch((error)=>{
      console.log(error.message)
      });
+});
+
+router.post('/update_experience', async (req,res)=>{
+
+    let dataReq = req.body;
+    const new_project = new Experience(dataReq);
+    Experience.updateOne({_id : dataReq._id},new_project)
+    .then((data)=>{
+        res.json(data);
+        return true;
+    }).catch((error)=>{
+        console.log("[ error: update Experience me ]",error.message);
+        return ({msg : '[ error-aboutme : send data to database failed ]',error: error.message});
+    });
  
  });
+ 
+router.post('/delete_experience/:id',async(req,res)=>{
+    
+    const id =req.params.id;
+
+    await Experience.deleteOne({_id:id})
+    .then((data)=>{
+        res.status(200).json({success: true, message: data});
+    })
+    .catch((error)=>{
+        res.status(400).json({success: false, message: error.message});
+    }); 
+});
 
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
@@ -204,6 +234,7 @@ router.post('/delete_project/:id',async(req,res)=>{
         res.status(400).json({success: false, message: error.message});
     }); 
 });
+
 
 router.post('/add_about_me' , upload.any(), async (req, res) => {
     // const url = req.protocol + '://' + req.get('host');
@@ -408,5 +439,182 @@ const updateSkills = (skillsObject,skill)=>{
     return 1;
 }
 // -------------------------------------------
+
+
+router.post('/admin/signin', (req,res,next)=>{
+
+    const {body} = req;
+    
+    const {firstName,lastName,password} = body;
+    let {email} = body;
+
+    if(!firstName){
+        return res.send({
+            success : false, 
+            message : "error : Missing first name"
+        });
+    }
+    if(!lastName){
+        return res.send({
+            success : false, 
+            message : "error : Missing last name"
+        });
+    }
+    if(!email){
+        return res.send({
+            success : false, 
+            message : "error : Missing email"
+        });
+    }
+    if(!password){ 
+        return res.send({
+            success : false, 
+            message : "error : Missing password"
+        });
+    }
+
+    email = email.toLowerCase();
+
+    User.find({ email: email}, (err,previousUsers) => { 
+        if(err) {
+            return res.send({
+                success : false, 
+                message : "error : server error"
+            });
+        }
+        else if(previousUsers.length > 0){ 
+            return res.send({
+                success : false, 
+                message : "error : Account already exist"
+            });
+        }
+
+        const newUser = new User();
+        newUser.email = email;
+        newUser.firstName = firstName;
+        newUser.lastName = lastName;
+        newUser.password = newUser.generateHash(password);
+        
+        newUser.save((err,user)=>{
+            if(err){
+                return res.send({
+                    success : true, 
+                    message : "error : Not Signed up"
+                });
+            }else{
+                res.send({
+                    success : true, 
+                    message : "success : Signed up"
+                });
+            }
+        });
+    });
+});
+
+router.post('/admin/login', (req,res,next)=>{
+
+    const {body} = req; 
+
+    const {password} = body;
+    let {email} = body; 
+
+    if(!email){
+        return res.send({
+            success : false, 
+            message : "error : Email cannot be blank"
+        });
+    }
+    if(!password){ 
+        return res.send({
+            success : false, 
+            message : "error : Password cannot be blank"
+        });
+    }
+
+    email = email.toLowerCase();
+
+    User.find({ email: email},(err, users)=>{
+         if(err){ 
+             res.status(400).json({success: false, message : err.message});
+             return;
+         }
+         if(users.length != 1){
+            // return res.send({success: false, message: "invalid email"});
+            res.status(400).json({success: false, message : "invalid email"});
+            return;
+         }
+        const user = users[0];
+        if(!user.validPassword(password)){
+            // return res.send({success: false, message: "invalid password"});
+            res.status(400).json({success: false, message : "invalid password"});
+            return;
+        }
+
+        UserSession.findOneAndUpdate({userId : user._id},{ $set : {isDeleted : false}})
+        .then((doc)=>{
+            res.status(200).json({success: true, message : "valid sign in / session reactivated",data : doc, token : doc._id});
+        }).catch((err)=>{
+            const userSession =  new UserSession();
+            userSession.userId = user._id;
+            userSession.save((err,doc)=>{
+                if(err){
+                    // return res.send({success: false, message: err.message});
+
+                    res.status(400).json({success: false, message : err.message});
+                    return;
+                }
+                // return res.send({success: true, message:"valid sign in",token : doc._id})
+                res.status(200).json({success: true, message : "valid sign in",data : doc, token : doc._id});
+            });
+        });
+
+    });
+});
+
+router.get('/admin/verify', (req, res, next)=>{
+
+    const { query } = req;
+    const { token } = query;
+
+    UserSession.find({
+        _id : token ,
+        isDeleted: false
+    }, (err,sessions)=>{
+        if(err){
+            // return res.send({
+            //     success : false,
+            //     message : "error : " + err.message
+            // });
+
+            res.status(400).json({success: false, message : err.message});
+        }
+        if(sessions.length != 1){
+            // return res.send({
+            //     success : false,
+            //     message : "error : " + err.message
+            // });
+            res.status(400).json({success: false, message : "server error"});
+        }else{
+            // return res.send({
+            //     success : true,
+            //     message : "Good Session"
+            // });
+            res.status(200).json({success: true, message : "ok"});
+        }
+    });
+});
+
+router.get('/admin/logout', (req, res, next)=>{
+
+    const { query } = req;
+    const { token } = query;
+
+    UserSession.findOneAndUpdate({ _id : token, isDeleted: false},{ $set : { isDeleted: true }})
+    .then((data)=>{
+        res.status(200).json({success: true, data});
+    }).catch((error)=>{
+        res.status(400).json({success: false, message:error.message});
+    });
+});
 
 module.exports = router;

@@ -1,5 +1,5 @@
 import React,{ useState ,useEffect} from 'react'
-import { getSkills } from '../../apis/Api'
+import { getSkills } from '../../apis/PostApi'
 import {Container,Col, Row} from 'react-bootstrap';
 
 const Skills = () => {
@@ -24,7 +24,7 @@ const Skills = () => {
                     <Row>
                         <h1 className="mb-3 text-uppercase"><span className="text-secondary"></span>{skills.title}</h1>
                         <Col lg={6}> 
-                            <div className="col-lg skills_text text-start " data-aos="fade-right">
+                            <div className="col-lg skills_text text-start " >
                                 <div  dangerouslySetInnerHTML={{ __html: skills.description}}/>
                             </div> 
                         </Col>
@@ -34,7 +34,7 @@ const Skills = () => {
                                     <h3>{skill.name}</h3>
                                     <div className="progress">
                                         <span className="progress-value text-secondary">{skill.level}%</span>
-                                        <div className="progress-bar bg-success" role="progressbar" style={{width: `${skill.level}%`}} aria-valuenow={skill.level} aria-valuemin={"0"} aria-valuemax={"100"}>
+                                        <div className="progress-bar bg-secondary" role="progressbar" style={{width: `${skill.level}%`}} aria-valuenow={skill.level} aria-valuemin={"0"} aria-valuemax={"100"}>
                                         </div>
                                     </div>
                                 </div> 

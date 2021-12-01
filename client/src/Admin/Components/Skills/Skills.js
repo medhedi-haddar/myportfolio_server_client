@@ -2,9 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { Container, Row, Col, Button } from 'react-bootstrap';
 import { MdOutlineEditNote } from "react-icons/md";
 import AddSkill from './AddSkill'
-import { getSkills } from '../../../apis/Api';
+import { getSkills } from '../../../apis/PostApi';
 import UpdateSkill from './UpdateSkill';
-import Test from './Test';
+import SkillsItems from './SkillsItems';
 
 const Skills = () => {
 
@@ -33,7 +33,13 @@ const Skills = () => {
     }, [isUpdateMode])
     return (
         
-        <div>
+        <div className="contentBody"> 
+            <div className="component_title ">
+                <Container fluid className="d-flex justify-content-between"> 
+                    <h2 className="d-flex align-items-center">Skills</h2>             
+                    <Button variant="success" onClick={toggleUpdate}><MdOutlineEditNote/></Button>
+                </Container>
+            </div>
             {isUpdateMode && 
                 <>
                     <UpdateSkill toggleUpdate={toggleUpdate} skillData={skill} fetchSkill={fetchSkill}/>
@@ -44,33 +50,24 @@ const Skills = () => {
                     <AddSkill/>
                 }{Object.keys(skill).length && 
                     <>
-                    <div className="contentBody"> 
-                        <div className="component_title ">
-                            <Container className="d-flex justify-content-between"> 
-                                <h2 className="d-flex align-items-center">Skills</h2>             
-                                <Button variant="success" onClick={toggleUpdate}><MdOutlineEditNote/></Button>
-                            </Container>
-                        </div>
-                        <Container>
+                    
+                        <Container fluid>
                             <Row>
                                 <Col lg={7} md={12} sm={12}>
                                     <h2>{skill.title}</h2>
                                     <div dangerouslySetInnerHTML={{ __html: skill.description}}/>
                                 </Col>
                                 <Col lg={5} md={8} sm={12}>
-                                    <Test skills={skill.skills}/>
-        
+                                    <SkillsItems skills={skill.skills}/>
                                 </Col>
                             </Row>
                         </Container>
-                    </div>
+                    
                     </>
                 }
                 </>
-            }
-            
-            
-        </div>
+            }  
+        </div>   
     )
 }
 

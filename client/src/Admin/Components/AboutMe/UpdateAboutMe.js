@@ -81,12 +81,11 @@ const UpdateAboutMe = ({aboutMeData, handlecontent, fetchAboutMeData}) => {
         <div className="contentBody"> 
             
             <div className="component_title">
-                <Container >
-
-                <h2 className="d-flex align-items-center"><Button variant="light" className="me-2" onClick={handlecontent}><MdOutlineArrowBackIosNew/></Button>Update About Me</h2>
+                <Container fluid>
+                    <h2 className="d-flex align-items-center"><Button variant="light" className="me-2" onClick={handlecontent}><MdOutlineArrowBackIosNew/></Button>Update About Me</h2>
                 </Container>
             </div>
-            <Container>
+            <Container >
                 <Row>
                     <Col md={8}>
                     
@@ -125,7 +124,7 @@ const UpdateAboutMe = ({aboutMeData, handlecontent, fetchAboutMeData}) => {
                                 <Form.Label>Cv</Form.Label>
                                 <Form.Control type="file" name="cv" onChange={handleFileChange} accept=".docx, .doc, .pdf"/>
                             </Form.Group>
-                            <Button variant="success" type="submit">
+                            <Button variant="secondary" type="submit">
                                 Enregistrer
                             </Button>
                         </Form>

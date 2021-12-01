@@ -1,6 +1,7 @@
 import React from 'react'
 
-const UpdateExperience = () => {
+const UpdateExperience = ({experienceData}) => {
+    
     return (
         <div>
             

@@ -23,22 +23,17 @@ import moment from 'moment';
         return null;
 
     }
-    
+
     const getProjects = async () => {
         const response  = await axios.get('/api/projects');
         return response.data.data
     }
-    
+
     const getProject = async (id) => {
         if(id){
             const response  = await axios.get('/api/project/'+id);
             return response.data.data
         }
-    }
-    
-    const deleteProject = async (id) =>{
-        const response  = await axios.post('/api/delete_project/'+id);
-        return response.data.data
     }
 
     const getSkills= async () => {
@@ -69,6 +64,13 @@ import moment from 'moment';
         const response  = await axios.get('/api/experiences');
         // console.log( response.data.data );
         const datares = response.data.data;
+
+        datares.sort((firstItem, secondItem) =>{
+            if (firstItem.beginDate > secondItem.beginDate)    return -1;
+            else if(firstItem.beginDate < secondItem.beginDate) return  1;
+            else return  0;
+        });
+
         const result = [];
         datares.forEach((item)=>{
             let data = {
@@ -82,22 +84,14 @@ import moment from 'moment';
             }
             result.push(data);
         });
-        console.log(result)
+        
         return result;
     }
 
-    const addExperience = async (data) =>{
-        const response  = await axios.post('/api/add_experience',data);
-        return response.data.data
-    }
 export {
     getAboutMe,
-    getSkills,
     getProjects,
+    getSkills,
     getProject,
-    deleteProject,
     getExperiences,
-    addExperience
 }
-
-

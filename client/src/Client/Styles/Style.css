@@ -7,6 +7,9 @@
     font-family: "Roboto" ,sans-serif;
     color :#05364d !important;
 }
+section{
+    padding-bottom : 15px;
+}
 .btn{
     border-radius: 50px !important;
 }
@@ -40,6 +43,7 @@
     background: rgb(5,54,77);
     background: linear-gradient(128deg, rgba(5,54,77,1) 0%, rgba(40,100,129,1) 100%);
 }
+
 .btn-secondary:hover{
     color: #fff;
     background: linear-gradient(128deg, rgba(5,54,77,1) 0%, rgba(5,54,77,1) 100%);
@@ -47,6 +51,9 @@
 .btn-outline-secondary:hover{
     color: rgba(5,54,77,1) ;
     background: #f5f5f5;
+}
+.bg-secondary{
+    background: linear-gradient(125deg, rgba(54,146,250,1) 0%, rgba(0,216,233,1) 100%) ;
 }
 .modal-project-description{
     padding-top: 15px; 
@@ -58,20 +65,20 @@ h1{
     font-size: 40px;
     font-weight: 600;
     line-height: 60px;
-    color :#05364d;
+    /* color :#05364d; */
 }
 h2{
     font-size: 30px;
     font-weight: 600;
     line-height: 30px;
-    color :#05364d;
+    /* color :#05364d; */
 }
 h3{
     font-size: 30px;
     font-weight: 300;
     line-height: 30px;
     margin-bottom: 15px !important;
-    color :#05364d;
+    /* color :#05364d; */
 }
 p{
     font-size: 1.2rem;
@@ -297,8 +304,7 @@ p{
     display: none;
 }
 .section{
-    padding-top : 65px;
-    margin-top : 0;
+    padding-top : 75px;
 }
 
 /* scroll nav  */
@@ -319,6 +325,13 @@ p{
 }
 .card_image{
     cursor: pointer;
+}
+
+.footer {
+    padding :20px 0;
+    margin-top: 40px;
+    color : whitesmoke;
+    background: rgb(5,56,79);
 }
   /* ------------ */
 
@@ -378,8 +391,8 @@ p{
         height: initial;
     }
     .section{
-        padding-top : 40px;
-        margin-top: 40px;
+        padding-top : 95px;
+        /* margin-top: ; */
     }
     .skills{
         padding-top: 0px;

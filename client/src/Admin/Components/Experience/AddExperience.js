@@ -7,7 +7,7 @@ import { Editor } from 'react-draft-wysiwyg';
 import draftToHtml from 'draftjs-to-html';
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 import { FiSave } from "react-icons/fi"; 
-import {addExperience, getExperiences} from '../../../apis/Api';
+import {addExperience, getExperiences} from '../../../apis/PostApi';
 import { FiTag,FiTrash2,FiEdit,FiPlusSquare,FiX } from "react-icons/fi";
 
 const AddExperience = () => {
@@ -72,7 +72,7 @@ const AddExperience = () => {
       }
     // -----------------------------------------------------------------
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         console.log('submit')
         const requestData = {
@@ -85,9 +85,8 @@ const AddExperience = () => {
         }
 
         if(requestData.title.length && requestData.description && requestData.beginDate ){
-            if(addExperience(requestData)){
-                fetchExperiences();
-            }
+           await  addExperience(requestData)
+            fetchExperiences();
             console.log(requestData.description)
         }
     }
@@ -98,13 +97,12 @@ const AddExperience = () => {
     }
     useEffect(() => {
         fetchExperiences();
-        
     }, [])
     return (
         <Form  > 
             <div className="contentBody"> 
                 <div className="component_title">
-                    <Container> <h2>Add experience</h2> </Container>
+                    <Container fluid> <h2>Add experience</h2> </Container>
                 </div>
                 
             <Container> 
@@ -193,15 +191,14 @@ const AddExperience = () => {
             </Container>
             <div>
                 <Container>
-                    {
-                
+                    { experiences &&
                         experiences.map((experience,index)=>(
                             <>
-                            <div className="bloc">
+                            <div className="bloc mb-4">
                                 <div className="bloc-title bg-light">
                                     <h4 className="">{experience.title}</h4>
                                     <div> 
-                                        <Button className="me-3 align-items-center" size="sm" variant="success" ><span>Edit</span><FiEdit className="ms-2"/></Button>
+                                        <Button className="me-3 align-items-center" size="sm" variant="secondary" ><span>Edit</span><FiEdit className="ms-2"/></Button>
                                         <Button className="" size="sm" variant="danger" ><FiTrash2/></Button>
                                     </div>
                                 </div>

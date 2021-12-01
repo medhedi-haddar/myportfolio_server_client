@@ -80,7 +80,7 @@ const AddAboutMe = ({fetchAboutMeData}) => {
             <div className="component_title">
                 <h2>Add About Me</h2>
             </div>
-            <Container>
+            <Container fluid>
                 <Row>
                     <Col md={8}>
                     

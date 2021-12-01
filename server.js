@@ -9,6 +9,8 @@ const app = express();
 const PORT = process.env.PORT || 8080;
 
 const routes = require('./routes/api');
+const adminRoutes = require('./routes/adminApi');
+const projectRoutes = require('./routes/projects');
 
 mongoose.connect(process.env.MONGODB_URI || process.env.MONGODB_URL, {
     useNewUrlParser : true,
@@ -36,6 +38,8 @@ app.use(express.urlencoded({extended: false}));
 // HTTP request logger
 app.use(morgan('tiny'));
 app.use('/api', routes);
+app.use('/admin', adminRoutes);
+app.use('/projects', projectRoutes);
 
 
 app.get("*", (req, res) => {

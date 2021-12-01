@@ -115,12 +115,11 @@ const UpdateSkill = ({toggleUpdate, skillData, fetchSkill}) => {
     return ( 
         <Form onSubmit={handleSubmit}> 
             <div className="contentBody"> 
-                <div className="component_title ">
+                {/* <div className="component_title ">
                     <Container className="d-flex justify-content-start align-items-center">
-
                         <h2 className="d-flex align-items-center"><Button variant="light" className="me-2" onClick={toggleUpdate}><MdOutlineArrowBackIosNew/></Button>Update Skill</h2>
                     </Container>
-                </div>
+                </div> */}
                 {alert}
                 <Container className="">
                     <Row>
