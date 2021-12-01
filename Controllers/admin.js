@@ -15,7 +15,7 @@ const signin = async (req, res)=> {
 
         if(!isPasswordCorrect) return res.status(400).json({message : "ivalid credentials"});
 
-        const token = jwt.sign({email : existingUser.email, id : existingUser._id}, process.env.TOKEN_SECRET_KEY, { expiresIn : "1h" });
+        const token = jwt.sign({email : existingUser.email, id : existingUser._id}, "TheRebel@WolfSpirit09080102", { expiresIn : "1h" });
         
         res.status(200).json({ result : existingUser, token });
         
@@ -37,7 +37,7 @@ const updateProfile = async (req, res)=> {
 
         if(!isPasswordCorrect) return res.status(400).json({message : "ivalid credentials"});
 
-        const token = jwt.sign({email : existingUser.email, id : existingUser._id}, process.env.TOKEN_SECRET_KEY, { expiresIn : "1h" });
+        const token = jwt.sign({email : existingUser.email, id : existingUser._id}, "TheRebel@WolfSpirit09080102", { expiresIn : "1h" });
         
         res.status(200).json({ result : existingUser, token });
         
