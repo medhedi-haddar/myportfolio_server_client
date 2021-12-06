@@ -315,7 +315,7 @@ p{
     transition: all 0.2s ease-in;
     z-index: 2000;
     background: whitesmoke;
-    width: 100%;
+    width: calc(100% - 0.5px);
 }
 .styl {
     padding-top: 80px;

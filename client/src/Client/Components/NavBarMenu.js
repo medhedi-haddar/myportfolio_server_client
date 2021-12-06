@@ -23,9 +23,6 @@ const NavBarMenu = () => {
 
     useEffect(() => {
         document.addEventListener('click', handleClickOutside, true);
-        return () => {
-        document.removeEventListener('click', handleClickOutside, true);
-        };
     });
 
     return (
@@ -61,7 +58,7 @@ const NavBarMenu = () => {
                                             <li className="wolf-navbar-item hovered" ><Link  to="Skills" spy={true} smooth={true} duration={500} onClick={handleMenu} >Skills</Link></li>
                                             <li className="wolf-navbar-item hovered" ><Link  to="Projects" spy={true} smooth={true} duration={500} onClick={handleMenu} >Projects</Link></li>
                                             <li className="wolf-navbar-item hovered" ><Link  to="Experience" spy={true} smooth={true} duration={500} onClick={handleMenu} >Experience</Link></li>
-                                            <li className="wolf-navbar-item hovered" ><Link  to="hireMe" spy={true} smooth={true} duration={500} onClick={handleMenu} >Hire Me</Link></li>
+                                            <li className="wolf-navbar-item hovered" ><Link  to="HireMe" spy={true} smooth={true} duration={500} onClick={handleMenu} >Hire Me</Link></li>
                                         </ul>    
                                     </div>
                                 </div>  

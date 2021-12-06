@@ -26,7 +26,7 @@ const Projects = () => {
     }
 
     return (
-        <section  className="section" id="Projects"  >
+        <section id="Projects" className="section">
             <Modal show={modal.show} onHide={handleClose}
                 fullscreen={true}  
                 style={{ zIndex: "10000"}} >
@@ -47,7 +47,7 @@ const Projects = () => {
                         </Button>
                     </Modal.Footer>
             </Modal>
-            <Container data-aos="slide-up">
+            <Container>
             <h1 className="mb-3 text-uppercase"><span className="text-secondary"></span>Projects</h1>
                 <Row>
                     {(!projects.length) ? '' 

@@ -9,7 +9,7 @@ import { SiRedux, SiLinkedin } from "react-icons/si";
 const Footer = () => {
 
     return (
-        <section className="footer" id="hireMe">
+        <section id="HireMe" className="footer">
             <Container className="footer-head">
                 <div className=" inner-footer-head p-4 d-flex justify-content-between align-items-center">
                 <h4 className="text-light text-uppercase fw-100">Looking for a new collaborater ?</h4>
