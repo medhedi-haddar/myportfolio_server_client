@@ -5,6 +5,7 @@ import 'react-vertical-timeline-component/style.min.css';
 import { FaBriefcase } from "react-icons/fa";
 import { useSelector } from 'react-redux';
 import moment from 'moment';
+import { HiOutlineOfficeBuilding } from "react-icons/hi";
 
 const Experience = () => {
 
@@ -29,7 +30,7 @@ const Experience = () => {
                             icon={<FaBriefcase />} 
                             > 
                             <h3 className="vertical-timeline-element-title">{experience.title}</h3>
-                            <h4 className="vertical-timeline-element-subtitle">{experience.entreprise}</h4>
+                            <small className="vertical-timeline-element-subtitle"><HiOutlineOfficeBuilding className="me-2"/>{experience.entreprise}</small>
                             <div dangerouslySetInnerHTML={{ __html: experience.description}}/>
                             <div className="pt-3 tags align-items-center">
                                 {experience.tags.map((tag,index2)=>(

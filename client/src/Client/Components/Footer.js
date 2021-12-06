@@ -3,7 +3,7 @@ import { Container, Row, Col } from 'react-bootstrap'
 import { FaGithub ,FaRegCopyright, FaRegEnvelope} from "react-icons/fa";
 import {Fw700, Fw900, Textinfo, Small, TextBlueGray, LightButton} from '../../StyledComponents/StyledComponents'
 import { DiReact,DiSass, DiJavascript,DiHtml5,DiCss3,DiMongodb,DiNodejsSmall, DiPhp, DiGit ,DiMysql, DiStackoverflow,DiVisualstudio,DiSublime,DiIntellij,DiIllustrator, DiAptana,DiPhotoshop} from "react-icons/di";
-import { SiRedux, SiLinkedin } from "react-icons/si";
+import { SiRedux, SiLinkedin, SiStyledcomponents, SiExpress, SiNextdotjs, SiChakraui, SiMaterialdesign} from "react-icons/si";
 
 
 const Footer = () => {
@@ -34,23 +34,28 @@ const Footer = () => {
                     </Col>
                     <Col md={12} lg={6} className="mb-5 ">
                         <div className="footer-dev-list d-flex wrap justify-content-xs-center justify-content-sm-center justify-content-md-center justify-content-lg-end">
-                            <div><DiReact           size={27}/> React.js</div>
-                            <div><SiRedux           size={27}/> Redux</div>
-                            <div><DiJavascript      size={27}/> JavaScript</div>
-                            <div><DiHtml5           size={27}/> HTML5</div>
-                            <div><DiCss3            size={27}/> Css3</div>
-                            <div><DiSass            size={27}/> Sass</div>
-                            <div><DiNodejsSmall     size={27}/> Node.js</div>
-                            <div><DiPhp             size={27}/> Php</div>
-                            <div><DiGit             size={27}/> Git</div>
-                            <div><DiMongodb         size={27}/> MongoDB</div>
-                            <div><DiMysql           size={27}/> Mysql</div>
-                            <div><DiStackoverflow   size={27}/> Stack overflow</div>
-                            <div><DiVisualstudio    size={27}/> VSCode</div>
-                            <div><DiSublime         size={27}/> Sublime Text</div>
-                            <div><DiIntellij        size={27}/> Intellij idea</div>
-                            <div><DiPhotoshop       size={27}/> Photoshop</div>
-                            <div><DiIllustrator     size={27}/> Illustrator</div>
+                            <div><DiReact            className="me-1" size={27}/> React.js</div>
+                            <div><SiStyledcomponents className="me-1" size={27}/> Styled component</div>
+                            <div><SiMaterialdesign   className="me-1" size={23}/> Material Ui</div>
+                            <div><SiRedux            className="me-1" size={23}/> Redux</div>
+                            <div><SiNextdotjs        className="me-1" size={23}/> Next.js</div>
+                            <div><SiChakraui         className="me-1" size={23}/> Chakra UI-i</div>
+                            <div><DiJavascript       className="me-1" size={27}/> JavaScript</div>
+                            <div><DiHtml5            className="me-1" size={27}/> HTML5</div>
+                            <div><DiCss3             className="me-1" size={27}/> Css3</div>
+                            <div><DiSass             className="me-1" size={27}/> Sass</div>
+                            <div><DiNodejsSmall      className="me-1" size={27}/> Node.js</div>
+                            <div><SiExpress          className="me-1" size={27}/> Express.js</div>
+                            <div><DiPhp              className="me-1" size={27}/> Php</div>
+                            <div><DiGit              className="me-1" size={27}/> Git</div>
+                            <div><DiMongodb          className="me-1" size={27}/> MongoDB</div>
+                            <div><DiMysql            className="me-1" size={27}/> Mysql</div>
+                            <div><DiStackoverflow    className="me-1" size={27}/> Stack overflow</div>
+                            <div><DiVisualstudio     className="me-1" size={27}/> VSCode</div>
+                            <div><DiSublime          className="me-1" size={27}/> Sublime Text</div>
+                            <div><DiIntellij         className="me-1" size={27}/> Intellij idea</div>
+                            <div><DiPhotoshop        className="me-1" size={27}/> Photoshop</div>
+                            <div><DiIllustrator      className="me-1" size={27}/> Illustrator</div>
                         </div>
                     </Col>
 

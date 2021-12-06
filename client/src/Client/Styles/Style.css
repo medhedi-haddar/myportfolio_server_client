@@ -1,12 +1,12 @@
 
+section{
+    padding-bottom : 15px;
+}
 .front-body{
     position:relative;
     width: 100%;
     font-family: "Roboto" ,sans-serif;
     color :#05364d !important;
-}
-section{
-    padding-bottom : 15px;
 }
 .btn-rounded{
     border-radius: 50px !important;
@@ -16,7 +16,6 @@ section{
     background: rgb(54,146,250);
     background: linear-gradient(125deg, rgba(54,146,250,1) 0%, rgba(0,216,233,1) 100%) !important;
     border-color: #2f9cf7;
-    /* border: 1px solid linear-gradient(125deg, rgba(54,146,250,1) 0%, rgba(0,216,233,1) 100%) !important; */
 }
 .btn-primary:hover{
     color: #fff;
@@ -73,19 +72,18 @@ h2{
     line-height: 30px;
 }
 h3{
-    font-size: 30px;
+    font-size: 25px;
     font-weight: 300;
     line-height: 30px;
     margin-bottom: 15px !important;
 }
-
 h4{
     font-size: 13px;
     font-weight: 300;
 }
 p{
-    font-size: 1rem;
-    font-weight: 300;
+    font-size : 0.9rem;
+    font-weight: 300;  
 }
 /* Skills ======================================================================*/
 .progress-value{
@@ -130,7 +128,6 @@ p{
     box-shadow: none !important;
 }
 .wolf-navbar{
-    /* position: absolute; */
     top: 0;
     width: 100%;
     display: flex;
@@ -179,8 +176,6 @@ p{
     list-style: none;
     margin-bottom: 0 !important;
     padding-left: 0 !important;
-
-
 }
 .wolf-navbar-item{
     padding: 0 0 !important;
@@ -259,7 +254,6 @@ p{
 .about-me{ 
     display: flex;
     flex-direction: column-reverse;
-    /* min-height: 100vh; */
     background-repeat: no-repeat;
     width: 100%;
     background-size: 80%;
@@ -278,9 +272,6 @@ p{
     width: 80%;
     height: initial;
 }
-.about-me-context{
-
-}
 .about-me-context > h1{
     font-size : 1.5rem;
 }
@@ -288,11 +279,6 @@ p{
     font-size : 1rem;
     font-weight: 400;
     margin-bottom:15px !important;
-}
-p{
-    font-size : 0.9rem;
-    font-weight: 300;
-    
 }
 .width-100 {
     width :100%
@@ -373,8 +359,6 @@ p{
 .bottom-footer{
     background: #041e2a;
 }
-  /* ------------ */
-
 .about-me-text{
     margin-top: 210px;
 }
@@ -383,7 +367,6 @@ p{
     .about-me-text{
         margin-top: 270px;
     }
-
 }
 /* // Small devices (landscape phones, 576px and up) */
 @media (min-width: 425px) { 
@@ -391,13 +374,12 @@ p{
         margin-top: 300px;
     }
  }
- 
+
 /* // Medium devices (tablets, 768px and up) */
 @media (min-device-width: 768px) and (min-device-width: 768px) { 
     p{
         font-size : 1rem;
-        font-weight: 300;
-        
+        font-weight: 300;  
     }
     h4{
         font-size: 19px;
@@ -432,8 +414,6 @@ p{
     }
     .about-me-content{
         margin-top: 100px;
-        /* padding: 0 15px;
-        width: calc(100% - 300px); */
     }
 
     .about-me-cover{
@@ -447,7 +427,6 @@ p{
     .section{
         padding-top : 95px;
         overflow: hidden;
-        /* margin-top: ; */
     }
     .skills{
         padding-top: 0px;
@@ -473,14 +452,12 @@ p{
     }
     .wolf-navbar-item > a {
         padding: 10px 15px;
-
     } 
     .hovered > a::before{
         border-radius : 5px;
         background : transparent !important;
     }
     .wolf-navbar{
-        /* position: absolute; */
         top: 0;
         width: 100%;
         display: flex;
@@ -557,13 +534,12 @@ p{
     }
     
  }
-
-/* // Extra large devices (large desktops, 1200px and up) */
+/*  Extra large devices (large desktops, 1200px and up) */
 @media (min-width: 1200px) { 
    
  }
 
- @media (min-width: 1440px) { 
+@media (min-width: 1440px) { 
   
     .about-me-cover{
         position: absolute;
@@ -576,20 +552,16 @@ p{
         flex: 0 0 auto;
         width: 75%;
     }
- }
- @media (min-width: 2560px) { 
+}
+@media (min-width: 2560px) { 
     p{
-        font-size : 1.2rem;font-weight: 300;
-        
+        font-size : 1.2rem;font-weight: 300;  
     }
     .about-me-cover{
         position: absolute;
         right: 0;
         top:0;
         width : 24%;
-    }
-    .about-me-content{
-        /* width: 100%; */
     }
     .col-xxl-8 {
         flex: 0 0 auto;
@@ -601,40 +573,5 @@ p{
         left : 0;
         top:350px;
     }
+}
 
- }
-
- /* // Extra large devices (large desktops, 1200px and up) */
-/* @media (min-width: 1200px) { 
-    p{
-        font-size : 1.2rem;font-weight: 300;
-        
-    }
-    .about-me-cover{
-        position: absolute;
-        right:0;
-    }
-    .about-me-content {
-        margin-top: 100px;
-        padding: 0 15px;
-        width: 100%;
-    }
- }
-
- @media (min-width: 2560px) { 
-     .col-xxl-8{
-        flex: 0 0 auto;
-        width: 100%;
-     }
-    .about-me-cover{
-        position: absolute;
-        right:-220px;
-        top : 0;
-        width : 33%;
-    }
-    .about-me-content {
-        margin-top: 100px;
-        padding: 0 15px;
-        width: 100%;
-    }
- } */

@@ -68,11 +68,11 @@ const Projects = () => {
                                     <Card.Title>{project.title}</Card.Title>
                                     
                                     <div className="d-flex row justify-conetent-between p-2">
-                                    <Button className="m-1 d-flex align-items-center justify-content-center" target="_blank" variant="outline-secondary"
+                                    <Button className="my-1 d-flex align-items-center justify-content-center" target="_blank" variant="outline-secondary"
                                     onClick={()=>{handleReadMore(index)}}
                                     ><FaExpandArrowsAlt className="me-2" size={14} />Read more</Button>
-                                    <Button className="m-1 d-flex align-items-center justify-content-center" target="_blank" href={project.weblink} target="_blank" variant="primary"><FaLink className="me-2" size={14} />Website</Button>
-                                    <Button className="m-1 d-flex align-items-center justify-content-center" target="_blank"  href={project.gitlink} target="_blank" variant="secondary"> <FaGithub className="me-2" size={14} />GitHub</Button>
+                                    <Button className="my-1 d-flex align-items-center justify-content-center" target="_blank" href={project.weblink} target="_blank" variant="primary"><FaLink className="me-2" size={14} />Website</Button>
+                                    <Button className="my-1 d-flex align-items-center justify-content-center" target="_blank"  href={project.gitlink} target="_blank" variant="secondary"> <FaGithub className="me-2" size={14} />GitHub</Button>
                                     </div>
                                     </Card.Body>
                                 </Card>
