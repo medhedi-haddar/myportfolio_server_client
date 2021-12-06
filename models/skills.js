@@ -7,8 +7,10 @@ const skillSchema = new Schema({
     description : String,
     skills : [
         {
-            type: mongoose.Schema.Types.ObjectId, 
-            ref: 'skillitem' 
+            order: Number, 
+            name : String,
+            level : Number, 
+            color : String
         }
     ],
     update_date : {
@@ -16,6 +18,21 @@ const skillSchema = new Schema({
         default : Date.now()
     }
 });
+//  const skillSchema = new Schema({
+    
+//     title : String,
+//     description : String,
+//     skills : [
+//         {
+//             type: mongoose.Schema.Types.ObjectId, 
+//             ref: 'skillitem' 
+//         }
+//     ],
+//     update_date : {
+//         type : String,
+//         default : Date.now()
+//     }
+// });
 
 // Model
 const Skills = mongoose.model('skill', skillSchema);

@@ -1,7 +1,10 @@
 const express = require('express');
-const signin  = require('../Controllers/admin');
+const { signin,updateProfile }  = require('../Controllers/admin');
+const auth = require('../middleware/auth');
 const router = express.Router();
 
-router.post('/signin' , signin);
+// POST
+router.post('/signin' ,signin);
+router.post('/update',auth,updateProfile)
 
 module.exports  = router;

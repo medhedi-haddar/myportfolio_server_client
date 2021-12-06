@@ -1,37 +1,50 @@
 
 import React,{ useEffect, useState} from 'react'
 import { useParams, useNavigate,useLocation } from "react-router-dom";
+// Navigation Componenets
 import NavTop from './Components/SideNav/NavTop';
 import SideNav from './Components/SideNav/SideNav';
 import './Styles/Styles.css'
+// AboutMe Componenet
 import AboutMe from './Components/AboutMe/AboutMe';
 import UpdateAboutMe from './Components/AboutMe/UpdateAboutMe';
+// Profile Componenet
+import Profile from './Components/Profile/Profile'
+import EditProfile from './Components/Profile/EditProfile'
+// Skills Componenets
 import Skills from './Components/Skills/Skills';
+import UpdateSkills from './Components/Skills/UpdateSkills';
+// Projects Componenets
 import Projects from './Components/Projects/Projects';
 import AddProject from './Components/Projects/AddProject';
 import UpdateProject from './Components/Projects/UpdateProject';
-import Experience from './Components/Experience/Experience';
-import AddExperience from './Components/Experience/AddExperience';
-import UpdateExperience from './Components/Experience/UpdateExperience';
-import useProjects from '../Hooks/useProjects';
+// Experiences Componenets
+import Experiences from './Components/Experiences/Experiences';
+import AddExperience from './Components/Experiences/AddExperience';
+import UpdateExperience from './Components/Experiences/UpdateExperience';
+// Educations Componenets
+import Educations from './Components/Educations/Educations';
+import AddEducation from './Components/Educations/AddEducation';
+import UpdateEducation from './Components/Educations/UpdateEducation';
+// Disptacher
 import { useDispatch } from 'react-redux';
-import { getOneProject} from './actions/projects'
+// Reducers
+import { getprojects} from '../actions/projects'
+import { getExperiences} from '../actions/experiences'
+import { getEducations} from '../actions/educations'
+import { getAboutMe} from '../actions/aboutMe'
+import { getSkills} from '../actions/skills'
+
+import PageNotFound from '../PageNotFound';
 
 const Admin = ({requestedComponent})=>{
 
-    const dispatch = useDispatch();
+    const dispatch  = useDispatch();
+    const navigate  = useNavigate(); 
+    const location  = useLocation();
+    const params    = useParams();
 
     const [user , setUser] = useState(JSON.parse(localStorage.getItem('profile')))
-    const navigate = useNavigate(); 
-    const location = useLocation();
-    
-    const params = useParams();
-    let projectData = null;
-    const {project,isLoading} = useProjects(params.id);
-    if(params.id && requestedComponent === 'up_project'){
-        projectData = project;
-    }
-   
     const [classContentDiv, setClassContentDiv] = useState('');
     const [classSideNav, setClassSideNav] = useState('');
 
@@ -41,31 +54,30 @@ const Admin = ({requestedComponent})=>{
     }
     
     useEffect(() => {
-        // window.addEventListener("resize", () => {
-            const ismobile = window.innerWidth < 768;
-            console.log( window.innerWidth);
-            if (ismobile ) {
-                setClassContentDiv('stretched');
-                setClassSideNav('minimized');
-            }
-            else{
-                setClassContentDiv('');
-                setClassSideNav('');
-            }
-            
-        // }, false);
+    
+        const ismobile = window.innerWidth <= 768;
+        
+        if (ismobile ) {
+            setClassContentDiv('stretched');
+            setClassSideNav('minimized');
+        }
+        else{
+            setClassContentDiv('');
+            setClassSideNav('');
+        }  
     }, [])
 
-    useEffect(() => {
-        if(params.id){
-            dispatch(getOneProject(params.id));
-        }
-        const token  = user?.token;
-        
+    useEffect(() => { 
         const storage = JSON.parse(localStorage.getItem('profile'))
         setUser(storage)
         if(!user || !storage){
             navigate('/admin/login')
+        }else{
+            dispatch(getAboutMe());
+            dispatch(getSkills());
+            dispatch(getprojects());
+            dispatch(getExperiences());
+            dispatch(getEducations());
         }
     }, [location])
 
@@ -75,37 +87,51 @@ const Admin = ({requestedComponent})=>{
             case 'about_me':
                  return <AboutMe />
             break;
-            // case 'about_me_up':
-            //      return <UpdateAboutMe />
-            // break;
+            case 'up_aboutme':
+                 return <UpdateAboutMe />
+            break;
             case 'skills':
-                 return <Skills />
+                return <Skills />
+            break;
+            case 'up_skills':
+                return <UpdateSkills />
             break;
             case 'projects':
-                 return <Projects />
+                return <Projects />
             break;
             case 'add_project':
-                 return <AddProject />
+                return <AddProject />
             break;
             case 'up_project':
-                 return <UpdateProject />
-                 return Object.keys(projectData).length > 0 ? <UpdateProject  params={params} project={project}/> : ""
+                if(params.id) return <UpdateProject id={params.id}/>
             break;
-            case 'experience':
-                 return <Experience />
+            case 'experiences':
+                return <Experiences />
             break;
             case 'add_experience':
-                 return <AddExperience />
+                return <AddExperience />
             break;
             case 'up_experience':
-                 return <UpdateExperience />
+                if(params.id_exp) return <UpdateExperience id={params.id_exp} /> 
             break;
-            // case 'login':
-            //      return <Login />
-            // break;
-
-            default:
+            case 'educations':
+                return <Educations/>
             break;
+            case 'add_education':
+                return <AddEducation />
+            break;
+            case 'up_education':
+                if(params.id_edu) return <UpdateEducation id={params.id_edu} /> 
+            break;
+            case '':
+                return <Profile/>
+            break;
+            case 'edit_profile':
+                return <EditProfile/>
+            break;
+            case "notFound" :
+            return <PageNotFound/>
+            break
         }
     }
   

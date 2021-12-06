@@ -1,11 +1,12 @@
 import React,{ useState } from 'react'
-import  useProjects from '../../Hooks/useProjects'
 import { Card,Button,Container,Row,Col,Modal } from 'react-bootstrap'; 
-import { FiExternalLink,FiEdit,FiGithub,FiTrash2,FiEye } from "react-icons/fi";
-import Loader from '../../Loader/Loader';
+import { FaLink,FaGithub,FaExpandArrowsAlt } from "react-icons/fa";
+
+import { useSelector } from 'react-redux';
 
 const Projects = () => {
-    const {projects,isLoading} = useProjects();
+
+    const projects = useSelector((state) => state.projects);
 
     const [modal,setModal] = useState({ show : false, 
             title : '', 
@@ -19,14 +20,14 @@ const Projects = () => {
         setModal({ 
             show : true, 
             title : projects[index].title, 
-            cover : projects[index].cover,
+            cover : projects[index].cover.url,
             description : projects[index].description
         })
     }
 
     return (
-        <section  className="section" id="Projects">
-              <Modal show={modal.show} onHide={handleClose}
+        <section  className="section" id="Projects"  >
+            <Modal show={modal.show} onHide={handleClose}
                 fullscreen={true}  
                 style={{ zIndex: "10000"}} >
                 <Modal.Header closeButton>
@@ -46,20 +47,22 @@ const Projects = () => {
                         </Button>
                     </Modal.Footer>
             </Modal>
-
-            <Container>
+            <Container data-aos="slide-up">
             <h1 className="mb-3 text-uppercase"><span className="text-secondary"></span>Projects</h1>
                 <Row>
-                    {isLoading &&
-                    <Loader title="Projects"/>
-                    }
-                    {!isLoading && projects && 
+                    {(!projects.length) ? '' 
+                    :
                         projects.map((project,index) => (
                             <Col md={4} key={`project`+index}>
                                 {}
                                 <Card style={{marginBottom : "10px"}} > 
-                                    <div className="card_image"> 
-                                        <Card.Img variant="top" src={project.cover} onClick={()=>{handleReadMore(index)}} />
+                                    <div className="card_image" onClick={()=>{handleReadMore(index)}}> 
+                                        <div className="card_image_hover d-flex justify-content-center align-items-center">
+                                            <div className="card_image_hover_button">
+                                                <FaExpandArrowsAlt color="#aaa" size={25} />
+                                            </div>
+                                        </div>
+                                        <Card.Img variant="top" src={project.cover.url}  />
                                     </div>
                                     <Card.Body>
                                     <Card.Title>{project.title}</Card.Title>
@@ -67,9 +70,9 @@ const Projects = () => {
                                     <div className="d-flex row justify-conetent-between p-2">
                                     <Button className="m-1 d-flex align-items-center justify-content-center" target="_blank" variant="outline-secondary"
                                     onClick={()=>{handleReadMore(index)}}
-                                    ><FiEye className="me-2" size={14} />Read more</Button>
-                                    <Button className="m-1 d-flex align-items-center justify-content-center" target="_blank" href={project.weblink} target="_blank" variant="primary"><FiExternalLink className="me-2" size={14} />Web link</Button>
-                                    <Button className="m-1 d-flex align-items-center justify-content-center" target="_blank"  href={project.gitlink} target="_blank" variant="secondary"> <FiGithub className="me-2" size={14} />Git link</Button>
+                                    ><FaExpandArrowsAlt className="me-2" size={14} />Read more</Button>
+                                    <Button className="m-1 d-flex align-items-center justify-content-center" target="_blank" href={project.weblink} target="_blank" variant="primary"><FaLink className="me-2" size={14} />Website</Button>
+                                    <Button className="m-1 d-flex align-items-center justify-content-center" target="_blank"  href={project.gitlink} target="_blank" variant="secondary"> <FaGithub className="me-2" size={14} />GitHub</Button>
                                     </div>
                                     </Card.Body>
                                 </Card>

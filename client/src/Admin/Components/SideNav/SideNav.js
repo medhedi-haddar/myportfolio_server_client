@@ -1,5 +1,5 @@
 import React from 'react';
-import { MdOutlineContactPage, MdOutlinePhotoLibrary, MdDeveloperMode,MdBubbleChart,MdOutlineMessage, MdEngineering } from "react-icons/md";
+import { MdOutlineContactPage, MdFingerprint, MdDeveloperMode,MdBubbleChart,MdOutlineMenuBook, MdEngineering } from "react-icons/md";
 import { Link } from 'react-router-dom';
 
 
@@ -9,20 +9,23 @@ const SideNav = ({active_link,classSideNav}) => {
             <li className="HomeLink">
                 <Link to={'/admin'} >Admin</Link>  
             </li>
-            <li className={`sideNavItem ${["about_me", "about_me_up"].indexOf(active_link) >= 0 ? "active" : ""}`}>
+            <li className={`sideNavItem ${["profile", "edit_profile", ""].indexOf(active_link) != -1 ? "active" : ""}`}>
+                <Link to={'/admin'} > <span>Profile</span> <MdFingerprint className="sideNaveItemIcon"/></Link>     
+            </li> 
+            <li className={`sideNavItem ${["about_me", "up_aboutme"].indexOf(active_link) != -1 ? "active" : ""}`}>
                 <Link to={'/admin/about_me'} > <span>About Me</span> <MdOutlineContactPage className="sideNaveItemIcon"/></Link>     
             </li> 
-            <li className={`sideNavItem ${active_link === 'skills' ? 'active' : ''}`}>
+            <li className={`sideNavItem ${["skills" , "up_skills"].indexOf(active_link) != -1 ? 'active' : ''}`}>
                 <Link to={'/admin/skills'} > <span>Skills</span><MdBubbleChart className="sideNaveItemIcon"/></Link>     
             </li> 
-            <li className={`sideNavItem ${["add_project", "projects", "up_project"].indexOf(active_link) >= 0 ? 'active' : ''}`}>
+            <li className={`sideNavItem ${["add_project", "projects", "up_project"].indexOf(active_link) != -1 ? 'active' : ''}`}>
                 <Link to={'/admin/projects'} > <span>Projects</span><MdDeveloperMode className="sideNaveItemIcon"/></Link>     
             </li> 
-            <li className={`sideNavItem ${["experience", "add_experience", "up_experience"].indexOf(active_link) >= 0 ? "active" : ""}`}>
-                <Link to={'/admin/experience'} > <span>Experience </span><MdEngineering className="sideNaveItemIcon"/></Link>     
+            <li className={`sideNavItem ${["experiences", "add_experience", "up_experience"].indexOf(active_link) != -1 ? "active" : ""}`}>
+                <Link to={'/admin/experiences'} > <span>Experience </span><MdEngineering className="sideNaveItemIcon"/></Link>     
             </li> 
-            <li className={`sideNavItem ${active_link === 'messages' ? 'active' : ''}`}>
-                <Link to={'/admin/messages'} > <span>Messages</span><MdOutlineMessage className="sideNaveItemIcon"/></Link>     
+            <li className={`sideNavItem ${["educations", "add_education", "up_education"].indexOf(active_link) != -1 ? 'active' : ''}`}>
+                <Link to={'/admin/educations'} > <span>Educations</span><MdOutlineMenuBook className="sideNaveItemIcon"/></Link>     
             </li> 
         </ul>
     )

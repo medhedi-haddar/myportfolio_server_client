@@ -29,16 +29,7 @@ h3{font-size : 20px; margin-bottom: 0 !important}
 h4{font-size : 15px; margin-bottom: 0 !important}
 h5{font-size : 10px; margin-bottom: 0 !important}
 h6{font-size : 7px; margin-bottom: 0 !important}
-  .loader{
-    position: absolute;
-    top: 0;
-    z-index: 100;
-    background: #ffffff88;
-    height: 100%;
-    align-items: center;
-    width: 100%;
 
-}
 .navbar{
     position: sticky;
     top: 0;
@@ -82,7 +73,6 @@ a.button:hover{
     position: fixed !important;
     transition: all 0.3s ease-in-out ;
 }
-
 .content.stretched{
     width: calc(100vw - 5.063rem);
     transition: all 0.3s ease-in-out ;
@@ -102,8 +92,6 @@ a.button:hover{
     width : 5.063rem;
     transition: all 0.3s ease-in-out ;
 }
-
-
 .HomeLink > a{
     align-items: center;
     background: transparent;
@@ -111,7 +99,7 @@ a.button:hover{
     display: flex;
     flex: 1 1;
     font-size: 1.5rem;
-    padding: 0.6rem 1rem;
+    padding: 0.55rem 1rem;
     text-decoration: none;
     white-space: nowrap;
     border-bottom: 1px solid var(--blue-dark);
@@ -131,6 +119,7 @@ a.button:hover{
     width: 100%;
     margin : 5px 10px;
     justify-content: space-between;
+    font-weight: 300;
 }
 .sideNavItem > a:hover,
 .active > a{
@@ -145,14 +134,16 @@ a.button:hover{
 .sideNaveItemIcon{
     height : 24px;
 }
-.contentBody{
+.component_body{
     padding: 0 15px 40px 15px;
-    min-height: calc(100vh - 116px);
+    min-height: calc(100vh - 220px);
+
 }
-form{
+.form{
     /* width: 70%;
     margin-left: auto; */
     /* margin-right: auto; */
+    min-height: 100vh;
 }
 .component{
     position:relative;
@@ -229,11 +220,9 @@ form{
 }
 .skill-bloc{
     width: calc(100% - 85px);
-    margin-left: 35px;
 }
 .skill-bloc-visual{
-    width: calc(100% - 35px);
-    margin-left: 35px;
+    width: 100%;
 }
 .bloc {
     border: 1px solid #dee2e6;
@@ -284,9 +273,11 @@ form{
 .sticky-footer{
     position: sticky;
     bottom: 0;
+    top: calc(100% - 68px);
     padding: 15px 15px;
     -webkit-box-shadow : 6px 5px 15px var(--gray);
     box-shadow : 6px 5px 15px var(--gray);
+    z-index : 1;
 }
 .tags{
     display: flex;

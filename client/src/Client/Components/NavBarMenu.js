@@ -33,9 +33,9 @@ const NavBarMenu = () => {
         <div>
             <StickyNav length='89'> 
                 <div className="wolf-navbar">
-                    <Container className="  align-items-center">
+                    <Container className="overflow-hidden  align-items-center">
                         <Row>
-                            <div  className="d-flex justify-content-between align-items-center col-xxl-3 col-xl-2 col-lg-2 col-md-12 col-sm-12 ps-0">
+                            <div  className="d-flex justify-content-between align-items-center col-xxl-3 col-xl-2 col-lg-2 col-md-12 col-sm-12 ">
                                 <div className="wolf-navbar-brand">
                                     <img src="/brand-icon.svg" width="50px"/> <span>My Portfolio</span>
                                 </div>
@@ -61,6 +61,7 @@ const NavBarMenu = () => {
                                             <li className="wolf-navbar-item hovered" ><Link  to="Skills" spy={true} smooth={true} duration={500} onClick={handleMenu} >Skills</Link></li>
                                             <li className="wolf-navbar-item hovered" ><Link  to="Projects" spy={true} smooth={true} duration={500} onClick={handleMenu} >Projects</Link></li>
                                             <li className="wolf-navbar-item hovered" ><Link  to="Experience" spy={true} smooth={true} duration={500} onClick={handleMenu} >Experience</Link></li>
+                                            <li className="wolf-navbar-item hovered" ><Link  to="hireMe" spy={true} smooth={true} duration={500} onClick={handleMenu} >Hire Me</Link></li>
                                         </ul>    
                                     </div>
                                 </div>  

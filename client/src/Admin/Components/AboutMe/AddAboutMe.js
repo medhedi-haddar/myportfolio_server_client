@@ -1,7 +1,6 @@
-import React, { useState,useEffect } from 'react'
+import React, { useState } from 'react'
 import { Form, Button, Container, Row, Col } from 'react-bootstrap'
-import { Link, useNavigate } from 'react-router-dom';
-import { MdOutlineArrowBackIosNew } from "react-icons/md";
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 import { EditorState, convertToRaw, ContentState,convertFromHTML } from 'draft-js';
@@ -75,17 +74,14 @@ const AddAboutMe = ({fetchAboutMeData}) => {
     }
 
     return (
-        <div>
-            
+        <Form classname="form"  onSubmit={handleSubmit}>
             <div className="component_title">
                 <h2>Add About Me</h2>
             </div>
             <Container fluid>
                 <Row>
-                    <Col md={8}>
-                    
-                        <Form onSubmit={handleSubmit}>
-                            <small className="last_update">Last update : {data.updateDate}</small>
+                    <Col md={8}> 
+                        <small className="last_update">Last update : {data.updateDate}</small>
                             <Form.Group className="mb-3" controlId="formBasicEmail">
                                 <Form.Label>Last Name</Form.Label>
                                 <Form.Control name="lastName" type="text" placeholder="Last Name" value={data.lastName} onChange={onChangeValue} />
@@ -122,9 +118,7 @@ const AddAboutMe = ({fetchAboutMeData}) => {
                             <Button variant="success" type="submit">
                                 Enregistrer
                             </Button>
-                        </Form>
-                    </Col>
-
+                    </Col>                     
                     <Col md={4} className="text-center">
                         {data.profileImage &&
                         <img src={data.profileImage} style={{minWidth :"150px" , width: "100%"}} />
@@ -137,7 +131,7 @@ const AddAboutMe = ({fetchAboutMeData}) => {
                     </Col>
                 </Row>
             </Container> 
-        </div>
+        </Form>
     )
 }
 

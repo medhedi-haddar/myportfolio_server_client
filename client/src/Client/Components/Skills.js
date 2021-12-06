@@ -1,35 +1,27 @@
-import React,{ useState ,useEffect} from 'react'
-import { getSkills } from '../../apis/PostApi'
+import React from 'react'
 import {Container,Col, Row} from 'react-bootstrap';
+
+import { useSelector } from 'react-redux';
+
 
 const Skills = () => {
 
-    const [skills, setSkills] = useState({})
+    const skills = useSelector((state) => state.skills);
 
-    const fetchSkills = async () =>{
-        const resp  = await getSkills();
-        console.log(resp);
-        if(resp){
-            setSkills(resp);
-        }
-    }
-
-    useEffect(() => {
-        fetchSkills();
-    },[])
     return ( 
-        <section id="Skills" className="section" style={{backgroundImage: `url()`}}> 
-            {Object.keys(skills).length  &&
-                <Container>
-                    <Row>
-                        <h1 className="mb-3 text-uppercase"><span className="text-secondary"></span>{skills.title}</h1>
-                        <Col lg={6}> 
+        <section id="Skills" className="section"  > 
+                <Container >
+                {(!skills.length) ? ''
+                    : <Row>
+                       
+                        <Col lg={6} md={12}> 
+                        <h1 className="mb-3 text-uppercase"><span className="text-secondary"></span>{skills[0].title}</h1>
                             <div className="col-lg skills_text text-start " >
-                                <div  dangerouslySetInnerHTML={{ __html: skills.description}}/>
+                                <div  dangerouslySetInnerHTML={{ __html: skills[0].description}}/>
                             </div> 
                         </Col>
-                        <Col  className="skills"  lg={{span:5, offset : 1}}>
-                            {skills.skills.map((skill,index)=>( 
+                        <Col  className="mt-3 skills"  lg={{span:5, offset : 1}}>
+                            {skills[0].skills.map((skill,index)=>( 
                                 <div key={`skill`+index} className="text-start mb-4 position-relative" >   
                                     <h3>{skill.name}</h3>
                                     <div className="progress">
@@ -41,8 +33,8 @@ const Skills = () => {
                             ))}
                         </Col> 
                     </Row>
-                </Container>
-            } 
+                }
+            </Container>
         </section>  
     )
 }

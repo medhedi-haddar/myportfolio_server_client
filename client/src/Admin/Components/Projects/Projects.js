@@ -1,36 +1,40 @@
-import React,{ useEffect } from 'react'
+import React from 'react'
 import { Button,Container,Row } from 'react-bootstrap'; 
-import { useLocation } from "react-router-dom";
-import { useDispatch } from 'react-redux';
 import { FiPlusCircle } from "react-icons/fi";
-import { getprojects} from '../../actions/projects'
 import Project from './Project';
+import { useSelector } from 'react-redux';
+import Loader from '../../../Loader/Loader'
 
 const Projects = () => {
 
-    const location = useLocation();
+    const projects = useSelector((state) => state.projects);
 
-    const dispatch = useDispatch();
-
-    useEffect(() => {
-        dispatch(getprojects());
-     }, [location])
-     
     return (
-        <div className="contentBody"> 
-           
-            <div className="component_title ">
+        <>
+         <div className="component_title ">
                 <Container fluid className="d-flex justify-content-between align-items-center"> 
                     <h2>Projects</h2>             
                     <Button className="d-flex align-items-center" variant="secondary" href="/admin/add_project"><FiPlusCircle className="me-2"/> Project</Button>
                 </Container>
             </div>
+        <div className="component_body">    
             <Container fluid>
                 <Row> 
-                    <Project />     
+                    {!projects.length ? <Loader/>: (
+                        typeof projects === "object" ?  ( <Project projects={projects}/>  )
+                    
+                :(
+                    <div>
+                        <p className="text-danger">( ! ) No Data maybe it's a serve problem (check your request path)</p>
+                        <p>The type of responce is string but it should be an object</p>
+                    </div>
+                )  
+                    )  
+                }
                 </Row>
             </Container>
         </div>
+        </>
     )
 }
 

@@ -1,73 +1,53 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Container, Row, Col, Button } from 'react-bootstrap';
-import { MdOutlineEditNote } from "react-icons/md";
-import AddSkill from './AddSkill'
-import { getSkills } from '../../../apis/PostApi';
-import UpdateSkill from './UpdateSkill';
-import SkillsItems from './SkillsItems';
+import { FiEdit } from "react-icons/fi";
+import { useSelector } from 'react-redux';
 
 const Skills = () => {
 
-    const [isUpdateMode , setIsUpdateMode] = useState(false);
+    const skills = useSelector((state) => state.skills);
 
-    const toggleUpdate = () =>{
-        isUpdateMode ? setIsUpdateMode(false) : setIsUpdateMode(true); 
-    }
-
-    const [skill, setSkill] = useState({});
-
-    const fetchSkill = async () =>{
-        const data = await getSkills();
-        if(data){
-            setSkill({
-                _id : data._id,
-                title : data.title,
-                description : data.description,
-                skills : data.skills
-            })
-        }
-    }
-    useEffect(() => {
-        if(isUpdateMode===false){
-            fetchSkill();     }
-    }, [isUpdateMode])
     return (
-        
-        <div className="contentBody"> 
+        <>
             <div className="component_title ">
                 <Container fluid className="d-flex justify-content-between"> 
                     <h2 className="d-flex align-items-center">Skills</h2>             
-                    <Button variant="success" onClick={toggleUpdate}><MdOutlineEditNote/></Button>
+                    <Button className="d-flex align-items-center" variant="secondary" href="/admin/up_skills"><FiEdit className="me-2"/>Edit Skills</Button>
                 </Container>
             </div>
-            {isUpdateMode && 
-                <>
-                    <UpdateSkill toggleUpdate={toggleUpdate} skillData={skill} fetchSkill={fetchSkill}/>
-                </>
-            }{!isUpdateMode && 
-                <>
-                {!Object.keys(skill).length &&
-                    <AddSkill/>
-                }{Object.keys(skill).length && 
+        
+            <div className="component_body"> 
+                {Object.keys(skills).length && 
                     <>
-                    
                         <Container fluid>
                             <Row>
                                 <Col lg={7} md={12} sm={12}>
-                                    <h2>{skill.title}</h2>
-                                    <div dangerouslySetInnerHTML={{ __html: skill.description}}/>
+                                    <h2>{skills[0].title}</h2>
+                                    <div dangerouslySetInnerHTML={{ __html: skills[0].description}}/>
                                 </Col>
                                 <Col lg={5} md={8} sm={12}>
-                                    <SkillsItems skills={skill.skills}/>
+                                <div>
+                                    {skills[0].skills.map((skill_item,index)=>(
+                                            <div key={'skill_item_'+index} className="text-start mb-4 p-2 position-relative d-flex justify-content-between">  
+                                            <div className="skill-bloc-visual">
+                                                <span className="skill-title">{skill_item.name}</span>
+                                                <div className="skill">
+                                                    <span className="skill-value text-secondary">{skill_item.level}%</span>
+                                                    <div className="skill-bar " style={{ width: `${skill_item.level}%`, background: `${skill_item.color}` }} 
+                                                    aria-valuenow={`${skill_item.level}`} aria-valuemin={"0"} aria-valuemax={"100"}></div>
+                                                </div>
+                                            </div>
+                                        </div> 
+                                    ))}
+                                </div>
                                 </Col>
                             </Row>
-                        </Container>
-                    
+                        </Container> 
                     </>
                 }
-                </>
-            }  
-        </div>   
+            </div>   
+        
+        </>
     )
 }
 

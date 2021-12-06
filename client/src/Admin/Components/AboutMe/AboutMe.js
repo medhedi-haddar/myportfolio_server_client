@@ -1,90 +1,37 @@
-import React, { useState, useEffect } from 'react'
-import { Button, Container, Row, Col } from 'react-bootstrap'
-import { MdOutlineEditNote } from "react-icons/md";
-import {getAboutMe} from '../../../apis/PostApi';
-import { DiGithubBadge } from "react-icons/di";
-import UpdateAboutMe from './UpdateAboutMe';
-import AddAboutMe from './AddAboutMe';
+import React from 'react'
+import { Button, Container } from 'react-bootstrap'
+import { FiEdit } from "react-icons/fi";
+
+import { useSelector } from 'react-redux';
+
+import Loader from '../../../Loader/Loader';
+import AboutMeContent from './AboutMeContent';
 
 const AboutMe = () => {
 
-    const [updateActive , setUpdateActive] = useState(false);
-    const [data, setData] = useState({
-        id : '',
-        lastName : '',
-        firstName : '',
-        description :'',
-        updateDate : '',
-        git_link : '',
-        profileImage : '',
-        cv : ''
-    });
+    const aboutMe = useSelector((state) => state.aboutMe);
 
-    const handlecontent = () =>{
-        updateActive ? setUpdateActive(false) : setUpdateActive(true); 
-    }
-
-    const fetchAboutMeData = async ()=> {
-        const response  = await getAboutMe();
-        console.log(response);
-        if(response){
-            setData({
-                id : response.id,
-                lastName : response.lastName,
-                firstName : response.firstName,
-                description : response.description,
-                git_link : response.git_link,
-                updateDate : response.updateDate,
-                profileImage : response.profileImage,
-                cv : response.cv
-            })
-        }
-    }
-    useEffect(() => {
-        fetchAboutMeData();
-    }, [])
-    return (
-        <div>
-            {updateActive && 
-                <>
-                <UpdateAboutMe aboutMeData={data} handlecontent={handlecontent} fetchAboutMeData={fetchAboutMeData}/>
-                </>
-            }
-            {!updateActive && 
-                <> 
-                    {Object.keys(data).length <= 0 && 
-                        <AddAboutMe fetchAboutMeData={fetchAboutMeData}/>
-                    }{Object.keys(data).length > 0 &&
-                        <div className="contentBody"> 
-                            <div className="component_title">
-                                <Container fluid className="d-flex justify-content-between"> 
-                                    <h2>About Me</h2>             
-                                    <Button variant="secondary" onClick={handlecontent}><MdOutlineEditNote/></Button>
-                                </Container>
-                            </div>
-                            <div>
-                                <Container fluid>
-                                    <Row>
-                                        <Col>
-                                            <h3>{data.lastName} {data.firstName}</h3>
-                                            <p><small className="text-secondary">Last Update: {data.updateDate}</small></p>
-                                            <div className="h6" className="post__description" dangerouslySetInnerHTML={{ __html: data.description}}/>
-                                            <Button href={data.cv} variant="secondary"  className="me-3">Download CV</Button>
-                                            <Button variant="outline-primary"><a href={`${data.git_link}`} className="button" target="_blank"><DiGithubBadge/> Github</a></Button>
-                                        </Col>
-                                        <Col md={4} className="text-end">
-                                            <img src={`${data.profileImage}`} style={{ width: '100%'}}/>
-                                        </Col>
-                                    </Row>
-                                </Container> 
-                            </div>
-                        </div>
-                    }
-                </>
-            }
-           
-
+    return ( 
+        <>
+         <div className="component_title">
+            <Container fluid className="d-flex justify-content-between"> 
+                <h2>About Me</h2>             
+                <Button className="d-flex align-items-center " variant="secondary" href="/admin/up_aboutme"><FiEdit className="me-2"/>Edit About me</Button>
+            </Container>
         </div>
+        {typeof aboutMe === 'object' && 
+        !Object.keys(aboutMe).length  ?  <Loader/> :
+            <div className="component_body"> 
+           
+            <div>
+                <Container fluid>
+                    <AboutMeContent aboutMeData={aboutMe[0]}/>  
+                </Container> 
+            </div>
+        </div> 
+        
+    }
+        </>
     )
 }
 

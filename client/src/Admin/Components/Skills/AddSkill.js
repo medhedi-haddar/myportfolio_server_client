@@ -10,7 +10,6 @@ import { DragDropContext, Droppable,Draggable } from 'react-beautiful-dnd';
 
 const AddSkill = () => {
  
-
     const [alert,setAlert] = useState('');
     const [, updateState] = useState();
     const forceUpdate = useCallback(() => updateState({}), []);

@@ -42,11 +42,10 @@ const HomePage = () => {
                                             <div className="pt-4 about-me-buttons"> 
                                             <Row>
                                                 <Col xs={12} md={6} lg={3} >
-                                                 <Button className="width-100 mb-2 align-items-center me-3 pe-4 ps-4" variant="primary" ><FiFileText className="me-3" size={14}/>My Cv</Button>
+                                                 <Button href={aboutMe.cv} target="_blank" className="width-100 mb-2 align-items-center me-3 pe-4 ps-4" variant="primary" ><FiFileText className="me-3" size={14}/>My Cv</Button>
                                                  </Col>
-                                                
                                                 <Col xs={12} md={6} lg={3}>
-                                                <Button className="width-100 mb-2 align-items-center me-3 pe-4 ps-4" variant="secondary" ><FiGithub className="me-3" size={14}/>Github</Button> 
+                                                <Button href={aboutMe.git_link} target="_blank" className="width-100 mb-2 align-items-center me-3 pe-4 ps-4" variant="secondary" ><FiGithub className="me-3" size={14}/>Github</Button> 
                                                 </Col>
                                             </Row>
                                             </div> 

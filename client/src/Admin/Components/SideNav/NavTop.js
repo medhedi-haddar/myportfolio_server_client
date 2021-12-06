@@ -4,7 +4,7 @@ import {Container, Navbar, Button, DropdownButton,Dropdown} from "react-bootstra
 import { logout } from '../../../apis/PostApi';
 import { getFromStorage } from '../../../Utils/Storage';
 import { useNavigate,useLocation } from 'react-router-dom';
-import {useDispatch} from 'react-redux'
+import { useDispatch} from 'react-redux'
 import decode from 'jwt-decode';
 
 const NavTop = ({toggleSideNav}) => {
@@ -41,9 +41,8 @@ const NavTop = ({toggleSideNav}) => {
                     <Button variant={"light"} onClick={toggleSideNav}> <MdOutlineMenu/> </Button>
                     <DropdownButton  align="end" id="dropdown-basic-button-light" variant={"light"} 
                     title={(user?.token 
-                        ? <><small className="p-1">{user?.result?.firstName} {user?.result?.lastName} </small><MdOutlinePersonOutline/></> 
+                        ? <><small className="p-1"><b>{user?.result?.lastName.charAt(0).toUpperCase()}.</b>{user?.result?.firstName}</small><MdOutlinePersonOutline/></> 
                         : <MdOutlinePersonOutline/>)}>
-
                         <Dropdown.Item className="d-flex justify-content-between" onClick={handleLogOut}>
                             <span> Log out </span>
                             <MdLogout/>

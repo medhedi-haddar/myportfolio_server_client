@@ -1,22 +1,10 @@
-import React,{useEffect} from 'react';
+import React from 'react';
 import { BrowserRouter, Routes, Route} from "react-router-dom";
 import Admin from './Admin/Admin';
 import './App.css';
 import {createBrowserHistory} from "history";
-import HomePage from './Client/Components/HomePage';
+import Client from './Client/Client';
 import Login from './Admin/Components/Login/Login';
-import AOS from 'aos';
-import 'aos/dist/aos.css';
-import useLogin from './Hooks/useLogin';
-import AboutMe from './Admin/Components/AboutMe/AboutMe'
-import Skills from './Admin/Components/Skills/Skills'
-import Projects from './Admin/Components/Projects/Projects';
-import AddProject from './Admin/Components/Projects/AddProject'
-import UpdateProject from './Admin/Components/Projects/UpdateProject'
-import Experiences from './Admin/Components/Experience/Experience'
-import AddExperience from './Admin/Components/Experience/AddExperience';
-import UpdateExperience from './Admin/Components/Experience/UpdateExperience'
-
 
 const App =() => { 
 
@@ -25,20 +13,32 @@ const App =() => {
     <>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<HomePage/>}/> 
+          <Route path="/" history={history} element={<Client/>}/> 
 
           <Route path="admin/login"           history={history} element={<Login />}/> 
           <Route path="/admin"                history={history} element={<Admin  requestedComponent=""  />}/> 
+          <Route path="/admin/edit_profile"                history={history} element={<Admin  requestedComponent="edit_profile"  />}/> 
+
           <Route path="/admin/about_me"       history={history} element={<Admin  requestedComponent="about_me"/>}/> 
+          <Route path="/admin/up_aboutme"       history={history} element={<Admin  requestedComponent="up_aboutme"/>}/> 
+
           <Route path="/admin/skills"         history={history} element={<Admin  requestedComponent="skills"/>}/> 
+          <Route path="/admin/up_skills"         history={history} element={<Admin  requestedComponent="up_skills"/>}/> 
+
           <Route path="/admin/projects"       history={history} element={<Admin  requestedComponent="projects"/>}/> 
           <Route path="/admin/add_project"    history={history} element={<Admin  requestedComponent="add_project"/>}/> 
           <Route path="/admin/up_project/:id" history={history} element={<Admin  requestedComponent="up_project"/>}/> 
-          <Route path="/admin/experience"     history={history} element={<Admin  requestedComponent="experience"/>}/> 
-          <Route path="/admin/add_experience" history={history} element={<Admin  requestedComponent="add_experience"/>}/> 
-          <Route path="/admin/up_experience"  history={history} element={<Admin  requestedComponent="up_experience"/>}/> 
-          <Route path="/admin/messages"       history={history} element={<Admin  requestedComponent="messages"/>}/>  
 
+          <Route path="/admin/experiences"     history={history} element={<Admin  requestedComponent="experiences"/>}/> 
+          <Route path="/admin/add_experience" history={history} element={<Admin  requestedComponent="add_experience"/>}/> 
+          <Route path="/admin/up_experience/:id_exp"  history={history} element={<Admin  requestedComponent="up_experience"/>}/> 
+
+          <Route path="/admin/educations"  history={history} element={<Admin  requestedComponent="educations"/>}/> 
+          <Route path="/admin/add_education"  history={history} element={<Admin  requestedComponent="add_education"/>}/> 
+          <Route path="/admin/up_education/:id_edu"  history={history} element={<Admin  requestedComponent="up_education"/>}/> 
+
+          <Route path="/admin/messages"       history={history} element={<Admin  requestedComponent="messages"/>}/>  
+          <Route path="*" history={history} element={<Admin  requestedComponent="notFound"/>}/>
 
         </Routes>
       </BrowserRouter>

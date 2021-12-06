@@ -1,12 +1,12 @@
-import React, {} from 'react'
-
-import { useSelector, useDispatch } from 'react-redux';
-import FormProject from './Form/FormProject';
+import React from 'react'
+import { useSelector } from 'react-redux';
+import UpdateProjectForm from './Form/UpdateProjectForm';
 import Loader from '../../../Loader/Loader'
 
-const UpdateProject = () => { 
+const UpdateProject = ({id}) => { 
     const projects = useSelector((state) => state.projects);
-    return ( !Object.keys(projects).length ? <Loader/> : ( <FormProject project={projects}/> ) )
+    const project = projects.find(project => project._id === id);
+    return ( !project ? <Loader/> : ( <UpdateProjectForm project={project}/> ))
 }
 
 export default UpdateProject

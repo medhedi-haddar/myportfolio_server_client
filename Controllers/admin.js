@@ -17,34 +17,36 @@ const signin = async (req, res)=> {
 
         const token = jwt.sign({email : existingUser.email, id : existingUser._id}, process.env.TOKEN_SECRET_KEY, { expiresIn : "1h" });
         
-        res.status(200).json({ result : existingUser, token });
+        existingUser.password = "";
+         
+        res.status(200).json({ result : {_id: existingUser._id, email: existingUser.email, firstName: existingUser.firstName, lastName: existingUser.lastName }, token });
         
     } catch (error) {
       res.status(500).json({message : "somthing went wrong"});
     }
 
 }
-
 const updateProfile = async (req, res)=> {
     
-    const { email,password,firstName, lastName } = req.body;
+    const { body } = req;
 
     try {
-        const existingUser = await User.findOne({email});
-        if(!existingUser) { return res.status(404).json({messae : "user doesn't exist."});}
+        const existingUser = await User.findOne({email : body.email});
+  
+       
+        if(!existingUser) { return res.status(404).json({message : "user doesn't exist."});}
 
-        const isPasswordCorrect  = await bcrypt.compare(password, existingUser.password);
+        if(body.newpassword != "") body.password  = await bcrypt.hash(body.newpassword, 12)
+        else body.password = existingUser.password; 
 
-        if(!isPasswordCorrect) return res.status(400).json({message : "ivalid credentials"});
-
-        const token = jwt.sign({email : existingUser.email, id : existingUser._id}, process.env.TOKEN_SECRET_KEY, { expiresIn : "1h" });
-        
-        res.status(200).json({ result : existingUser, token });
-        
+        User.updateOne({_id : existingUser._id},body).then((data)=>{
+            return res.status(200).json({success : true, message : "profile Updated", data: data});
+        }).catch((error) =>{
+            return res.status(400).json({success : false, message : error.message});
+        })
     } catch (error) {
-      res.status(500).json({message : "somthing went wrong"});
+      return res.status(500).json({message : "somthing went wrong"});
     }
-
 }
-module.exports = signin;
-module.exports = updateProfile;
+
+module.exports = {signin, updateProfile };
