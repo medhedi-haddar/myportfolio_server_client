@@ -3,7 +3,7 @@ import { BrowserRouter, Routes, Route} from "react-router-dom";
 import Admin from './Admin/Admin';
 import './App.css';
 import {createBrowserHistory} from "history";
-import Client from './Client/Client';
+import Front from './Client/Front';
 import Login from './Admin/Components/Login/Login';
 
 const App =() => { 
@@ -13,7 +13,7 @@ const App =() => {
     <>
       <BrowserRouter>
         <Routes>
-          <Route path="/" history={history} element={<Client/>}/> 
+          <Route path="/" history={history} element={<Front/>}/> 
 
           <Route path="admin/login"           history={history} element={<Login />}/> 
           <Route path="/admin"                history={history} element={<Admin  requestedComponent=""  />}/> 

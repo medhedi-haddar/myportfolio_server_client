@@ -16,8 +16,7 @@ import Projects from './Components/Projects';
 import Educations from './Components/Educations';
 import Footer from './Components/Footer';
 
-
-const Client = () => {
+const Front = () => {
 
     const dispatch  = useDispatch();
 
@@ -42,6 +41,4 @@ const Client = () => {
     )
 }
 
-export default Client
-
-
+export default Front;
