@@ -53,12 +53,11 @@ const UpdateEducationForm = ({education}) => {
         
         const nativeData = {
             _id : data._id,
-            title : data.title,
+            diplome : data.diplome,
+            country : data.country,
             university : data.university,
             description : data.description.value,
-            beginDate : Date.parse(data.beginDate),
-            endDate : Date.parse(data.endDate),
-            tags : data.tags
+            obtainedDate : Date.parse(data.obtainedDate)
         };
             
         dispatch(updateEducation(nativeData,navigate));

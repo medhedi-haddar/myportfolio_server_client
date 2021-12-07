@@ -31,7 +31,6 @@ const AddEducation = () => {
           ...data,
           [e.target.name]: e.target.value
         });
-        console.log(data)
     } 
 
     // editDescription -------------------------------------------------
@@ -104,7 +103,7 @@ const AddEducation = () => {
                                             <Form.Label column="md" lg={2}>Description *</Form.Label> 
                                             <Col>
                                                 <Editor size="md"
-                                                    editorState={description}
+                                                    editorState={description ? description : ''}
                                                     toolbarClassName="toolbarClassName"
                                                     wrapperClassName="wrapperClassName"
                                                     editorClassName="editorClassName"

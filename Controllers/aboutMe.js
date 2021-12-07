@@ -9,7 +9,6 @@ const get_all = async (req, res)=> {
         res.status(200).json(data);
 
     }).catch((error)=>{
-        console.log(error.message);
         res.status(400).json({success: false, message:error.message});
     });   
 };
@@ -89,13 +88,7 @@ const update = async (req, res) => {
                     }
                     preventProfileImage.url = '/uploads/'+file.filename;
                     const new_media = new Media(preventProfileImage)
-                    Media.updateOne({_id : preventProfileImage._id},new_media)
-                    .then((data)=>{
-                        console.log(data);
-                    }).catch((error)=>{
-                        console.log("[ error: update file profileImage ]",error.message);
-                        
-                    });
+                    Media.updateOne({_id : preventProfileImage._id},new_media);
                 }else{
                     const new_media =  new Media(profileImageReq);
                     body.profileImage = new_media;
@@ -125,13 +118,7 @@ const update = async (req, res) => {
                     }
                     preventCv.url = '/uploads/'+file.filename;
                     const new_media = new Media(preventCv)
-                    Media.updateOne({_id : preventCv._id},new_media)
-                    .then((data)=>{
-                        console.log(data);
-                    }).catch((error)=>{
-                        console.log("[ error: update file cv ]",error.message);
-                        
-                    });
+                    Media.updateOne({_id : preventCv._id},new_media);
                 }else{
                     const new_media =  new Media(cvReq);
                     body.cv = new_media;

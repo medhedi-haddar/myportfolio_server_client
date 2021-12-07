@@ -1,8 +1,6 @@
 import React,{useEffect, useState} from 'react'
 import {MdOutlineMenu, MdOutlinePersonOutline, MdLogout} from  "react-icons/md";
 import {Container, Navbar, Button, DropdownButton,Dropdown} from "react-bootstrap";
-import { logout } from '../../../apis/PostApi';
-import { getFromStorage } from '../../../Utils/Storage';
 import { useNavigate,useLocation } from 'react-router-dom';
 import { useDispatch} from 'react-redux'
 import decode from 'jwt-decode';
@@ -18,14 +16,14 @@ const NavTop = ({toggleSideNav}) => {
     const handleLogOut = () => {
 
         dispatch({ type : 'LOGOUT'});
-        navigate('/admin/login');
+        navigate(`${process.env.REACT_APP_ADMIN_BASE_URL}/login`);
         setUser(null);
     }
 
     useEffect(() => {
         const token = user?.token;
         if(!token){
-            navigate('/admin/login') 
+            navigate(`${process.env.REACT_APP_ADMIN_BASE_URL}/login`) 
         }
         if(token){
             const decodeedToken = decode(token);

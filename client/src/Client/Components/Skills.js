@@ -1,6 +1,4 @@
-import React from 'react'
 import {Container,Col, Row} from 'react-bootstrap';
-
 import { useSelector } from 'react-redux';
 
 
@@ -16,7 +14,7 @@ const Skills = () => {
                        
                         <Col lg={6} md={12}> 
                         <h1 className="mb-3 text-uppercase"><span className="text-secondary"></span>{skills[0].title}</h1>
-                            <div className="col-lg skills_text text-start " >
+                            <div className="col-lg skills_text text-justify " >
                                 <div  dangerouslySetInnerHTML={{ __html: skills[0].description}}/>
                             </div> 
                         </Col>

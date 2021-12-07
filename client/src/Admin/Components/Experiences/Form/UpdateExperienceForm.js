@@ -27,17 +27,15 @@ const UpdateExperienceForm = ({experience}) => {
         endDate: moment(Number(experience.endDate)).format('YYYY-MM-DD'),
         tags: experience.tags
     });
+
     const onChangeValue = (e) => { 
-        console.log(data)
         e.preventDefault();
 
         setData({
           ...data,
           [e.target.name]: e.target.value
         });
-        console.log(data)
     } 
-
 
     const onChangeTags = (e) => {
         e.preventDefault();

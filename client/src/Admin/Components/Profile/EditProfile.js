@@ -42,8 +42,10 @@ const EditProfile = () => {
         if(!data.newpassword.includes(' ')){
             setErrors({...errors, password : "" });
             await dispatch(updateProfile(data));
-            dispatch({ type : 'LOGOUT'});
-            navigate('/admin/login');
+            if(data.newpassword != ''){
+                dispatch({ type : 'LOGOUT'});
+            }
+            navigate(`${process.env.REACT_APP_ADMIN_BASE_URL}/login`);
         }else{
             alert('error');
             setErrors({...errors, password : " Not valid " });

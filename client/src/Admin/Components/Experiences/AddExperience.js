@@ -33,7 +33,6 @@ const AddExperience = () => {
           ...data,
           [e.target.name]: e.target.value
         });
-        console.log(data)
     } 
 
 
@@ -49,7 +48,6 @@ const AddExperience = () => {
                   });
                 
                 setTag('');
-                  console.log(data);
             }
         }
       } 

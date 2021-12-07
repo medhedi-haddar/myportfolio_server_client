@@ -71,7 +71,7 @@ const Admin = ({requestedComponent})=>{
         const storage = JSON.parse(localStorage.getItem('profile'))
         setUser(storage)
         if(!user || !storage){
-            navigate('/admin/login')
+            navigate(`${process.env.REACT_APP_ADMIN_BASE_URL}/login`)
         }else{
             dispatch(getAboutMe());
             dispatch(getSkills());
@@ -130,7 +130,7 @@ const Admin = ({requestedComponent})=>{
                 return <EditProfile/>
             break;
             case "notFound" :
-            return <PageNotFound/>
+                return <PageNotFound/>
             break
         }
     }
@@ -139,7 +139,7 @@ const Admin = ({requestedComponent})=>{
         <div className="body"> 
             <SideNav active_link={requestedComponent} classSideNav={classSideNav}/>
             <div className={`d-flex flex-column content ${classContentDiv}`} > 
-            <NavTop user={user} toggleSideNav={toggleSideNav}/>
+                <NavTop user={user} toggleSideNav={toggleSideNav}/>
                 <div className="component"> 
                     {renderSwitch(requestedComponent)}
                 </div> 

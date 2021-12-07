@@ -1,16 +1,15 @@
 import styled from 'styled-components';
 
 export const Fw700 = styled.span`
-font-weight : 700;
+    font-weight : 700;
 `;
 
 export const Fw900 = styled.span`
-font-weight : 900;
+    font-weight : 900;
 `;
 
 export const TextBlueGray = styled.span`
     color : #638b9d;
-
 `;
 
 export const Textinfo = styled.p`

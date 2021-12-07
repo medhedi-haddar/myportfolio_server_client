@@ -1,4 +1,3 @@
-import React from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import { VerticalTimeline, VerticalTimelineElement }  from 'react-vertical-timeline-component';
 import 'react-vertical-timeline-component/style.min.css';
@@ -31,7 +30,7 @@ const Experience = () => {
                             > 
                             <h3 className="vertical-timeline-element-title">{experience.title}</h3>
                             <small className="vertical-timeline-element-subtitle"><HiOutlineOfficeBuilding className="me-2"/>{experience.entreprise}</small>
-                            <div dangerouslySetInnerHTML={{ __html: experience.description}}/>
+                            <div className="timeline_description" dangerouslySetInnerHTML={{ __html: experience.description}}/>
                             <div className="pt-3 tags align-items-center">
                                 {experience.tags.map((tag,index2)=>(
                                     <span key={'tag'+index2} className="tag p-2 ps-3 pe-3"><span>{tag}</span></span>

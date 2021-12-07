@@ -1,6 +1,10 @@
 
 section{
     padding-bottom : 15px;
+    color : #05364d;
+}
+strong{
+    font-weight: 700;
 }
 .front-body{
     position:relative;
@@ -111,6 +115,9 @@ p{
 .p-absolute{
     position: absolute;
 }
+.text-justify{
+    text-align: justify;
+}
 .button-sanduich{
     background: transparent !important;
     border : none !important;
@@ -149,9 +156,11 @@ p{
     top: 0;
     left: -212px;
     height: 100vh;
+    width: 200px;
     background: rgb(206, 206, 206);
     transition: left .5s ease-in-out; 
     background-size: cover !important;
+    background :#05384f;
 }
 .wolf-navbar-menu-div.active{
     left: 0px;
@@ -171,7 +180,7 @@ p{
 }
 .wolf-navbar-menu-ul{
     display: flex;
-    justify-content: center;
+    justify-content: end;
     flex-direction: column;
     list-style: none;
     margin-bottom: 0 !important;
@@ -180,7 +189,7 @@ p{
 .wolf-navbar-item{
     padding: 0 0 !important;
     text-align: center;
-    min-width: 200px;
+    /* min-width: 200px; */
 } 
 .wolf-navbar-menu-head{
     position:relative;
@@ -216,41 +225,24 @@ p{
     font-size: 1rem;
     cursor : pointer;
     display : block;
-    padding: 20px 35px;
+    padding: 20px 20px;
     z-index : 1;
-    letter-spacing: 0px;
-    transition: letter-spacing .2s ease-in-out;
+    /* letter-spacing: 0px; */
+    transition: all .2s ease-in-out;
 } 
 .wolf-navbar-menu-head > a{
     color :#05364d !important;
 }
+
 .wolf-navbar-item > a:hover {
-    color :#05364d !important;
-    letter-spacing: 2px;
-    transition: letter-spacing .4s ease-in-out;
+    font-weight: 700;
+    background: #efefef;
+    color: #03384f !important;
+    transition: all .2s ease-in-out;
 } 
-
-.hovered > a::before{
-    content: "";
-    border-top: 3px solid;
-    border-bottom: 3px solid;
-    position: absolute;
-    top: 50%;
-    bottom: 50%;
-    left: 50%;
-    right: 50%;
-    z-index: -1;
-    transition: all .2s ease-in-out; 
-}
-.wolf-navbar-item > a:hover::before {
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background : #efefef;
-    transition: all .2s ease-in-out; 
+.wolf-navbar-item > a.active{
+    font-weight: 700;
 } 
-
 .about-me{ 
     display: flex;
     flex-direction: column-reverse;
@@ -263,13 +255,14 @@ p{
     margin-top: 100px;
 }
 .about-me-cover{
-    margin-top: -60px;
+    width: 100%;
+    margin-top: -55px;
     position:absolute;
     top : 0;
     right: 0;
 }
 .about-me-cover > img{
-    width: 80%;
+    width: 90%;
     height: initial;
 }
 .about-me-context > h1{
@@ -302,6 +295,7 @@ p{
     z-index: 2000;
     background: whitesmoke;
     width: calc(100% - 0.5px);
+    
 }
 .styl {
     padding-top: 80px;
@@ -336,10 +330,18 @@ p{
 }
 .footer {
     position: relative;
-    padding: 120px 0 0 0;
-    margin-top: 100px;
+    padding: 193px 0 0 0;
+    min-height: 100vh !important;
     color : var(--dark);
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    
+}
+.footer-content{
     background: rgb(5,56,79);
+    padding-top: 100px;
+    position: relative;
 }
 .footer-head{
     position: absolute;
@@ -360,23 +362,51 @@ p{
     background: #041e2a;
 }
 .about-me-text{
-    margin-top: 210px;
+    margin-top: 275px;
 }
 
-@media (min-width: 375px) {
+.timeline_description > p{
+    font-weight: 300;
+}
+
+@media (max-device-height: 375px) {
+    .about-me-cover{
+        width: 300px !important;
+    }
+    .about-me-text{
+        margin-top: 200px !important;
+
+    }
+}
+@media (min-device-width: 375px) {
+    
     .about-me-text{
         margin-top: 270px;
     }
+    .about-me-cover{
+        width: 300px;
+    }
+    .about-me-cover > img {
+        width: 100%;
+        height: initial;
+    }
 }
 /* // Small devices (landscape phones, 576px and up) */
-@media (min-width: 425px) { 
+@media (max-device-height: 425px){
     .about-me-text{
-        margin-top: 300px;
+        margin-top: 190px !important;
     }
- }
-
+    .about-me-cover{
+        width: 300px !important;
+    }
+}
+@media (min-device-width: 425px){ 
+    .about-me-text{
+        margin-top: 235px;
+    }
+}
 /* // Medium devices (tablets, 768px and up) */
-@media (min-device-width: 768px) and (min-device-width: 768px) { 
+@media (min-device-width: 768px) and (min-device-height: 768px) { 
     p{
         font-size : 1rem;
         font-weight: 300;  
@@ -388,19 +418,10 @@ p{
     .wolf-navbar-menu-head > a > span{
         display: initial;
       }
-    .wolf-navbar-item{
-        min-width: 300px;
-    } 
-    .wolf-navbar-item > a{
-        padding: 20px 35px;
-        min-width: 120px;
-    }
-    .wolf-navbar-item > a:hover::before {
-        transition: all .2s ease-in-out; 
-    } 
     .wolf-navbar-menu-div{
         left: -300px;
         background-size: cover;
+        width: 300px;
     }
     .wolf-navbar-brand > img{
         display: inline-block;
@@ -415,14 +436,11 @@ p{
     .about-me-content{
         margin-top: 100px;
     }
-
-    .about-me-cover{
-        width: 370px;
-        margin-top: 0;
+    .about-me-text {
+        margin-top: 270px;
     }
-    .about-me-cover > img{
-        width: 100%;
-        height: initial;
+    .about-me-cover{
+        width: 350px;
     }
     .section{
         padding-top : 95px;
@@ -450,12 +468,26 @@ p{
     .about-me-text {
         margin-top: 100px;
     }
+    .wolf-navbar-item {
+        display: inline-block;
+    }
     .wolf-navbar-item > a {
         padding: 10px 15px;
+        display:inline-block;
+        letter-spacing: 0px;
     } 
-    .hovered > a::before{
-        border-radius : 5px;
-        background : transparent !important;
+    .wolf-navbar-item > a:hover {
+        letter-spacing: 1px;
+        background:transparent;
+    } 
+    .wolf-navbar-item > a::before {
+        display: block;
+        content: attr(title);
+        font-weight: bold;
+        letter-spacing: 1px;
+        height: 0;
+        overflow: hidden;
+        visibility: hidden;
     }
     .wolf-navbar{
         top: 0;
@@ -469,6 +501,7 @@ p{
         background: none;
         height: auto;
         left:auto;
+        width: 100%;
         background : none !important;
         box-shadow: none !important;
         background-size: cover;
@@ -484,15 +517,21 @@ p{
     } 
     .wolf-navbar-menu-ul{
         display: flex;
-        justify-content: center;
+        justify-content: end;
         flex-direction: row;
         list-style: none;
         margin-bottom: 0 !important;
-        padding-left: 0 !important;
+    }
+    .navbar{
+        padding: 5px;
+        background: #f5f5f5;
+        border-radius: 10px;
+        border-right: 3px solid #d1d1d1;
+        border-left: 3px solid #d1d1d1;
     }
     .wolf-navbar-item{
-        padding: 10px 15px;
-        min-width: auto;
+        padding: 5px 10px;
+        /* min-width: 130px; */
     } 
     .wolf-navbar-item > a {
         text-decoration: none;
@@ -517,9 +556,18 @@ p{
         overflow-y: auto;
     }
 
-    .about-me-context{
-
+    .scrollNav {
+        background: transparent;
     }
+    #root::before{
+        content: '';
+        position: fixed;
+        width: 100%;
+        height: 85px;
+        background: white;
+        z-index: 1;
+    }
+
     .about-me-context > h1{
         font-size : 2.5rem;
     }
@@ -536,7 +584,11 @@ p{
  }
 /*  Extra large devices (large desktops, 1200px and up) */
 @media (min-width: 1200px) { 
-   
+    .about-me-cover{
+        width: 375px;
+        margin-top: 0;
+        z-index : 2
+    }
  }
 
 @media (min-width: 1440px) { 
@@ -572,6 +624,9 @@ p{
         position: absolute;
         left : 0;
         top:350px;
+    }
+    .navbar {
+        background: transparent;
     }
 }
 

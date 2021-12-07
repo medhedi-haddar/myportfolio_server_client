@@ -16,8 +16,7 @@ const Login = () => {
         emaill: '',
         password : ''
     })
-    const [pwdButtonIcon, setPwdButtonIcon] = useState(<FiEye/>)
-    const [pwdInputType, setPwdInputType] = useState('password');
+    const [passwordShown, setPasswordShown] = useState(false);
 
     const onChangeHanndle = (e)=>{
         e.preventDefault()
@@ -26,16 +25,7 @@ const Login = () => {
             [e.target.name] : e.target.value
         })
     }
-    const toggleShowPwd = (e) => {
-        e.preventDefault();
-        if(pwdInputType === 'password') {
-            setPwdInputType('text');
-            setPwdButtonIcon(<FiEyeOff/>);
-        }else{
-            setPwdInputType('password');
-            setPwdButtonIcon(<FiEye/>);
-        }
-    }
+    const togglePassword = () => { setPasswordShown(!passwordShown);};
 
     const handleSubmit = async(e)=>{
         e.preventDefault();
@@ -45,7 +35,7 @@ const Login = () => {
     useEffect(() => {  
        const result =  getFromStorage("profile"); 
         if(result?.token){
-            navigate('/admin')
+            navigate(`${process.env.REACT_APP_ADMIN_BASE_URL}`)
         }
     }, [])
 
@@ -55,7 +45,7 @@ const Login = () => {
             <Form className="login-form" onSubmit={handleSubmit}>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Label>Email address</Form.Label>
-                    <Form.Control type="email" name="email" placeholder="email" value={loginData.email} onChange={onChangeHanndle} />
+                    <Form.Control type="email" name="email" placeholder="email" value={loginData?.email ? loginData.email : ''} onChange={onChangeHanndle} />
                     <Form.Text className="text-muted">
                     We'll never share your email with anyone else.
                     </Form.Text>
@@ -64,9 +54,9 @@ const Login = () => {
                 <Form.Group className="mb-3" controlId="formBasicPassword">
                     <Form.Label>Password</Form.Label>
                     <InputGroup className="mb-3">
-                    <Form.Control type={pwdInputType}  placeholder="Email" name="password" value={loginData.password} onChange={onChangeHanndle} />
-                    <Button variant="outline-secondary" id="button-addon1" onClick={toggleShowPwd} >
-                        {pwdButtonIcon}
+                    <Form.Control type={passwordShown ? "text" : "password"}  placeholder="Email" name="password" value={loginData?.password ? loginData.password : ''} onChange={onChangeHanndle} />
+                    <Button variant="outline-secondary" id="button-addon1" onClick={togglePassword} >
+                    {passwordShown ? <FiEyeOff/> : <FiEye/>}
                     </Button>
                     </InputGroup>
                 </Form.Group>

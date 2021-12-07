@@ -75,7 +75,7 @@ const AddProject = () => {
     }
 
     return (
-        <Form classname="form" onSubmit={handleSubmit}> 
+        <Form className="form" onSubmit={handleSubmit}> 
             <div className="component_title">
                 <Container fluid> <h2>Add Project</h2> </Container>
             </div>

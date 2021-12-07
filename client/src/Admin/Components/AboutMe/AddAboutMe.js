@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 import { Form, Button, Container, Row, Col } from 'react-bootstrap'
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import { addAboutMe } from '../../../actions/aboutMe'
+import { useDispatch } from 'react-redux'
 
 import { EditorState, convertToRaw, ContentState,convertFromHTML } from 'draft-js';
 import { Editor } from 'react-draft-wysiwyg';
@@ -11,7 +12,7 @@ import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 const AddAboutMe = ({fetchAboutMeData}) => {
 
     const navigate  = useNavigate();
-
+    const dispatch = useDispatch();
     const [data, setData] = useState({
         lastName : '',
         firstName : '',
@@ -57,20 +58,8 @@ const AddAboutMe = ({fetchAboutMeData}) => {
         formData.append('git_link' , data.git_link);
         formData.append('profileImage' , data.profileImage);
         formData.append('cv' , data.cv);
-        axios.post(
-            '/api/add_about_me',
-            formData,
-            {
-            contentType: 'multipart/form-data'
-        }).then(()=> {
-            console.log("data has send to the server");
-            fetchAboutMeData();
-            navigate('/admin/about_me');
-
-        })
-        .catch((error)=>{
-            console.log( "data not sent ", error);
-        });
+        const config =  {header: { "Content-Type": "multipart/form-data" }}
+        dispatch(addAboutMe(formData,config,navigate));
     }
 
     return (

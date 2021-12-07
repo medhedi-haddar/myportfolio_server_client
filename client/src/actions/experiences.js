@@ -40,7 +40,7 @@ export const addExperience = (newModel,navigate) => async (dispatch) => {
     try {
       const { data } = await api.addExperience(newModel);
       dispatch({ type: ADD_EXPERIENCE, payload: data });
-      navigate('/admin/experiences');
+      navigate(`${process.env.REACT_APP_ADMIN_BASE_URL}/experiences`);
 
     } catch (error) {
         return JSON.parse({ success : false , error : error.message });
@@ -52,7 +52,7 @@ export const updateExperience = (updatedModel,navigate) => async (dispatch) => {
     try {
       const { data } = await api.updateExperience(updatedModel);
       dispatch({ type: UPDATE_EXPERIENCE, payload: data });
-      navigate('/admin/experiences');
+      navigate(`${process.env.REACT_APP_ADMIN_BASE_URL}/experiences`);
 
     } catch (error) {
         return JSON.parse({ success : false , error : error.message });

@@ -26,14 +26,7 @@ mongoose.connection.on('connected', ()=>{
 
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
-
-// app.use(bodyParser.json());
-// app.use(bodyParser.urlencoded({
-//     extended: false
-// }));
-// if(process.env.NODE_ENV === 'production'){
 app.use(express.static('client/build'));
-// }
 app.use('/uploads',express.static('uploads'));
 
 // HTTP request logger

@@ -5,7 +5,6 @@ import { useDispatch } from 'react-redux';
 import moment from 'moment';
 import { updateAboutMe } from '../../../../actions/aboutMe'
 import { FiSave } from "react-icons/fi";
-import { FiWatch } from "react-icons/fi";
 // WYSIWYG DEPEDENCIES
 import { EditorState, convertToRaw, ContentState,convertFromHTML } from 'draft-js';
 import { Editor } from 'react-draft-wysiwyg';

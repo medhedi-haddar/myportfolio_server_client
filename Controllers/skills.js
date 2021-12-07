@@ -5,10 +5,8 @@ const get_all = async (req, res)=> {
 
     Skills.find()
     .then((data)=>{
-        console.log(data);
          res.status(200).json(data);
     }).catch((error)=>{
-        console.log(error)
          res.status(400).json({success: false, message:error.message});
     });     
 };

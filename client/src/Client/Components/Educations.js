@@ -1,4 +1,3 @@
-import React from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import { VerticalTimeline, VerticalTimelineElement }  from 'react-vertical-timeline-component';
 import 'react-vertical-timeline-component/style.min.css';
@@ -9,7 +8,6 @@ import moment from 'moment';
 const Educations = () => {
 
     const educations = useSelector((state) => state.educations);
-    console.log(educations)
     return ( 
         <section id="Education" className="section"> 
             <Container >
@@ -35,7 +33,7 @@ const Educations = () => {
                             </small>
                             <small> <FaMapMarkerAlt className="me-2"/>{education.country}</small>
                             </div>
-                            <div dangerouslySetInnerHTML={{ __html: education.description}}/>
+                            <div  className="timeline_description" dangerouslySetInnerHTML={{ __html: education.description}}/>
                            
                         </VerticalTimelineElement> 
                         ))}

@@ -39,7 +39,7 @@ export const addProject = (project,config,navigate) => async (dispatch) => {
     try {
       const { data } = await api.addProject(project,config);
       dispatch({ type: ADD_PROJECT, payload: data });
-      navigate('/admin/projects')
+      navigate(`${process.env.REACT_APP_ADMIN_BASE_URL}/projects`)
 
     } catch (error) {
       console.log(error.message);
@@ -51,7 +51,7 @@ export const updateProject = (newProject,config,navigate) => async (dispatch) =>
     try {
       const { data } = await api.updateProject(newProject,config);
       dispatch({ type: UPDATE_PROJECT, payload: data });
-      navigate('/admin/projects');
+      navigate(`${process.env.REACT_APP_ADMIN_BASE_URL}/projects`);
 
     } catch (error) {
       console.log(error.message);

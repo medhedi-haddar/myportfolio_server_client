@@ -29,7 +29,7 @@ const Front = () => {
     },[])
 
     return (
-        <div>
+        <>
             <NavBarMenu/>
             <AboutMe/>
             <Skills/>
@@ -37,7 +37,7 @@ const Front = () => {
             <Experience/>
             <Educations/>
             <Footer/>
-        </div>
+        </>
     )
 }
 

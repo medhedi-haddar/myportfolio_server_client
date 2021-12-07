@@ -16,7 +16,7 @@ const AboutMe = () => {
          <div className="component_title">
             <Container fluid className="d-flex justify-content-between"> 
                 <h2>About Me</h2>             
-                <Button className="d-flex align-items-center " variant="secondary" href="/admin/up_aboutme"><FiEdit className="me-2"/>Edit About me</Button>
+                <Button className="d-flex align-items-center " variant="secondary" href={`${process.env.REACT_APP_ADMIN_BASE_URL}/up_aboutme`}><FiEdit className="me-2"/>Edit About me</Button>
             </Container>
         </div>
         {typeof aboutMe === 'object' && 

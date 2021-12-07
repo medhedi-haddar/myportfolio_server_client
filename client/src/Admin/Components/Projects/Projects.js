@@ -14,7 +14,7 @@ const Projects = () => {
          <div className="component_title ">
                 <Container fluid className="d-flex justify-content-between align-items-center"> 
                     <h2>Projects</h2>             
-                    <Button className="d-flex align-items-center" variant="secondary" href="/admin/add_project"><FiPlusCircle className="me-2"/> Project</Button>
+                    <Button className="d-flex align-items-center" variant="secondary" href={`${process.env.REACT_APP_ADMIN_BASE_URL}/add_project`}><FiPlusCircle className="me-2"/> Project</Button>
                 </Container>
             </div>
         <div className="component_body">    
