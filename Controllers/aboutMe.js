@@ -1,6 +1,6 @@
 const AboutMe = require('../models/aboutMe');
 const Media = require('../models/media');
-
+const fs = require('fs');
 
 const get_all = async (req, res)=> {
 
@@ -62,6 +62,8 @@ const update = async (req, res) => {
     try{
        
         const { body }  = req;
+        console.log('body',body)
+        console.log('req.files',req.files)
         const preventAboutMe = await AboutMe.findById({_id: body._id});
     
          // save image profile
@@ -74,7 +76,7 @@ const update = async (req, res) => {
                     url : ''
                 }
                 profileImageReq.url = '/uploads/'+file.filename;
-                body.profileImage = profileImageReq;
+                // body.profileImage = profileImageReq;
                 
                 if(preventAboutMe.profileImage ){
                     const preventProfileImage = await Media.findById({_id: preventAboutMe.profileImage});
@@ -88,7 +90,7 @@ const update = async (req, res) => {
                     }
                     preventProfileImage.url = '/uploads/'+file.filename;
                     const new_media = new Media(preventProfileImage)
-                    Media.updateOne({_id : preventProfileImage._id},new_media);
+                    Media.updateOne({_id : preventProfileImage._id},new_media).then(() => console.log('Saved new Profile Image '));
                 }else{
                     const new_media =  new Media(profileImageReq);
                     body.profileImage = new_media;
@@ -104,11 +106,9 @@ const update = async (req, res) => {
                     url : ''
                 }
                 cvReq.url = '/uploads/'+file.filename;
-                body.cv = cvReq;
-                
                 if(preventAboutMe.cv){
                     const preventCv = await Media.findById({_id: preventAboutMe.cv});
-        
+                    console.log('preventCv',preventCv)
                     if (fs.existsSync('.'+preventCv.url)){
                         fs.unlink('.'+preventCv.url, (err) => {
                             if (err) {
@@ -118,7 +118,9 @@ const update = async (req, res) => {
                     }
                     preventCv.url = '/uploads/'+file.filename;
                     const new_media = new Media(preventCv)
-                    Media.updateOne({_id : preventCv._id},new_media);
+                    console.log('new_media',new_media)
+                    Media.updateOne({_id : preventCv._id},new_media).then(() => console.log('Saved new cv '));
+                    
                 }else{
                     const new_media =  new Media(cvReq);
                     body.cv = new_media;

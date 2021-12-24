@@ -42,9 +42,7 @@ const NavBarMenu = () => {
                             </div> 
                         </Col>
                         <Col  className="d-flex align-items-center justify-content-between" lg={9} xl={10} xxl={9} ref={ref}>
-                            <div className={`wolf-navbar-menu-div ${menuIsActive}`} 
-                            // style={{background : 'url(/color-bg.jpg)'}}
-                            >
+                            <div className={`wolf-navbar-menu-div ${menuIsActive}`}>
                                 <div className="wolf-navbar-menu-head"><a href="#" ><img src="/brand-icon.svg" width="50px"/>       
                                 <span>My Portfolio</span></a></div>
                                 <div className="wolf-navbar-menu"> 
