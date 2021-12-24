@@ -30,7 +30,7 @@ const Educations = () => {
         <>
          <div className="component_title">
                 <Container fluid className="d-flex justify-content-between align-items-center"> <h2>Educations</h2> 
-                <Button  className="d-flex align-items-center" variant="secondary" href={`${process.env.REACT_APP_ADMIN_BASE_URL}/add_education`}><FiPlusCircle className="me-2"/> Education</Button>
+                <Button  className="d-flex align-items-center" variant="secondary" href={`/admin/add_education`}><FiPlusCircle className="me-2"/> Education</Button>
                 </Container>
             </div>
         <div className="component_body"> 
@@ -58,7 +58,7 @@ const Educations = () => {
                             icon={<FaBook />} 
                             > 
                             <div className="d-flex justify-content-end pb-3">
-                                <Button className=" btn-sm m-1 d-flex align-items-center justify-content-center"  variant="outline-secondary" href={`${process.env.REACT_APP_ADMIN_BASE_URL}/up_education/${education._id}`}><FiEdit className="me-2" size={14}/> Edit</Button>
+                                <Button className=" btn-sm m-1 d-flex align-items-center justify-content-center"  variant="outline-secondary" href={`/admin/up_education/${education._id}`}><FiEdit className="me-2" size={14}/> Edit</Button>
                                 <Button className=" btn-sm m-1 d-flex align-items-center justify-content-center"variant="danger"onClick={() => handleDelete(education._id,education.diplome)}
 
                                 ><FiTrash2 className="me-2" size={14}/> delete</Button>

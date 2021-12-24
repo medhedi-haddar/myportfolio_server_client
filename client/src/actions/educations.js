@@ -40,7 +40,7 @@ export const addEducation = (newModel,navigate) => async (dispatch) => {
     try {
       const { data } = await api.addEducation(newModel);
       dispatch({ type: ADD_EDUCATION, payload: data });
-      navigate(`${process.env.REACT_APP_ADMIN_BASE_URL}/educations`);
+      navigate(`/admin/educations`);
 
     } catch (error) {
         return JSON.parse({ success : false , error : error.message });
@@ -52,7 +52,7 @@ export const updateEducation = (updatedModel,navigate) => async (dispatch) => {
     try {
       const { data } = await api.updateEducation(updatedModel);
       dispatch({ type: UPDATE_EDUCATION, payload: data });
-      navigate(`${process.env.REACT_APP_ADMIN_BASE_URL}/educations`);
+      navigate(`/admin/educations`);
 
     } catch (error) {
         return JSON.parse({ success : false , error : error.message });

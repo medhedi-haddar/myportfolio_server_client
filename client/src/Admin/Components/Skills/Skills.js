@@ -12,7 +12,7 @@ const Skills = () => {
             <div className="component_title ">
                 <Container fluid className="d-flex justify-content-between"> 
                     <h2 className="d-flex align-items-center">Skills</h2>             
-                    <Button className="d-flex align-items-center" variant="secondary" href={`${process.env.REACT_APP_ADMIN_BASE_URL}/up_skills`}><FiEdit className="me-2"/>Edit Skills</Button>
+                    <Button className="d-flex align-items-center" variant="secondary" href={`/admin/up_skills`}><FiEdit className="me-2"/>Edit Skills</Button>
                 </Container>
             </div>
         

@@ -45,7 +45,7 @@ const EditProfile = () => {
             if(data.newpassword != ''){
                 dispatch({ type : 'LOGOUT'});
             }
-            navigate(`${process.env.REACT_APP_ADMIN_BASE_URL}/login`);
+            navigate(`/admin/login`);
         }else{
             alert('error');
             setErrors({...errors, password : " Not valid " });

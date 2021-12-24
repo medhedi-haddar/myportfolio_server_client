@@ -29,7 +29,7 @@ const NavBarMenu = () => {
         <StickyNav length='89'> 
             <div className="wolf-navbar">
                 <Container className="overflow-hidden  align-items-center">
-                    <Row className="navbar">
+                    <Row className="navbar navbar-client">
                         <Col className="d-flex justify-content-between align-items-center" sm={12} md={12} lg={3} xl={2} xxl={3}>
                             <div className="wolf-navbar-brand">
                                 <img src="/brand-icon.svg" width="50px"/> <span>My Portfolio</span>

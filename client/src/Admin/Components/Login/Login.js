@@ -35,7 +35,7 @@ const Login = () => {
     useEffect(() => {  
        const result =  getFromStorage("profile"); 
         if(result?.token){
-            navigate(`${process.env.REACT_APP_ADMIN_BASE_URL}`)
+            navigate(`/admin`)
         }
     }, [])
 

@@ -12,7 +12,7 @@ const Profile = () => {
             <div className="component_title ">
                 <Container fluid className="d-flex justify-content-between align-items-center"> 
                     <h2>Profile</h2>             
-                    <Button className="d-flex align-items-center" variant="secondary" href={`${process.env.REACT_APP_ADMIN_BASE_URL}/edit_profile`}><FiEdit className="me-2"/> Edit profile</Button>
+                    <Button className="d-flex align-items-center" variant="secondary" href={`/admin/edit_profile`}><FiEdit className="me-2"/> Edit profile</Button>
                 </Container>
             </div>
             <div className="component_body"> 

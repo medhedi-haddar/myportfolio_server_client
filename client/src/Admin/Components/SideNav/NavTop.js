@@ -16,14 +16,14 @@ const NavTop = ({toggleSideNav}) => {
     const handleLogOut = () => {
 
         dispatch({ type : 'LOGOUT'});
-        navigate(`${process.env.REACT_APP_ADMIN_BASE_URL}/login`);
+        navigate(`/admin/login`);
         setUser(null);
     }
 
     useEffect(() => {
         const token = user?.token;
         if(!token){
-            navigate(`${process.env.REACT_APP_ADMIN_BASE_URL}/login`) 
+            navigate(`/admin/login`) 
         }
         if(token){
             const decodeedToken = decode(token);

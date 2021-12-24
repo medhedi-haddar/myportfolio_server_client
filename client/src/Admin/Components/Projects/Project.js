@@ -50,7 +50,7 @@ const Project = ({projects}) => {
                             <Card.Title>{project.title }</Card.Title>
                           
                             <div className="d-flex row justify-conetent-between p-2">
-                                <Button className="mb-2 d-flex align-items-center justify-content-center" href={`${process.env.REACT_APP_ADMIN_BASE_URL}/up_project/${project._id}`} variant="outline-secondary">
+                                <Button className="mb-2 d-flex align-items-center justify-content-center" href={`/admin/up_project/${project._id}`} variant="outline-secondary">
                                     <FiEdit className="me-2" size={14} />
                                     Update
                                 </Button>
