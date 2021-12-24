@@ -20,7 +20,7 @@ const AboutMe = () => {
                             <div className="pt-4 about-me-buttons"> 
                             <Row>
                                 <Col xs={12} md={6} lg={4} >
-                                    <Button href={aboutMe[0]?.cv.url} target="_blank" className="width-100 mb-2 align-items-center me-md-3 pe-4 ps-4" variant="primary" ><FiFileText className="me-3" size={14}/>My Cv</Button>
+                                    <Button href={aboutMe[0]?.cv.url} download={`HADDAR-MOHAMED-ELHEDI-CV.pdf`} className="width-100 mb-2 align-items-center me-md-3 pe-4 ps-4" variant="primary" ><FiFileText className="me-3" size={14}/>My Cv</Button>
                                     </Col>
                                 <Col xs={12} md={6} lg={4}>
                                 <Button href={aboutMe[0]?.git_link} target="_blank" className="width-100 mb-2 align-items-center me-md-3 pe-4 ps-4" variant="secondary" ><FiGithub className="me-3" size={14}/>Github</Button> 

@@ -6,6 +6,8 @@ export const getExperiences = () => async (dispatch) =>{
 
     try {
         const { data } = await api.getExperiences();
+        data.sort((a,b) => (Number(a.endDate) < Number(b.endDate)) ? 1 : ((Number(b.endDate) < Number(a.endDate)) ? -1 : 0))
+
         dispatch({ type : FETCH_EXPERIENCES, payload: data});
 
     } catch (error) {

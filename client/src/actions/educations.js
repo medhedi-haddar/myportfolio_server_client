@@ -6,8 +6,9 @@ export const getEducations = () => async (dispatch) =>{
 
     try {
         const { data } = await api.getEducations();
+        data.sort((a,b) => (Number(a.obtainedDate) < Number(b.obtainedDate)) ? 1 : ((Number(b.obtainedDate) < Number(a.obtainedDate)) ? -1 : 0))
+        
         dispatch({ type : FETCH_EDUCATIONS, payload: data});
-
     } catch (error) {
         return JSON.parse({ success : false , error : error.message });
     }
