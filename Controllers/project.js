@@ -112,7 +112,7 @@ const update = async (req, res) => {
             }
             mediaReq.url = '/uploads/'+req.files[0].filename;
             const new_media =  new Media(mediaReq);
-            Media.updateOne({_id : preventProject.cover._id},new_media)
+            Media.updateOne({_id : preventProject.cover._id},new_media).then(() => console.log('Experience media updated '));
         }
         
         const new_project = new Project(body);
