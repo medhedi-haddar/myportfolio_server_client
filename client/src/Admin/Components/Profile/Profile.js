@@ -4,7 +4,7 @@ import { FiEdit } from "react-icons/fi";
 
 const Profile = () => {
 
-    const {result} = JSON.parse(localStorage.getItem('profile'))
+    const {result} = localStorage.getItem('profile') ? JSON.parse(localStorage.getItem('profile')) : ''
     
     return (
 

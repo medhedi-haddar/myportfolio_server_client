@@ -129,6 +129,9 @@ const Admin = ({requestedComponent})=>{
             case 'edit_profile':
                 return <EditProfile/>
             break;
+            case 'medias':
+                return <EditProfile/>
+            break;
             case "notFound" :
                 return <PageNotFound/>
             break

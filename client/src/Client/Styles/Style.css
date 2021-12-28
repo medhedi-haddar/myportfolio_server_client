@@ -163,6 +163,7 @@ p{
     background :#05384f;
 }
 .wolf-navbar-menu-div.active{
+    
     left: 0px;
     box-shadow: -34px 0 40px 24px #000000b5;
     transition: left .5s ease-in-out; 

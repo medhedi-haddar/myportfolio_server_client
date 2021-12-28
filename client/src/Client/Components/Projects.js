@@ -35,7 +35,7 @@ const Projects = () => {
                     </Modal.Header>
                     <Modal.Body>
                         <Col>
-                            <img src={modal.cover} style={{width: '100%'}}/>
+                            <img src={modal.cover} style={{width: '100%'}} onError={(e) => e.target.src = process.env.PUBLIC_URL+'/noimagefound.png'}/>
                         </Col>
                         <Col>
                             <div className="modal-project-description" dangerouslySetInnerHTML={{ __html: modal.description}}/>
@@ -62,7 +62,7 @@ const Projects = () => {
                                                 <FaExpandArrowsAlt color="#aaa" size={25} />
                                             </div>
                                         </div>
-                                        <Card.Img variant="top" src={project.cover.url}  />
+                                        <Card.Img variant="top" src={project.cover.url} onError={(e) => e.target.src = process.env.PUBLIC_URL+'/noimagefound.png'} />
                                     </div>
                                     <Card.Body>
                                     <Card.Title>{project.title}</Card.Title>

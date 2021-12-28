@@ -29,7 +29,7 @@ const App =() => {
           <Route path={`/admin/educations`}             history={history} element={<Admin  requestedComponent="educations"/>}/> 
           <Route path={`/admin/add_education`}          history={history} element={<Admin  requestedComponent="add_education"/>}/> 
           <Route path={`/admin/up_education/:id_edu`}   history={history} element={<Admin  requestedComponent="up_education"/>}/> 
-          <Route path={`/admin/messages`}               history={history} element={<Admin  requestedComponent="messages"/>}/>  
+          <Route path={`/admin/medias`}               history={history} element={<Admin  requestedComponent="medias"/>}/>  
           <Route path="*"                                                      history={history} element={<Admin  requestedComponent="notFound"/>}/>
         </Routes>
       </BrowserRouter>

@@ -44,7 +44,7 @@ const Project = ({projects}) => {
                         <Card style={{marginBottom : "10px"}} > 
                             <div className="card_image"> 
                                 <Button className="btn-sm" variant="danger" onClick={() => handleDelete(project._id,project.title)}><FiTrash2/></Button>
-                                <Card.Img variant="top" alt={project.title} src={project.cover.url} />
+                                <Card.Img variant="top" alt={project.title} src={project.cover.url} onError={(e) => e.target.src = process.env.PUBLIC_URL+'/noimagefound.png'}/>
                             </div>
                             <Card.Body>
                             <Card.Title>{project.title }</Card.Title>

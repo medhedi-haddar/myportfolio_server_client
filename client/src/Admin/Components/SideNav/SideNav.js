@@ -1,5 +1,5 @@
 import React from 'react';
-import { MdOutlineContactPage, MdFingerprint, MdDeveloperMode,MdBubbleChart,MdOutlineMenuBook, MdEngineering } from "react-icons/md";
+import { MdOutlineContactPage, MdFingerprint, MdDeveloperMode,MdBubbleChart,MdOutlineMenuBook, MdEngineering, MdBurstMode } from "react-icons/md";
 import { Link } from 'react-router-dom';
 
 
@@ -26,6 +26,9 @@ const SideNav = ({active_link,classSideNav}) => {
             </li> 
             <li className={`sideNavItem ${["educations", "add_education", "up_education"].indexOf(active_link) != -1 ? 'active' : ''}`}>
                 <Link to={`/admin/educations`} > <span>Educations</span><MdOutlineMenuBook className="sideNaveItemIcon"/></Link>     
+            </li> 
+            <li className={`sideNavItem ${["educations", "add_education", "up_education"].indexOf(active_link) != -1 ? 'active' : ''}`}>
+                <Link to={`/admin/medias`} > <span>Gallery</span><MdBurstMode className="sideNaveItemIcon"/></Link>     
             </li> 
         </ul>
     )
