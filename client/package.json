@@ -20,7 +20,7 @@
     "react-draft-wysiwyg": "^1.14.7",
     "react-js-stickynav": "^1.0.2",
     "react-moment": "^1.1.1",
-    "react-scripts": "4.0.3",
+    "react-scripts": "5.0.0",
     "react-scroll": "^1.8.4",
     "react-vertical-timeline-component": "^3.5.2",
     "redux-thunk": "^2.4.1",
