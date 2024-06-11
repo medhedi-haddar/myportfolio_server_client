@@ -11,7 +11,7 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "cd client && npm run build",
+    "build": "cd client &&  react-scripts build ",
     "install-client": "cd client && npm install",
     "heroku-postbuild": "npm run install-client && npm run build",
     "start": "node server.js",
@@ -22,7 +22,12 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+<<<<<<< HEAD
     "axios": "^1.7.2",
+=======
+    "react-scripts" : "5.0.1",
+    "axios": "^0.24.0",
+>>>>>>> f920f43c6a06020efbe7832001fa21a5e1304b66
     "bcrypt": "^5.0.1",
     "body-parser": "^1.19.0",
     "bootstrap": "^5.3.3",
