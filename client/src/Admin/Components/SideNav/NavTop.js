@@ -2,6 +2,7 @@ import React,{useEffect, useState} from 'react'
 import {MdOutlineMenu, MdOutlinePersonOutline, MdLogout} from  "react-icons/md";
 import {Container, Navbar, Button, DropdownButton,Dropdown} from "react-bootstrap";
 import { useNavigate,useLocation } from 'react-router-dom';
+import Nav from 'react-bootstrap/Nav';
 import { useDispatch} from 'react-redux'
 import decode from 'jwt-decode';
 
@@ -19,7 +20,13 @@ const NavTop = ({toggleSideNav}) => {
         navigate(`/admin/login`);
         setUser(null);
     }
+    const handleDemo = () => {
 
+        // dispatch({ type : 'LOGOUT'});
+        navigate(`/`);
+        // setUser(null);
+    }
+    
     useEffect(() => {
         const token = user?.token;
         if(!token){
@@ -37,6 +44,10 @@ const NavTop = ({toggleSideNav}) => {
         <Navbar bg="light" className="border-bottom">
             <Container fluid>
                     <Button variant={"light"} onClick={toggleSideNav}> <MdOutlineMenu/> </Button>
+
+                    <Nav.Link  ><span color='danger' onClick={handleDemo}>Visualiser : Front-End</span></Nav.Link>
+                    
+
                     <DropdownButton  align="end" id="dropdown-basic-button-light" variant={"light"} 
                     title={(user?.token 
                         ? <><small className="p-1"><b>{user?.result?.lastName.charAt(0).toUpperCase()}.</b>{user?.result?.firstName}</small><MdOutlinePersonOutline/></> 
@@ -53,3 +64,4 @@ const NavTop = ({toggleSideNav}) => {
 }
 
 export default NavTop
+    

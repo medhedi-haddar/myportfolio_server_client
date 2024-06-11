@@ -10,6 +10,7 @@ const get_all = async (req, res)=> {
 
     }).catch((error)=>{
         res.status(400).json({success: false, message:error.message});
+        console.log("error aboutme " + error.message)
     });   
 };
 

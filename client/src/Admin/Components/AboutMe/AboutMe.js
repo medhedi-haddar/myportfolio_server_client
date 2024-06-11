@@ -22,15 +22,14 @@ const AboutMe = () => {
         {typeof aboutMe === 'object' && 
         !Object.keys(aboutMe).length  ?  <Loader/> :
             <div className="component_body"> 
-           
-            <div>
-                <Container fluid>
-                    <AboutMeContent aboutMeData={aboutMe[0]}/>  
-                </Container> 
-            </div>
-        </div> 
+                <div>
+                    <Container fluid>
+                        <AboutMeContent aboutMeData={aboutMe[0]}/>  
+                    </Container> 
+                </div>
+            </div> 
         
-    }
+        }
         </>
     )
 }

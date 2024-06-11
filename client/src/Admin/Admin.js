@@ -54,7 +54,7 @@ const Admin = ({requestedComponent})=>{
     }
     
     useEffect(() => {
-    
+        document.title="Admin";
         const ismobile = window.innerWidth <= 768;
         
         if (ismobile ) {
@@ -140,9 +140,10 @@ const Admin = ({requestedComponent})=>{
   
     return (
         <div className="body"> 
+            
             <SideNav active_link={requestedComponent} classSideNav={classSideNav}/>
             <div className={`d-flex flex-column content ${classContentDiv}`} > 
-                <NavTop user={user} toggleSideNav={toggleSideNav}/>
+            <NavTop user={user} toggleSideNav={toggleSideNav}/>
                 <div className="component"> 
                     {renderSwitch(requestedComponent)}
                 </div> 

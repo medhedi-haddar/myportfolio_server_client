@@ -6,6 +6,7 @@ export const getAboutMe = () => async (dispatch) =>{
     try {
         const { data } = await api.getAboutMe();
         dispatch({ type : FETCH_ABOUTME, payload: data});
+        console.log(data)
 
     } catch (error) {
             console.log(error.message)

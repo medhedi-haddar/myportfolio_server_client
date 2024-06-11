@@ -14,7 +14,7 @@ const NavBarMenu = () => {
         (menuIsActive === '') ? setMenuIsActive('active') : setMenuIsActive(''); 
     }
 
-    let ref = useRef(null);
+    const ref = useRef(null);
     const handleClickOutside = (event) => {
         if (ref.current && !ref.current.contains(event.target)) {
             setMenuIsActive('');
@@ -22,6 +22,7 @@ const NavBarMenu = () => {
     };
 
     useEffect(() => {
+        console.log("ref ======= "+ ref)
         document.addEventListener('click', handleClickOutside, true);
     });
 

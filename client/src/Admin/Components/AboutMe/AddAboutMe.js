@@ -1,5 +1,11 @@
 import React, { useState } from 'react'
-import { Form, Button, Container, Row, Col } from 'react-bootstrap'
+// import { Form, Button, Container, Row, Col } from 'react-bootstrap'
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+
 import { useNavigate } from 'react-router-dom';
 import { addAboutMe } from '../../../actions/aboutMe'
 import { useDispatch } from 'react-redux'

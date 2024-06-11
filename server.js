@@ -30,7 +30,7 @@ app.use(express.static('client/build'));
 app.use('/uploads',express.static('uploads'));
 
 // HTTP request logger
-app.use(morgan('tiny'));
+app.use(morgan('tiny'));    
 app.use('/api', routes);
 app.use('/admin', adminRoutes);
 app.use('/projects', projectRoutes);
@@ -41,6 +41,6 @@ app.use('/aboutme', aboutMeRoutes);
 
 app.get("*", (req, res) => {
     res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
- });
+});
 
-app.listen(PORT, console.log(`server is starting ut ${PORT}`)); 
+app.listen(PORT, console.log(`server is starting at ${PORT}`)); 

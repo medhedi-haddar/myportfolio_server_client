@@ -18,14 +18,14 @@ const Experience = () => {
                 <Row>
                     <h1 className="mb-3 text-uppercase"><span className="text-secondary"></span>Experience</h1>
                     <Col>
-                    <VerticalTimeline lineColor="#f5f5f5">
+                    <VerticalTimeline lineColor="#dddddd">
                         {experiences.map((experience,index)=>( 
                             <VerticalTimelineElement key={'experience'+index}
                             className="vertical-timeline-element--work"
-                            contentStyle={{ background: 'rgb(245 245 245)', color: 'rgb(5 54 77)' }}
-                            contentArrowStyle={{ borderRight: '7px solid  rgb(245 245 245)' }}
+                            contentStyle={{ background: 'rgb(221 221 221)', color: 'rgb(5 54 77)' }}
+                            contentArrowStyle={{ borderRight: '7px solid  rgb(221 221 221)' }}
                             date={moment(Number(experience.beginDate)).format('MMMM YYYY')+` - `+moment(Number(experience.endDate)).format('MMMM YYYY')}
-                            iconStyle={{ background: 'rgb(245 245 245)', color: 'rgb(5 54 77)' }} 
+                            iconStyle={{ background: 'rgb(221 221 221)', color: 'rgb(5 54 77)' }} 
                             icon={<FaBriefcase />} 
                             > 
                             <h3 className="vertical-timeline-element-title">{experience.title}</h3>

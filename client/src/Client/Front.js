@@ -26,7 +26,7 @@ const Front = () => {
         dispatch(getprojects());
         dispatch(getExperiences());
         dispatch(getEducations());
-    },[])
+    },[]) 
 
     return (
         <div id="under-root">

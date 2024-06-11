@@ -1,12 +1,12 @@
 import { useState } from 'react'
 import { Card,Button,Container,Row,Col,Modal } from 'react-bootstrap'; 
 import { FaLink,FaGithub,FaExpandArrowsAlt } from "react-icons/fa";
-
 import { useSelector } from 'react-redux';
 
 const Projects = () => {
 
     const projects = useSelector((state) => state.projects);
+    const isLoading = useSelector((state) => state.isLoading);
 
     const [modal,setModal] = useState({ show : false, 
             title : '', 
@@ -50,7 +50,7 @@ const Projects = () => {
             <Container>
             <h1 className="mb-3 text-uppercase"><span className="text-secondary"></span>Projects</h1>
                 <Row>
-                    {(!projects.length) ? '' 
+                    {(!projects.length) ? 'No Data'
                     :
                         projects.map((project,index) => (
                             <Col md={4} key={`project`+index}>
@@ -71,8 +71,8 @@ const Projects = () => {
                                     <Button className="my-1 d-flex align-items-center justify-content-center" target="_blank" variant="outline-secondary"
                                     onClick={()=>{handleReadMore(index)}}
                                     ><FaExpandArrowsAlt className="me-2" size={14} />Read more</Button>
-                                    <Button className="my-1 d-flex align-items-center justify-content-center" target="_blank" href={project.weblink} target="_blank" variant="primary"><FaLink className="me-2" size={14} />Website</Button>
-                                    <Button className="my-1 d-flex align-items-center justify-content-center" target="_blank"  href={project.gitlink} target="_blank" variant="secondary"> <FaGithub className="me-2" size={14} />GitHub</Button>
+                                    <Button className="my-1 d-flex align-items-center justify-content-center" target="_blank" href={project.weblink}  variant="primary"><FaLink className="me-2" size={14} />Website</Button>
+                                    <Button className="my-1 d-flex align-items-center justify-content-center" target="_blank"  href={project.gitlink} variant="secondary"> <FaGithub className="me-2" size={14} />GitHub</Button>
                                     </div>
                                     </Card.Body>
                                 </Card>
@@ -81,9 +81,11 @@ const Projects = () => {
                     }
                 </Row>
             </Container>
-            
         </section>
     )
 }
 
 export default Projects
+
+
+

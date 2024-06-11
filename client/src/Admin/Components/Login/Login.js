@@ -24,6 +24,7 @@ const Login = () => {
             ...loginData,
             [e.target.name] : e.target.value
         })
+        console.log(loginData)
     }
     const togglePassword = () => { setPasswordShown(!passwordShown);};
 

@@ -12,7 +12,7 @@ const App =() => {
   return (
       <BrowserRouter>
         <Routes>
-          <Route path="/"                                                      history={history} element={<Front />}/> 
+          <Route path="/"                               history={history} element={<Front />}/> 
           <Route path={`/admin/login`}                  history={history} element={<Login />}/> 
           <Route path={`/admin`}                        history={history} element={<Admin  requestedComponent=""/>}/> 
           <Route path={`/admin/edit_profile`}           history={history} element={<Admin  requestedComponent="edit_profile"  />}/> 
@@ -29,8 +29,8 @@ const App =() => {
           <Route path={`/admin/educations`}             history={history} element={<Admin  requestedComponent="educations"/>}/> 
           <Route path={`/admin/add_education`}          history={history} element={<Admin  requestedComponent="add_education"/>}/> 
           <Route path={`/admin/up_education/:id_edu`}   history={history} element={<Admin  requestedComponent="up_education"/>}/> 
-          <Route path={`/admin/medias`}               history={history} element={<Admin  requestedComponent="medias"/>}/>  
-          <Route path="*"                                                      history={history} element={<Admin  requestedComponent="notFound"/>}/>
+          <Route path={`/admin/medias`}                 history={history} element={<Admin  requestedComponent="medias"/>}/>  
+          <Route path="*"                               history={history} element={<Admin  requestedComponent="notFound"/>}/>
         </Routes>
       </BrowserRouter>
   )
